@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 import context from "../context/context";
 import Router from "next/router";
 import backend from '../data/data'
+import axios from 'axios'
 
 const Login = ({setLoginFormOpen}) => {
   const [email, setEmail] = useState("");
@@ -14,17 +15,25 @@ const Login = ({setLoginFormOpen}) => {
   const login = async (event) => {
     event.preventDefault();
 
-    const res = await fetch(`${backend}/login`, {
-      method: "post",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-    });
+    // const res = await fetch(`${backend}/login`, {
+    //   method: "post",
+    //   credentials: "include",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     email: email,
+    //     password: password,
+    //   }),
+    // });
+
+    const res = await axios.post(`${backend}/login`, {
+      email: 'email',
+      password: 'password'
+    }, {
+      //AxiosRequestConfig parameter
+      withCredentials: true //correct
+    })
     
     const data = await res.json();
     // console.log('Data från server', data)
