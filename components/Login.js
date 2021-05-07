@@ -29,7 +29,7 @@ const Login = ({setLoginFormOpen}) => {
     const data = await res.json();
     // console.log('Data från server', data)
     if (res.status === 200) {
-      console.log('Result', res.cookies)
+      
       setUser(data[0]);
       Router.push('/profil')
       setIsLoading(true)

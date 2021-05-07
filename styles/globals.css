@@ -38,3 +38,5 @@
     rgba(255, 255, 255, 1) 55%
   );
 }
+
+input { -webkit-user-select:text;}
