@@ -36,6 +36,7 @@ const Home = () => {
             muted
             loop
             autoPlay
+            type="video/mp4"
           ></video>
           <div
             id="overlay"
