@@ -200,7 +200,7 @@ const tips = ({ matches, user_match_results }) => {
             ))}
             <input
               className="bg-em-green-default fixed right-8 bottom-8 rounded mt-4 p-3 text-white cursor-pointer"
-              value={"Skicka in ditt tips!"}
+              value={"Uppdatera ditt tips!"}
               type="submit"
             />
             {/* <span>{userMatchResults.filter(m => m.id === match.id)[0]}</span> */}
