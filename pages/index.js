@@ -36,11 +36,10 @@ const Home = () => {
             muted
             loop
             autoPlay
-            type="video/mp4"
           ></video>
           <div
-            id="overlay"
-            className=" absolute top-0 left-0 w-full h-full"
+            // id="overlay"
+            className=" absolute bg-em-green-light opacity-20 top-0 left-0 w-full h-full"
           ></div>
 
           <div className="z-20 w-64 lg:w-160 text-center lg:text-left flex flex-col justify-center items-center lg:items-start">
@@ -52,7 +51,7 @@ const Home = () => {
               />
               <h1 className="text-5xl xl:text-7xl font-bold tracking-tight">
                 EM-TIPSET <br />
-                <span className="text-em-green-light">2021</span>
+                <span className="text-em-green-default">2021</span>
               </h1>
             </div>
             <p className="text-base lg:text-xl mt-4 w-auto">
@@ -67,7 +66,7 @@ const Home = () => {
 
         <div
           id="login-section"
-          className="hidden lg:flex h-64 lg:h-screen lg:w-2/5 xl:w-1/3 justify-center items-center p-8"
+          className="hidden bg-white lg:flex h-64 lg:h-screen lg:w-2/5 xl:w-1/3 justify-center items-center p-8"
         >
           {showLogin && <Login></Login>}
           {showReg && <Register></Register>}

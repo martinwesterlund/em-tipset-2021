@@ -7,6 +7,8 @@ import backend from '../data/data'
 const profil = ({ user_match_results }) => {
   const { user, setUser, setIsLoading } = useContext(context);
   const [userMatchResult, setUserMatchResult] = useState(null)
+
+  
  
 
   useEffect(() => {
@@ -14,6 +16,12 @@ const profil = ({ user_match_results }) => {
       setUserMatchResult(user_match_results.filter((result) => result.user_email === user.email)[0])
     }
   }, [user])
+
+  useEffect(() => {
+    if (!user) {
+      Router.push("/");
+    }
+  }, []);
 
   // useEffect( async () => {
 
@@ -43,6 +51,8 @@ const profil = ({ user_match_results }) => {
     <>
       <Header></Header>
       <div className="bg-stripe flex h-screen justify-center items-center">
+      
+        <div className="h-full w-full fixed top-0 left-0 bg-gradient-to-tl from-black opacity-20"></div> 
         {user && (
           <div className="bg-white p-6">
             <h1>
