@@ -35,7 +35,7 @@ const matchresultat = ({ matches, user_match_results }) => {
         <div className="w-screen min-h-screen bg-stripe pt-32 p-6 flex flex-col items-center">
         <div className="h-full w-full fixed top-0 left-0 bg-gradient-to-tl from-black opacity-20"> 
           </div>
-          <h1>MATCHRESULTAT</h1>
+          <h1 className="text-white">MATCHRESULTAT</h1>
           {userMatchResults && (
             <>
           {matches.map((match, index) => (
