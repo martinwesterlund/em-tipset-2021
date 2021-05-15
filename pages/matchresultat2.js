@@ -28,10 +28,16 @@ const matchresultat = ({ matches, user_match_results }) => {
   };
 
   useEffect(() => {
-    console.log("Use effect körs");
+    console.log("Use effect 1 körs");
     getUserMatchResults();
     filterUsersResults();
   }, []);
+
+  useEffect(() => {
+    console.log("Use effect 2 körs");
+    
+    filterUsersResults();
+  }, [allResults]);
 
   useEffect(() => {
     if (!user) {
