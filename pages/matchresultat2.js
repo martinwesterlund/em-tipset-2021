@@ -20,8 +20,8 @@ const matchresultat = ({ matches, user_match_results }) => {
   };
 
   const filterUsersResults = async () => {
-    if (user) {
-        console.log(allResults)
+    if (user && allResults) {
+        console.log('All results', allResults)
       setUserMatchResults(
         allResults.filter((result) => result.user_email === user.email)[0]
       );
