@@ -64,6 +64,7 @@ const Login = ({setLoginFormOpen}) => {
             onChange={(e) => setPassword(e.target.value)}
             className="w-5/6 rounded border mt-4 border-black p-3"
             placeholder="Lösenord"
+            autoComplete
             type="password"
           />
           <input
