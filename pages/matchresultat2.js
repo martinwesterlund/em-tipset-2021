@@ -21,6 +21,7 @@ const matchresultat = ({ matches, user_match_results }) => {
 
   const filterUsersResults = async () => {
     if (user) {
+        console.log(allResults)
       setUserMatchResults(
         allResults.filter((result) => result.user_email === user.email)[0]
       );
@@ -34,7 +35,6 @@ const matchresultat = ({ matches, user_match_results }) => {
 
   useEffect(() => {
     console.log("Use effect 2 körs");
-
     filterUsersResults();
   }, [allResults]);
 
