@@ -10,8 +10,8 @@ const matchresultat = ({ matches, user_match_results }) => {
   console.log(user_match_results);
   const { user, setUser, setIsLoading } = useContext(context);
 
-  const [userMatchResults, setUserMatchResults] = useState(null);
-  const [allResults, setAllResults] = useState(null);
+  const [userMatchResults, setUserMatchResults] = useState();
+  const [allResults, setAllResults] = useState();
 
   const getUserMatchResults = async () => {
     const res = await fetch(`${backend}/user-match-results`);
