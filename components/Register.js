@@ -57,18 +57,21 @@ const Register = () => {
             className="w-5/6 rounded border mt-4 border-black p-3"
             placeholder="Förnamn"
             type="text"
+            autoComplete="given-name"
           />
           <input
             onChange={(e) => setLastName(e.target.value)}
             className="w-5/6 rounded border mt-4 border-black p-3"
             placeholder="Efternamn"
             type="text"
+            autoComplete="family-name"
           />
           <input
             onChange={(e) => setEmail(e.target.value)}
             className="w-5/6 rounded border mt-4 border-black p-3"
             placeholder="Email"
             type="text"
+            autoComplete="email"
           />
           <input
             onChange={(e) => setPassword(e.target.value)}
