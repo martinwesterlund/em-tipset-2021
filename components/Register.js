@@ -75,6 +75,7 @@ const Register = () => {
             className="w-5/6 rounded border mt-4 border-black p-3"
             placeholder="Lösenord"
             type="password"
+            autoComplete="new-password"
           />
           <input
             className="bg-blue-700 w-5/6 rounded mt-4 p-3 text-white cursor-pointer"
