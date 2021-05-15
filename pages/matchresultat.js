@@ -20,7 +20,7 @@ const matchresultat = ({ matches, user_match_results }) => {
         )[0]
       );
     }
-  }, [user]);
+  }, []);
 
   useEffect(() => {
     if (!user) {

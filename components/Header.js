@@ -17,7 +17,7 @@ const Header = () => {
           <Link href="/tips"><li className="cursor-pointer hover:underline">Ditt tips</li></Link>
           
           <Link href="/topplistan"><li className="cursor-pointer hover:underline">Topplistan</li></Link>
-          <Link href="/matchresultat"><li className="cursor-pointer hover:underline">Matchresultat</li></Link>
+          <Link href="/matchresultat2"><li className="cursor-pointer hover:underline">Matchresultat</li></Link>
           <Link href="/regler"><li className="cursor-pointer hover:underline">Regler</li></Link>
         </ul>
       </div>
