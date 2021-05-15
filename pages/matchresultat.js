@@ -7,6 +7,7 @@ import backend from "../data/data";
 import Header from "../components/Header";
 
 const matchresultat = ({ matches, user_match_results }) => {
+  console.log(user_match_results)
   const { user, setUser, setIsLoading } = useContext(context);
 
   const [userMatchResults, setUserMatchResults] = useState(null);
