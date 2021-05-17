@@ -136,7 +136,6 @@ const tips = ({ matches, user_match_results }) => {
         c.push({ ...matches[i], ...b[i], ...userBets });
       }
       setBetArray(c);
-      console.log("C", c);
     }
   }, [userMatchResults]);
 

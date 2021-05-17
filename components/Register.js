@@ -23,16 +23,16 @@ const Register = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email,
         firstName,
         lastName,
+        email,
         password,
+        role: 'user'
       }),
     });
     const data = await res.json();
     if (res.status === 201) {
-      setUser(data[0]);
-      Router.push('/profil')
+      switchForm()
     } else {
       setErrorMessage("Något gick fel");
     }

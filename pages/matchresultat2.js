@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 import context from "../context/context";
 import Router from "next/router";
 
@@ -6,12 +6,18 @@ import MatchBox from "../components/MatchBox";
 import backend from "../data/data";
 import Header from "../components/Header";
 
-const matchresultat = ({ matches, user_match_results }) => {
-  console.log(user_match_results);
-  const { user, setUser, setIsLoading } = useContext(context);
+const matchresultat = () => {
+  const { user, setUser, setIsLoading, points } = useContext(context);
 
   const [userMatchResults, setUserMatchResults] = useState();
   const [allResults, setAllResults] = useState();
+  const [matches, setMatches] = useState();
+
+  const getMatches = async () => {
+    const res = await fetch(`${backend}/fixtures`);
+    const data = await res.json();
+    setMatches(data);
+  };
 
   const getUserMatchResults = async () => {
     const res = await fetch(`${backend}/user-match-results`);
@@ -21,7 +27,6 @@ const matchresultat = ({ matches, user_match_results }) => {
 
   const filterUsersResults = async () => {
     if (user && allResults) {
-        console.log('All results', allResults)
       setUserMatchResults(
         allResults.filter((result) => result.user_email === user.email)[0]
       );
@@ -29,12 +34,11 @@ const matchresultat = ({ matches, user_match_results }) => {
   };
 
   useEffect(() => {
-    console.log("Use effect 1 körs");
     getUserMatchResults();
+    getMatches();
   }, []);
 
   useEffect(() => {
-    console.log("Use effect 2 körs");
     filterUsersResults();
   }, [allResults]);
 
@@ -51,7 +55,7 @@ const matchresultat = ({ matches, user_match_results }) => {
       <div className="w-screen min-h-screen bg-stripe pt-32 p-6 flex flex-col items-center">
         <div className="h-full w-full fixed top-0 left-0 bg-gradient-to-tl from-black opacity-20"></div>
         <h1 className="text-white">MATCHRESULTAT</h1>
-        {userMatchResults && (
+        {userMatchResults && matches && (
           <>
             {matches.map((match, index) => (
               <MatchBox
@@ -68,19 +72,6 @@ const matchresultat = ({ matches, user_match_results }) => {
       </div>
     </>
   );
-};
-
-export const getStaticProps = async () => {
-  const res = await fetch(`${backend}/fixtures`);
-  const data = await res.json();
-  const res2 = await fetch(`${backend}/user-match-results`);
-  const data2 = await res2.json();
-  return {
-    props: {
-      matches: data,
-      user_match_results: data2,
-    },
-  };
 };
 
 export default matchresultat;

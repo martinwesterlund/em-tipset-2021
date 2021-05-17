@@ -12,6 +12,7 @@ function MyApp({ Component, pageProps }) {
   const [showLogin, setShowLogin] = useState(true);
   const [showReg, setShowReg] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [points, setPoints] = useState(0)
 
 
   useEffect(() => {
@@ -37,6 +38,8 @@ function MyApp({ Component, pageProps }) {
         user,
         setUser,
         menuOpen,
+        points,
+        setPoints,
         setMenuOpen,
         showLogin,
         showReg,

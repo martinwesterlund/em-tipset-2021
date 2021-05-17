@@ -9,17 +9,37 @@ const Header = () => {
     <header className="bg-em-green-dark bg-opacity-80 z-20 fixed top-0 left-0 w-full px-6 py-5 flex text-white justify-between items-center">
       <div className="w-12  flex-none justify-center items-center">
         <Link href="/profil">
-        <img className="w-8 cursor-pointer" src="/images/football.svg" alt="" />
+          <img
+            className="w-8 cursor-pointer"
+            src="/images/football.svg"
+            alt=""
+          />
         </Link>
       </div>
       <div className="hidden flex-grow lg:flex justify-center items-center">
-        <ul className="w-1/2 flex justify-around">
-          <Link href="/tips"><li className="cursor-pointer hover:underline">Ditt tips</li></Link>
-          
-          <Link href="/topplistan"><li className="cursor-pointer hover:underline">Topplistan</li></Link>
-          <Link href="/matchresultat2"><li className="cursor-pointer hover:underline">Matchresultat</li></Link>
-          <Link href="/regler"><li className="cursor-pointer hover:underline">Regler</li></Link>
-        </ul>
+        {user?.role === "user" && (
+          <ul className="w-1/2 flex justify-around">
+            <Link href="/tips2">
+              <li className="cursor-pointer hover:underline">Ditt tips</li>
+            </Link>
+            <Link href="/topplistan">
+              <li className="cursor-pointer hover:underline">Topplistan</li>
+            </Link>
+            <Link href="/matchresultat2">
+              <li className="cursor-pointer hover:underline">Matchresultat</li>
+            </Link>
+            <Link href="/regler">
+              <li className="cursor-pointer hover:underline">Regler</li>
+            </Link>
+          </ul>
+        )} 
+        {user?.role === 'admin' && (
+          <ul className="w-1/2 flex justify-around">
+            <Link href="/admin">
+              <li className="cursor-pointer hover:underline">Admin</li>
+            </Link>
+          </ul>
+        )}
       </div>
       <div className="w-24 lg:w-12 flex-none flex justify-end items-center">
         <svg
