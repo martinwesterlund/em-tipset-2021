@@ -15,22 +15,22 @@ function MyApp({ Component, pageProps }) {
   const [points, setPoints] = useState(0)
 
 
-  useEffect(() => {
-    Axios.get(backend, { withCredentials: true })
-      .then((response) => {
-        console.log(response.data);
-        if (response.data.user) {
-          setUser(response.data.user[0]);
-          Router.push("./profil");
+  // useEffect(() => {
+  //   Axios.get(backend, { withCredentials: true })
+  //     .then((response) => {
+  //       console.log(response.data);
+  //       if (response.data.user) {
+  //         setUser(response.data.user[0]);
+  //         Router.push("./profil");
           
-        } else {
-          setIsLoading(false)
-        }
-      })
-      .catch((error) => {
-        console.log("check login error", error);
-      });
-  }, []);
+  //       } else {
+  //         setIsLoading(false)
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.log("check login error", error);
+  //     });
+  // }, []);
 
   return (
     <context.Provider

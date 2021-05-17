@@ -27,9 +27,9 @@ const Home = () => {
 
   return (
     <>
-      {isLoading && <LoadingScreen></LoadingScreen>}
+      {/* {isLoading && <LoadingScreen></LoadingScreen>} */}
       <div className="min-h-screen w-screen flex flex-col lg:flex-row ">
-        <div className="bg-em-green-dark h-screen lg:w-3/5 xl:w-2/3 text-white flex justify-center items-center relative p-20">
+        <div className="bg-em-green-dark min-h-screen lg:w-3/5 xl:w-2/3 text-white flex justify-center items-center relative p-8 lg:p-20">
           <video
             className="absolute top-0 left-0 w-full h-full object-cover "
             src="/football3.mp4"
@@ -54,10 +54,10 @@ const Home = () => {
                 <span className="text-em-green-default">2021</span>
               </h1>
             </div>
-            <p className="text-base lg:text-xl mt-4 w-auto">
+            <p className="hidden md:block text-base lg:text-xl mt-4 w-auto">
               Utmana dina vänner i sommarens stora tävlingshändelse på webben!
             </p>
-            <div className="lg:hidden flex justify-center mt-6 md:mt-20">
+            <div className="lg:hidden flex justify-center p-8 mt-2 lg:mt-20">
               {showLogin && <Login></Login>}
               {showReg && <Register></Register>}
             </div>
@@ -66,7 +66,7 @@ const Home = () => {
 
         <div
           id="login-section"
-          className="hidden bg-white lg:flex h-64 lg:h-screen lg:w-2/5 xl:w-1/3 justify-center items-center p-8"
+          className="hidden bg-white lg:flex h-64 lg:h-screen lg:w-2/5 xl:w-1/3 justify-center items-center px-4 lg:p-8"
         >
           {showLogin && <Login></Login>}
           {showReg && <Register></Register>}

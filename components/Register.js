@@ -44,10 +44,10 @@ const Register = () => {
   }
 
   return (
-    <div className="bg-white py-4 w-80 rounded flex flex-col justify-center items-center relative text-center">
+    <div className="bg-white pb-6 w-72 md:w-80 rounded flex flex-col justify-center items-center relative text-center">
         
         <h1 className="text-em-green-dark text-xl mt-6">Registrera konto</h1>
-        <p onClick={() => switchForm()} className="mt-4 text-sm text-gray-500 cursor-pointer">Har du redan ett konto? Logga in här.</p>
+        <p onClick={() => switchForm()} className="mt-2 text-sm text-gray-500 cursor-pointer">Har du redan ett konto? Logga in här.</p>
         <form
           onSubmit={register}
           className="w-full flex flex-col justify-center items-center text-black"

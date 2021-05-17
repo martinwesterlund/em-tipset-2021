@@ -29,8 +29,8 @@ const Login = ({setLoginFormOpen}) => {
     const data = await res.json();
     // console.log('Data från server', data)
     if (res.status === 200) {
-      console.log(res.headers)
-      setUser(data[0]);
+      console.log(data)
+      setUser(data.user[0]);
       Router.push('/profil')
       setIsLoading(true)
     } else {
@@ -46,7 +46,7 @@ const Login = ({setLoginFormOpen}) => {
 
   return (
     
-      <div className="bg-white py-4 w-80 rounded flex flex-col justify-center items-center relative text-center">
+      <div className="bg-white pb-6 w-72 md:w-80 rounded flex flex-col justify-center items-center relative text-center">
         
         <h1 className="text-em-green-dark text-xl mt-6">Logga in</h1>
         <p onClick={() => switchForm()} className="mt-2 text-sm text-gray-500 cursor-pointer">Har du inget konto? Skapa ett här.</p>
@@ -74,7 +74,7 @@ const Login = ({setLoginFormOpen}) => {
             type="submit"
           />
         </form>
-  <h1 className="text-sm text-red-500 mt-4 h-6">{errorMessage}</h1>
+  <h1 className="text-sm text-red-500 mt-2 h-6">{errorMessage}</h1>
       </div>
     
   );
