@@ -3,6 +3,8 @@ import { useState, useContext } from "react";
 import context from "../context/context";
 import Router from "next/router";
 import backend from '../data/data'
+import { useCookies } from 'react-cookie';
+
 
 const Login = ({setLoginFormOpen}) => {
   const [email, setEmail] = useState("");
@@ -10,6 +12,7 @@ const Login = ({setLoginFormOpen}) => {
   const [status, setStatus] = useState("");
   const { user, setUser, setShowLogin, setShowReg, setIsLoading } = useContext(context);
   const [errorMessage, setErrorMessage] = useState(' ')
+  const [cookies, setCookie] = useCookies(['em-tipset']);
 
   const login = async (event) => {
     event.preventDefault();
@@ -30,6 +33,7 @@ const Login = ({setLoginFormOpen}) => {
     // console.log('Data från server', data)
     if (res.status === 200) {
       console.log(data)
+      setCookie('em-tipset', data.accessToken)
       setUser(data.user[0]);
       Router.push('/profil')
       setIsLoading(true)

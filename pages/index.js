@@ -46,7 +46,7 @@ const Home = () => {
             <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-start">
               <img
                 className="w-20 lg:w-40 mb-4 lg:mb-0 lg:mr-4"
-                src="/images/football.svg"
+                src="/images/football2.svg"
                 alt=""
               />
               <h1 className="text-5xl xl:text-7xl font-bold tracking-tight">

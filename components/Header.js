@@ -12,7 +12,7 @@ const Header = () => {
         <Link href="/profil">
           <img
             className="w-8 cursor-pointer"
-            src="/images/football.svg"
+            src="/images/football2.svg"
             alt=""
           />
         </Link>
@@ -75,7 +75,7 @@ const Header = () => {
 
       {/* Menu */}
       
-        <div className={`lg:hidden z-50 fixed top-0 right-0 transform duration-300 transition-all ease-in-out bg-em-green-dark w-1/3 h-screen flex justify-center items-center ${menuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}`}>
+        <div className={`lg:hidden z-50 fixed top-0 right-0 transform duration-300 transition-all ease-in-out bg-em-green-dark px-8 h-screen flex justify-center items-center ${menuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'}`}>
           
           <ul className="flex flex-col justify-center items-center text-xl">
           <Link href="/tips2" >

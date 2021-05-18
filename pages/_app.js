@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import { useState, useEffect } from "react";
 import context from "../context/context";
+import { CookiesProvider } from 'react-cookie';
 import Axios from "axios";
 import Layout from "../components/Layout";
 import backend from '../data/data'
@@ -33,6 +34,7 @@ function MyApp({ Component, pageProps }) {
   // }, []);
 
   return (
+    <CookiesProvider>
     <context.Provider
       value={{
         user,
@@ -54,6 +56,7 @@ function MyApp({ Component, pageProps }) {
       <Component {...pageProps} />
       {/* </Layout> */}
     </context.Provider>
+    </CookiesProvider>
   );
 }
 
