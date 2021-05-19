@@ -5,9 +5,11 @@ import Register from "../components/Register";
 import context from "../context/context";
 import Router from "next/router";
 import LoadingScreen from "../components/LoadingScreen";
-
+import { motion } from "framer-motion"
 const Home = () => {
-  const { showLogin, showReg, user, isLoading } = useContext(context);
+  const { showLogin, showReg, user, isLoading, setIsLoading, isCookiesAccepted, setIsCookiesAccepted } =
+    useContext(context);
+  const [showCookieBanner, setShowCookieBanner] = useState(true)  
 
   let [distance, setDistance] = useState(
     new Date("Jun 11, 2021 20:55:00").getTime() - new Date().getTime()
@@ -22,12 +24,14 @@ const Home = () => {
   useEffect(() => {
     if (user) {
       Router.push("/profil");
+    } else {
+      setIsLoading(false);
     }
   }, []);
 
   return (
     <>
-      {/* {isLoading && <LoadingScreen></LoadingScreen>} */}
+      {isLoading && <LoadingScreen></LoadingScreen>}
       <div className="min-h-screen w-screen flex flex-col lg:flex-row ">
         <div className="bg-em-green-dark min-h-screen lg:w-3/5 xl:w-2/3 text-white flex justify-center items-center relative p-8 lg:p-20">
           <video
@@ -73,6 +77,16 @@ const Home = () => {
         </div>
       </div>
 
+      {/* Cookie banner */}
+      {!isCookiesAccepted && showCookieBanner &&(
+        <motion.div initial={{y: '100%'}} animate={{ y: 0, transition: {duration: 1, delay: 1} }} className="z-50 w-screen text-xs md:text-sm lg:text-base bg-white border-t border-em-green-default flex flex-col justify-center items-center h-32 lg:h-64 fixed bottom-0 left-0">
+          <h1 className="">Vi använder Cookies för att optimera din upplevelse till max.</h1>
+          <div className="flex mt-4">
+          <button className="bg-em-green-default text-white rounded border mx-2 border-black p-2" onClick={() => setIsCookiesAccepted(true)}>Acceptera allt!</button>
+          <button className="border border-em-green-default rounded text-em-green-default mx-2 p-2" onClick={() => setShowCookieBanner(false)}>Acceptera inget</button>
+          </div>
+        </motion.div>
+      )}
       {/* <div
             style={{ minWidth: "160px" }}
             className="text-white h-40 w-40 bg-red-900 rounded-full z-30 flex justify-center items-center flex-col"

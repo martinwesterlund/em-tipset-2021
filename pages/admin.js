@@ -6,6 +6,7 @@ const admin = () => {
   const [matches, setMatches] = useState();
   const [homeScore, setHomeScore] = useState();
   const [awayScore, setAwayScore] = useState();
+  const [greeting, setGreeting] = useState();
   const { user, setUser, setIsLoading, points, setPoints } =
     useContext(context);
 
@@ -14,6 +15,27 @@ const admin = () => {
     const data = await res.json();
     setMatches(data);
   };
+
+  const sendGreeting = async (event) => {
+    event.preventDefault()
+
+    const res = await fetch(`${backend}/greeting`, {
+      method: "post",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ greeting }),
+    });
+
+    const data = await res.json()
+    if (res.status === 201) {
+      console.log("Admin - Allt gick fint!");
+    } else {
+      console.log("Admin - Nåt sket sig");
+      console.log(data)
+    }
+  }
 
   const updateResult = async (event, id) => {
     event.preventDefault();
@@ -58,6 +80,12 @@ const admin = () => {
 
   return (
     <div className="flex flex-col items-center">
+      <form onSubmit={(e) => sendGreeting(e)}>
+        <span>Hälsning till deltagarna:</span>
+        <input onChange={(e) => setGreeting(e.target.value)} className="w-96" type="text" />
+        <input type="submit" />
+      </form>
+
       {matches ? (
         matches.map((match) => {
           return (

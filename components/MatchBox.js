@@ -39,9 +39,9 @@ const MatchBox = ({ match, usersResult }) => {
     return stars;
   };
   return (
-    <div className="w-full md:w-160 relative bg-white rounded flex flex-col justify-center py-6 px-6 m-3">
+    <div className="w-full md:w-160 relative bg-white rounded flex flex-col justify-center p-6 m-3">
       <div className="flex">
-        <div className="w-2/5 flex flex-col justify-center items-center">
+        <div className="w-1/3 md:w-2/5 flex flex-col justify-center items-center">
           <img
             className="w-12 h-12 rounded-full object-cover shadow-md"
             src={`/images/flags/${match.home_team.toLowerCase()}.svg`}
@@ -50,10 +50,10 @@ const MatchBox = ({ match, usersResult }) => {
           <h2 className="mt-4">{match.home_team}</h2>
         </div>
 
-        <div className="w-1/5 flex text-3xl justify-center items-center">
+        <div className="w-1/3 md:w-1/5 flex text-3xl justify-center items-center">
           {match.home_score} - {match.away_score}
         </div>
-        <div className="w-2/5 flex flex-col justify-center items-center">
+        <div className="w-1/3 md:w-2/5 flex flex-col justify-center items-center">
           <img
             className="w-12 h-12 rounded-full object-cover shadow-md"
             src={`/images/flags/${match.away_team.toLowerCase()}.svg`}
@@ -71,7 +71,7 @@ const MatchBox = ({ match, usersResult }) => {
           <h2>{usersResult.a}</h2>
         </div>
       </div>
-      <div className="absolute left-4 top-4 bg-em-green-default w-7 h-7 rounded-full border-2 border-em-green-light flex justify-center items-center text-white">
+      <div className="absolute left-2 top-2 md:left-4 md:top-4 bg-em-green-default w-7 h-7 rounded-full border-2 border-em-green-light flex justify-center items-center text-white">
         <h1 className="mt-px ml-px">{match.id}</h1>
       </div>
       <div  className="absolute right-4 bottom-4 flex">

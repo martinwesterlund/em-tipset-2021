@@ -4,15 +4,16 @@ import context from "../context/context";
 import Router from "next/router";
 import backend from '../data/data'
 import { useCookies } from 'react-cookie';
+import LoadingScreen from "./LoadingScreen";
 
 
 const Login = ({setLoginFormOpen}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState("");
-  const { user, setUser, setShowLogin, setShowReg, setIsLoading } = useContext(context);
+  const { user, setUser, setShowLogin, setShowReg, setIsLoading, isCookiesAccepted } = useContext(context);
   const [errorMessage, setErrorMessage] = useState(' ')
-  const [cookies, setCookie] = useCookies(['em-tipset']);
+  const [cookies, setCookie] = useCookies(['emTipset21']);
 
   const login = async (event) => {
     event.preventDefault();
@@ -32,8 +33,10 @@ const Login = ({setLoginFormOpen}) => {
     const data = await res.json();
     // console.log('Data från server', data)
     if (res.status === 200) {
-      console.log(data)
-      setCookie('em-tipset', data.accessToken)
+      if(isCookiesAccepted){
+        setCookie('emTipset21', data.accessToken)
+      }
+      
       setUser(data.user[0]);
       Router.push('/profil')
       setIsLoading(true)
