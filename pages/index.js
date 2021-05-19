@@ -33,7 +33,7 @@ const Home = () => {
     <>
       {isLoading && <LoadingScreen></LoadingScreen>}
       <div className="min-h-screen w-screen flex flex-col lg:flex-row ">
-        <div className="bg-em-green-dark min-h-screen lg:w-3/5 xl:w-2/3 text-white flex justify-center items-center relative p-8 lg:p-20">
+        {!user && (<div className="bg-em-green-dark min-h-screen lg:w-3/5 xl:w-2/3 text-white flex justify-center items-center relative p-8 lg:p-20">
           <video
             className="absolute top-0 left-0 w-full h-full object-cover "
             src="/football3.mp4"
@@ -66,7 +66,7 @@ const Home = () => {
               {showReg && <Register></Register>}
             </div>
           </div>
-        </div>
+        </div>)}
 
         <div
           id="login-section"
