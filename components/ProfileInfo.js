@@ -18,18 +18,18 @@ const ProfileInfo = ({ user }) => {
       {/* <div>INFOBAR</div> */}
       <div className="w-full absolute top-4 flex bg-em-green-light justify-center items-center rounded overflow-hidden">
         <div className="h-full absolute left-0 bg-black z-10 flex items-center">
-          <span className="p-2 text-white">INFO</span>
+          <span className="p-2 text-white text-xs md:text-sm">INFO</span>
         </div>
         {greeting && (
-          <marquee className="p-2 italic w-full h-full" direction="left">
+          <marquee className="ml-1 text-xs md:text-sm p-2 italic w-full h-full" direction="left">
             {greeting}
           </marquee>
         )}
       </div>
-      <div className="flex flex-row justify-center items-center mt-16 lg:mt-0">
+      <div className="flex flex-row justify-center items-center overflow-hidden mt-16 lg:mt-0">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="text-em-green-default opacity-50 h-20 w-20 mr-4"
+          className="text-em-green-default opacity-50 h-8 w-8 md:h-16 md:w-16 mr-2 md:mr-4"
           viewBox="0 0 20 20"
           fill="currentColor"
         >
@@ -40,10 +40,10 @@ const ProfileInfo = ({ user }) => {
           />
         </svg>
         <div className="flex flex-col justify-center items-start">
-          <div className="text-lg border-b border-em-green-light w-full">
+          <div className="text-xs md:text-lg border-b border-em-green-light w-full">
             {user.first_name} {user.last_name}
           </div>
-          <div className="text-gray-400">{user.email}</div>
+          <div className="text-gray-400 text-xs md:text-lg">{user.email}</div>
         </div>
       </div>
     </div>

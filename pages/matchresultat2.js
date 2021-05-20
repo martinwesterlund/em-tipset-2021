@@ -54,8 +54,8 @@ const matchresultat = () => {
 
       <div className="w-screen min-h-screen bg-stripe pt-32 p-6 flex flex-col items-center">
         <div className="h-full w-full fixed top-0 left-0 bg-gradient-to-tl from-black opacity-20"></div>
-        <h1 className="text-white">MATCHRESULTAT</h1>
-        {userMatchResults && matches && (
+        <h1 className="text-white md:text-xl mb-8">MATCHRESULTAT</h1>
+        {userMatchResults && matches ? (
           <>
             {matches.map((match, index) => (
               <MatchBox
@@ -68,7 +68,11 @@ const matchresultat = () => {
               ></MatchBox>
             ))}
           </>
-        )}
+        ) :
+        <div className="w-full h-56 flex flex-col justify-center items-center">
+          <img className="w-12 animate-bounce" src="/images/football.svg" alt=""/>
+          <span className="text-white">Laddar in matcher...</span>
+          </div>}
       </div>
     </>
   );

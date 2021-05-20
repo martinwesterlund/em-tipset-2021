@@ -9,7 +9,7 @@ const ProgressBar = ({matches}) => {
     <div className="w-full flex justify-center">
       {matches && (
         <div className="flex flex-col justify-center items-center bg-white w-full lg:w-96">
-          <span>Tävlingstid som gått</span>
+          <span className="text-xs md:text-lg text-gray-400">Tävlingstid som gått</span>
           <div className="w-full h-16 mt-4 rounded-xl overflow-hidden flex relative justify-center items-center">
             <div className="absolute text-white text-xl">
             <CountUp useEasing={false} duration={1} delay={0.5} end={Math.round(

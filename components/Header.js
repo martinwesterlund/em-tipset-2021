@@ -90,7 +90,7 @@ const Header = () => {
           </svg>
         </button>
         <button
-          className="lg:hidden h-8 w-8 ml-4 outline-none focus:outline-none"
+          className="lg:hidden h-8 w-8 ml-2 md:ml-4 outline-none focus:outline-none"
           onClick={() => setMenuOpen(true)}
         >
           <svg

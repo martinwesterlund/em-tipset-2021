@@ -5,11 +5,18 @@ import Register from "../components/Register";
 import context from "../context/context";
 import Router from "next/router";
 import LoadingScreen from "../components/LoadingScreen";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 const Home = () => {
-  const { showLogin, showReg, user, isLoading, setIsLoading, isCookiesAccepted, setIsCookiesAccepted } =
-    useContext(context);
-  const [showCookieBanner, setShowCookieBanner] = useState(true)  
+  const {
+    showLogin,
+    showReg,
+    user,
+    isLoading,
+    setIsLoading,
+    isCookiesAccepted,
+    setIsCookiesAccepted,
+  } = useContext(context);
+  const [showCookieBanner, setShowCookieBanner] = useState(true);
 
   let [distance, setDistance] = useState(
     new Date("Jun 11, 2021 20:55:00").getTime() - new Date().getTime()
@@ -29,11 +36,26 @@ const Home = () => {
     }
   }, []);
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.7,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { x: -100, opacity: 0 },
+    show: { x: 0, opacity: 1 },
+  };
+
   return (
     <>
       {isLoading && <LoadingScreen></LoadingScreen>}
       <div className="min-h-screen w-screen flex flex-col lg:flex-row ">
-        {!user && (<div className="bg-em-green-dark min-h-screen lg:w-3/5 xl:w-2/3 text-white flex justify-center items-center relative p-8 lg:p-20">
+        <div className="bg-em-green-dark min-h-screen lg:w-3/5 xl:w-2/3 text-white flex justify-center items-center relative p-8 lg:p-20">
           <video
             className="absolute top-0 left-0 w-full h-full object-cover "
             src="/football3.mp4"
@@ -49,7 +71,7 @@ const Home = () => {
           <div className="z-20 w-64 lg:w-160 text-center lg:text-left flex flex-col justify-center items-center lg:items-start">
             <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-start">
               <img
-                className="w-20 lg:w-40 mb-4 lg:mb-0 lg:mr-4"
+                className="animate-ball-spin w-20 lg:w-40 mb-4 lg:mb-0 lg:mr-4"
                 src="/images/football2.svg"
                 alt=""
               />
@@ -58,15 +80,29 @@ const Home = () => {
                 <span className="text-em-green-default">2021</span>
               </h1>
             </div>
-            <p className="hidden md:block text-base lg:text-xl mt-4 w-auto">
-              Utmana dina vänner i sommarens stora tävlingshändelse på webben!
-            </p>
+            <motion.ul
+              variants={container}
+              initial="hidden"
+              animate="show"
+              className="hidden list-disc h-auto md:block text-base lg:text-xl lg:leading-loose mt-4 w-auto"
+            >
+              <motion.li variants={item}>
+                Sommarens stora tävlingshändelse på webben!
+              </motion.li>
+              <motion.li variants={item} className="">
+                Tippa matcherna och samla räkor!
+              </motion.li>
+              <motion.li variants={item} className="">
+                Fest räkor vinner!
+              </motion.li>
+            </motion.ul>
+
             <div className="lg:hidden flex justify-center p-8 mt-2 lg:mt-20">
               {showLogin && <Login></Login>}
               {showReg && <Register></Register>}
             </div>
           </div>
-        </div>)}
+        </div>
 
         <div
           id="login-section"
@@ -78,12 +114,28 @@ const Home = () => {
       </div>
 
       {/* Cookie banner */}
-      {!isCookiesAccepted && showCookieBanner &&(
-        <motion.div initial={{y: '100%'}} animate={{ y: 0, transition: {duration: 1, delay: 1} }} className="z-50 w-screen text-xs md:text-sm lg:text-base bg-white border-t border-em-green-default flex flex-col justify-center items-center h-32 lg:h-64 fixed bottom-0 left-0">
-          <h1 className="">Vi använder Cookies för att optimera din upplevelse till max.</h1>
+      {!isCookiesAccepted && showCookieBanner && (
+        <motion.div
+          initial={{ y: "100%" }}
+          animate={{ y: 0, transition: { duration: 1, delay: 1 } }}
+          className="z-50 w-screen text-xs md:text-sm lg:text-base bg-white border-t border-em-green-default flex flex-col justify-center items-center h-32 lg:h-64 fixed bottom-0 left-0"
+        >
+          <h1 className="">
+            Vi använder Cookies för att optimera din upplevelse till max.
+          </h1>
           <div className="flex mt-4">
-          <button className="bg-em-green-default text-white rounded border mx-2 border-black p-2" onClick={() => setIsCookiesAccepted(true)}>Acceptera allt!</button>
-          <button className="border border-em-green-default rounded text-em-green-default mx-2 p-2" onClick={() => setShowCookieBanner(false)}>Acceptera inget</button>
+            <button
+              className="bg-em-green-default text-white rounded border mx-2 border-black p-2"
+              onClick={() => setIsCookiesAccepted(true)}
+            >
+              Acceptera allt!
+            </button>
+            <button
+              className="border border-em-green-default rounded text-em-green-default mx-2 p-2"
+              onClick={() => setShowCookieBanner(false)}
+            >
+              Acceptera inget
+            </button>
           </div>
         </motion.div>
       )}

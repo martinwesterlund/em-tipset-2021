@@ -5,6 +5,8 @@ module.exports = {
     extend: {
       animation: {
         slide: "slide 8s linear infinite",
+        "ball-spin" : "ball-spin 60s linear infinite",
+        shrimp: "shrimp 1s linear infinite alternate-reverse"
       },
       colors: {
         "em-green": {
@@ -22,11 +24,14 @@ module.exports = {
           from: { transform: "rotate(0deg)" },
           to: { transform: "rotate(-360deg)" },
         },
-        // slide: {
-        //   from: { transform: "translateX(0)" },
-        //   to: { transform: "translateX(-50%)" },
-
-        // },
+        "ball-spin" : {
+          from: { transform: "rotate(0deg)" },
+          to: { transform: "rotate(-360deg)" },
+        },
+        "shrimp" : {
+          from: { transform: "rotate(-12deg)" },
+          to: { transform: "rotate(12deg)" },
+        }
       },
       spacing: {
         160: "40rem",

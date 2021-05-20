@@ -58,19 +58,19 @@ const profil = ({ user_match_results }) => {
   return (
     <>
       <Header></Header>
-      <div className="bg-stripe flex h-screen justify-center items-center py-20 overflow-hidden">
+      <div className="bg-stripe flex min-h-screen justify-center items-center py-20 overflow-hidden">
         {/* <div className="h-full w-full z-20 fixed top-0 left-0 bg-gradient-to-tl from-black opacity-20"></div> */}
         {user && topList && userMatchResult && match && matches && (<div className="grid grid-rows-8 lg:grid-rows-5 grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 w-full xl:w-4/5 h-full p-4 lg:p-12">
-          <motion.div  initial={{opacity:0, x: -150 }} animate={{opacity:1,  x: 0, transition: {ease: 'easeOut', duration: 1}}} className="bg-white rounded-2xl row-span-1 lg:row-span-3 flex justify-center items-center py-4 px-8">
+          <motion.div  initial={{opacity:0, x: -150 }} animate={{opacity:1,  x: 0, transition: {ease: 'easeOut', duration: 1}}} className="bg-white rounded-2xl row-span-1 lg:row-span-5 flex justify-center items-center py-4 px-4 md:px-8">
             <ProfileInfo user={user}></ProfileInfo>
           </motion.div>
-          <motion.div initial={{opacity:0, y: -150 }} animate={{opacity:1,  y: 0, transition: {ease: 'easeOut', duration: 1, delay: 0.1}}} className="bg-white rounded-2xl row-span-2 flex justify-center items-center py-4 px-8">
+          <motion.div initial={{opacity:0, y: -150 }} animate={{opacity:1,  y: 0, transition: {ease: 'easeOut', duration: 1, delay: 0.1}}} className="bg-white rounded-2xl row-span-2 flex justify-center items-center py-4 px-4 md:px-8">
             <ProfileStatus topList={topList} user={user} userResult={userMatchResult}></ProfileStatus>
           </motion.div>
-          <motion.div initial={{opacity:0, x: 150 }} animate={{ opacity:1, x: 0, transition: {ease: 'easeOut', duration: 1, delay: 0.2}}} className="bg-white rounded-2xl row-span-2 lg:row-span-3 flex justify-center items-center py-4 px-8">
+          <motion.div initial={{opacity:0, x: 150 }} animate={{ opacity:1, x: 0, transition: {ease: 'easeOut', duration: 1, delay: 0.2}}} className="bg-white rounded-2xl row-span-2 lg:row-span-5 flex justify-center items-center py-4 px-4 md:px-8">
             <NextMatch match={match}></NextMatch>
           </motion.div>
-          <motion.div initial={{opacity:0, y: 150 }} animate={{ opacity:1, y: 0, transition: {ease: 'easeOut', duration: 1, delay: 0.3}}} className="bg-white rounded-2xl row-span-2 flex justify-center items-center py-4 px-8">
+          <motion.div initial={{opacity:0, y: 150 }} animate={{ opacity:1, y: 0, transition: {ease: 'easeOut', duration: 1, delay: 0.3}}} className="bg-white rounded-2xl row-span-2 flex justify-center items-center py-4 px-4 md:px-8">
             <ProgressBar matches={matches}></ProgressBar>
           </motion.div>
         </div>
