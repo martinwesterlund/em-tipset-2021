@@ -257,14 +257,14 @@ const tips2 = () => {
                     <div className="w-1/3 flex flex-col justify-between items-center">
                       <div className="">{match.home_team}</div>
                       <img
-                        className="w-8 h-8 my-2 rounded-full object-cover shadow-md"
+                        className="w-8 h-8 mt-2 rounded-full object-cover shadow-md"
                         src={`/images/flags/${match.home_team.toLowerCase()}.svg`}
                         alt=""
                       />
                       <input
                         name={`m${match.id}_h`}
                         onChange={(e) => handleChange(e)}
-                        className="w-36 mt-4 pr-3 pl-6 border-l border-r text-em-green-default text-center text-2xl border-gray-300"
+                        className="w-16 mt-4 border-l border-r text-em-green-default text-center text-2xl border-gray-300"
                         type="number"
                         min="0"
                         value={match.h}
@@ -282,14 +282,18 @@ const tips2 = () => {
                         src={`/images/flags/${match.away_team.toLowerCase()}.svg`}
                         alt=""
                       />
+                      <div>
+                        <button>-</button>
                       <input
                         name={`m${match.id}_a`}
                         onChange={(e) => handleChange(e)}
-                        className="w-36 mt-4 pr-3 pl-6 border-l border-r text-em-green-default text-center text-2xl border-gray-300"
+                        className="w-16 mt-4 mx-4 border-l border-r text-em-green-default text-center text-2xl border-gray-300"
                         type="number"
                         min="0"
                         value={match.a}
                       />
+                      <button>+</button>
+                      </div>
                     </div>
                   </motion.div>
                 )
@@ -297,12 +301,15 @@ const tips2 = () => {
             
           </motion.div>
           )}
-        </form>
-        <input
-          className="bg-em-green-default animate-pulse fixed right-8 bottom-8 rounded mt-4 p-3 lg:p-6 text-white lg:text-xl cursor-pointer"
+          <motion.input
+          initial={{ x: '150%'}}
+          animate={{ x: 0, transition: {duration: 2, delay: 1, ease: 'easeOut'}}}
+          className="bg-em-green-default fixed right-2 bottom-2 md:right-8 md:bottom-8 rounded mt-4 p-3 lg:p-6 text-white lg:text-xl cursor-pointer"
           value={"Uppdatera ditt tips!"}
           type="submit"
         />
+        </form>
+        
         {/* <form
         onSubmit={submitBet}
         className="w-full flex flex-col text-black items-center"

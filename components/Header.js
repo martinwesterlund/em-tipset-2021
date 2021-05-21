@@ -139,7 +139,7 @@ const Header = () => {
           onClick={() => setMenuOpen(false)}
           className="my-6 cursor-pointer hover:underline"
         >
-          Ditt tips
+          Dina tips
         </li>
       </Link>
       <Link href="/topplistan">

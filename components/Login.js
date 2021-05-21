@@ -42,7 +42,7 @@ const Login = ({setLoginFormOpen}) => {
       Router.push('/profil')
       setIsLoading(true)
     } else {
-      
+      setIsLoading(false)
       setErrorMessage(data.errMessage);
     }
   };

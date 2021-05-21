@@ -28,6 +28,10 @@ body {
   display: none;
 }
 
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 #overlay {
   background: #006609;
   background-blend-mode: overlay;
