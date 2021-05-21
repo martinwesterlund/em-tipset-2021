@@ -3,9 +3,11 @@ import useSWR from "swr";
 import backend from "../data/data";
 import Header from "../components/Header";
 import context from "../context/context";
+import MatchForm from "../components/MatchForm";
 
 const tips2 = () => {
-  const { user, setUser, setIsLoading, points, setPoints } = useContext(context);
+  const { user, setUser, setIsLoading, points, setPoints } =
+    useContext(context);
   const [matches, setMatches] = useState();
   const [usersBet, setUsersBet] = useState();
   const [combinedData, setCombinedData] = useState();
@@ -32,15 +34,14 @@ const tips2 = () => {
     });
   };
 
-
   const setDbValue = (h, a) => {
     if (h > a) {
-        return "1";
-      } else if (h < a) {
-        return "2";
-      } else {
-        return "X";
-      }
+      return "1";
+    } else if (h < a) {
+      return "2";
+    } else {
+      return "X";
+    }
   };
 
   const set1X2 = (match) => {
@@ -212,57 +213,78 @@ const tips2 = () => {
   }, [usersBet]);
 
   return (
-    <div>
+    <>
       <Header></Header>
-      <h1 className="mt-40">Dina tips</h1>
-      <form
+      <div className="w-screen min-h-screen bg-stripe pt-32 p-6 flex flex-col items-center">
+        <h1 className="text-white md:text-xl mb-8">DINA TIPS</h1>
+
+        <form onSubmit={submitBet} className="w-full flex flex-col items-center" action="">
+          {combinedData ? (
+            combinedData.map((match) => {
+              return (
+                <div key={match.id} className="w-full  md:w-160 lg:w-192 relative bg-white rounded-2xl flex justify-center items-center p-6 m-2">
+                  <div className="w-1/3 flex flex-col justify-between items-center">
+                    <div className="">{match.home_team}</div>
+                    <img
+                      className="w-8 h-8 my-2 rounded-full object-cover shadow-md"
+                      src={`/images/flags/${match.home_team.toLowerCase()}.svg`}
+                      alt=""
+                    />
+                    <input
+                      name={`m${match.id}_h`}
+                      onChange={(e) => handleChange(e)}
+                      className="w-36 mt-4 pr-3 pl-6 border-l border-r text-em-green-default text-center text-2xl border-gray-300"
+                      type="number"
+                      min="0"
+                      value={match.h}
+                    />
+                  </div>
+                  <div className="w-1/4 h-full flex flex-col justify-center items-center">
+                    
+                    <div className="h-1/3 text-3xl flex items-end text-em-green-default transform translate-y-2"><span>{set1X2(match)}</span></div>
+                  </div>
+                  <div className="w-1/3 flex flex-col justify-center items-center">
+                    <div>{match.away_team}</div>
+                    <img
+                      className="w-8 h-8 mt-2 rounded-full object-cover shadow-md"
+                      src={`/images/flags/${match.away_team.toLowerCase()}.svg`}
+                      alt=""
+                    />
+                    <input
+                      name={`m${match.id}_a`}
+                      onChange={(e) => handleChange(e)}
+                      className="w-36 mt-4 pr-3 pl-6 border-l border-r text-em-green-default text-center text-2xl border-gray-300"
+                      type="number"
+                      min="0"
+                      value={match.a}
+                    />
+                  </div>
+                </div>
+                
+              );
+            })
+          ) : (
+            <h1>Loading...</h1>
+          )}
+          <input
+          className="bg-em-green-default animate-pulse fixed right-8 bottom-8 rounded mt-4 p-3 text-white cursor-pointer"
+          value={"Uppdatera ditt tips!"}
+          type="submit"
+        />
+        </form>
+        {/* <form
         onSubmit={submitBet}
         className="w-full flex flex-col text-black items-center"
       >
-        {combinedData ? (
-          combinedData.map((match) => {
-            return (
-              <div
-                className="w-1/2 border border-white flex items-center p-2 m-4"
-                key={match.id}
-              >
-                <span>{match.home_team}</span>
-                <span>-</span>
-                <span>{match.away_team}</span>
-
-                <span></span>
-                <input
-                  name={`m${match.id}_h`}
-                  onChange={(e) => handleChange(e)}
-                  className="w-20 p-2 border text-center border-red-300"
-                  type="number"
-                  min="0"
-                  value={match.h}
-                />
-                <input
-                  name={`m${match.id}_a`}
-                  onChange={(e) => handleChange(e)}
-                  className="w-20 p-2 border text-center border-red-300"
-                  type="number"
-                  min="0"
-                  value={match.a}
-                />
-                {/* <input className="bg-transparent" name={`m${match.id}_1x2`} on  onChange={(e) => handleChange1X2(e)} type="text" value={set1X2(match)} /> */}
-
-                <span>{set1X2(match)}</span>
-              </div>
-            );
-          })
-        ) : (
-          <h1>Loading...</h1>
-        )}
+        
         <input
           className="bg-em-green-default fixed right-8 bottom-8 rounded mt-4 p-3 text-white cursor-pointer"
           value={"Uppdatera ditt tips!"}
           type="submit"
         />
-      </form>
-    </div>
+      </form> */}
+      </div>
+    </>
   );
 };
 

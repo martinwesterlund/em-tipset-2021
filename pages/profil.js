@@ -24,15 +24,15 @@ const profil = ({ user_match_results }) => {
     setMatch(data.find((match) => match.finished != "yes"));
   };
 
-  useEffect(() => {
-    getMatches();
-  }, []);
-
   const getUsersBet = async () => {
     const res = await fetch(`${backend}/user-match-results`);
     const data = await res.json();
     setTopList(data);
   };
+
+  useEffect(() => {
+    getMatches();
+  }, []);
 
   useEffect(() => {
     if (user) {

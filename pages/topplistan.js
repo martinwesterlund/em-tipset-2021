@@ -59,7 +59,7 @@ const topplistan = () => {
   };
 
   return (
-    <div className="bg-stripe h-screen p-6 pt-32 flex justify-center ">
+    <div className="h-screen p-6 pt-32 flex justify-center ">
       {/* <div className="h-full w-full fixed top-0 left-0 bg-gradient-to-tl from-black opacity-20 flex items-center"></div> */}
       <Header></Header>
       

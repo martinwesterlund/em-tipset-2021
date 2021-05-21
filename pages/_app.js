@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps }) {
     const data = await res.json();
     setUser(data.user)
     setIsLoading(false)
-    Router.push("/profil");
+    // Router.push("/profil");
   };
 
   useEffect(() => {
