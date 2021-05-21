@@ -4,6 +4,7 @@ import backend from "../data/data";
 import Header from "../components/Header";
 import context from "../context/context";
 import MatchForm from "../components/MatchForm";
+import { motion } from "framer-motion";
 
 const tips2 = () => {
   const { user, setUser, setIsLoading, points, setPoints } =
@@ -212,66 +213,96 @@ const tips2 = () => {
     }
   }, [usersBet]);
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, x: -100 },
+    show: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  };
+
   return (
     <>
       <Header></Header>
       <div className="w-screen min-h-screen bg-stripe pt-32 p-6 flex flex-col items-center">
         <h1 className="text-white md:text-xl mb-8">DINA TIPS</h1>
 
-        <form onSubmit={submitBet} className="w-full flex flex-col items-center" action="">
-          {combinedData ? (
-            combinedData.map((match) => {
-              return (
-                <div key={match.id} className="w-full  md:w-160 lg:w-192 relative bg-white rounded-2xl flex justify-center items-center p-6 m-2">
-                  <div className="w-1/3 flex flex-col justify-between items-center">
-                    <div className="">{match.home_team}</div>
-                    <img
-                      className="w-8 h-8 my-2 rounded-full object-cover shadow-md"
-                      src={`/images/flags/${match.home_team.toLowerCase()}.svg`}
-                      alt=""
-                    />
-                    <input
-                      name={`m${match.id}_h`}
-                      onChange={(e) => handleChange(e)}
-                      className="w-36 mt-4 pr-3 pl-6 border-l border-r text-em-green-default text-center text-2xl border-gray-300"
-                      type="number"
-                      min="0"
-                      value={match.h}
-                    />
-                  </div>
-                  <div className="w-1/4 h-full flex flex-col justify-center items-center">
-                    
-                    <div className="h-1/3 text-3xl flex items-end text-em-green-default transform translate-y-2"><span>{set1X2(match)}</span></div>
-                  </div>
-                  <div className="w-1/3 flex flex-col justify-center items-center">
-                    <div>{match.away_team}</div>
-                    <img
-                      className="w-8 h-8 mt-2 rounded-full object-cover shadow-md"
-                      src={`/images/flags/${match.away_team.toLowerCase()}.svg`}
-                      alt=""
-                    />
-                    <input
-                      name={`m${match.id}_a`}
-                      onChange={(e) => handleChange(e)}
-                      className="w-36 mt-4 pr-3 pl-6 border-l border-r text-em-green-default text-center text-2xl border-gray-300"
-                      type="number"
-                      min="0"
-                      value={match.a}
-                    />
-                  </div>
-                </div>
+        <form
+          onSubmit={submitBet}
+          className="w-full flex flex-col items-center"
+        >
+         {combinedData && ( 
+         <motion.div
+            variants={container}
+            initial="hidden"
+            animate="show"
+            className="w-full flex flex-col items-center"
+          >
+            
+              {combinedData.map((match) => (
                 
-              );
-            })
-          ) : (
-            <h1>Loading...</h1>
+                  <motion.div
+                    variants={item}
+                    key={match.id}
+                    className="w-full  md:w-160 lg:w-192 relative bg-white rounded-2xl flex justify-center items-center p-6 m-2"
+                  >
+                    <div className="w-1/3 flex flex-col justify-between items-center">
+                      <div className="">{match.home_team}</div>
+                      <img
+                        className="w-8 h-8 my-2 rounded-full object-cover shadow-md"
+                        src={`/images/flags/${match.home_team.toLowerCase()}.svg`}
+                        alt=""
+                      />
+                      <input
+                        name={`m${match.id}_h`}
+                        onChange={(e) => handleChange(e)}
+                        className="w-36 mt-4 pr-3 pl-6 border-l border-r text-em-green-default text-center text-2xl border-gray-300"
+                        type="number"
+                        min="0"
+                        value={match.h}
+                      />
+                    </div>
+                    <div className="w-1/4 h-full flex flex-col justify-center items-center">
+                      <div className="h-1/3 text-3xl flex items-end text-em-green-default transform translate-y-2">
+                        <span>{set1X2(match)}</span>
+                      </div>
+                    </div>
+                    <div className="w-1/3 flex flex-col justify-center items-center">
+                      <div>{match.away_team}</div>
+                      <img
+                        className="w-8 h-8 mt-2 rounded-full object-cover shadow-md"
+                        src={`/images/flags/${match.away_team.toLowerCase()}.svg`}
+                        alt=""
+                      />
+                      <input
+                        name={`m${match.id}_a`}
+                        onChange={(e) => handleChange(e)}
+                        className="w-36 mt-4 pr-3 pl-6 border-l border-r text-em-green-default text-center text-2xl border-gray-300"
+                        type="number"
+                        min="0"
+                        value={match.a}
+                      />
+                    </div>
+                  </motion.div>
+                )
+              )}
+            
+          </motion.div>
           )}
-          <input
-          className="bg-em-green-default animate-pulse fixed right-8 bottom-8 rounded mt-4 p-3 text-white cursor-pointer"
+        </form>
+        <input
+          className="bg-em-green-default animate-pulse fixed right-8 bottom-8 rounded mt-4 p-3 lg:p-6 text-white lg:text-xl cursor-pointer"
           value={"Uppdatera ditt tips!"}
           type="submit"
         />
-        </form>
         {/* <form
         onSubmit={submitBet}
         className="w-full flex flex-col text-black items-center"

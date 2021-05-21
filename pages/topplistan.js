@@ -62,19 +62,19 @@ const topplistan = () => {
     <div className="h-screen p-6 pt-32 flex justify-center ">
       {/* <div className="h-full w-full fixed top-0 left-0 bg-gradient-to-tl from-black opacity-20 flex items-center"></div> */}
       <Header></Header>
-      
-        <SideResult
-          user={selectedUser}
-          matches={matches}
-          setShowSideBar={setShowSideBar}
-          showSideBar={showSideBar}
-        ></SideResult>
-      
+
+      <SideResult
+        user={selectedUser}
+        matches={matches}
+        setShowSideBar={setShowSideBar}
+        showSideBar={showSideBar}
+      ></SideResult>
+
       {user && topList && (
         <div className="w-full md:h-80 md:w-160 lg:w-240 flex flex-col">
           <div className="flex md:min-h-full flex-col md:flex-row justify-center items-center md:items-end w-full">
             <motion.button
-              whileHover={{scale: 1.02}}
+              whileHover={{ scale: 1.02 }}
               onClick={() => showSideResult(topList.slice(0, 1)[0].user_email)}
               initial={{ opacity: 0, y: 100 }}
               animate={{
@@ -82,7 +82,7 @@ const topplistan = () => {
                 y: 0,
                 transition: { duration: 0.5, ease: "easeOut" },
               }}
-              className="cursor-pointer w-full m-2 lg:m-4 h-32 md:h-64 bg-white rounded-2xl flex md:flex-col justify-center items-center relative border-4 border-yellow-300"
+              className={`cursor-pointer w-full m-2 lg:m-4 h-32 md:h-64 ${topList[0].email === user.email ? 'bg-em-green-default' : 'bg-white'} rounded-2xl flex md:flex-col justify-center items-center relative border-4 border-yellow-300`}
             >
               <Medal value={1}></Medal>
               <div className="flex flex-col">
@@ -94,7 +94,7 @@ const topplistan = () => {
               </div>
             </motion.button>
             <motion.button
-            whileHover={{scale: 1.02}}
+              whileHover={{ scale: 1.02 }}
               onClick={() => showSideResult(topList.slice(1, 2)[0].user_email)}
               initial={{ opacity: 0, y: 100 }}
               animate={{
@@ -102,7 +102,7 @@ const topplistan = () => {
                 y: 0,
                 transition: { duration: 0.5, delay: 0.1, ease: "easeOut" },
               }}
-              className={`w-full h-32 md:h-48 bg-white m-2 lg:m-4 rounded-2xl flex md:flex-col justify-center items-center relative border-4 border-gray-100`}
+              className={`w-full h-32 md:h-48 ${topList[1].email === user.email ? 'bg-em-green-default' : 'bg-white'} m-2 lg:m-4 rounded-2xl flex md:flex-col justify-center items-center relative border-4 border-gray-100`}
             >
               <Medal value={2}></Medal>
               <div className="flex flex-col">
@@ -114,7 +114,7 @@ const topplistan = () => {
               </div>
             </motion.button>
             <motion.button
-            whileHover={{scale: 1.02}}
+              whileHover={{ scale: 1.02 }}
               onClick={() => showSideResult(topList.slice(2, 3)[0].user_email)}
               initial={{ opacity: 0, y: 100 }}
               animate={{
@@ -122,7 +122,7 @@ const topplistan = () => {
                 y: 0,
                 transition: { duration: 0.5, delay: 0.2, ease: "easeOut" },
               }}
-              className="w-full m-2 lg:m-4 h-32 bg-white rounded-2xl flex md:flex-col justify-center items-center relative border-4 border-yellow-500"
+              className={`w-full m-2 lg:m-4 h-32 ${topList[0].email === user.email ? 'bg-em-green-default' : 'bg-white'} rounded-2xl flex md:flex-col justify-center items-center relative border-4 border-yellow-500"`}
             >
               <Medal value={3}></Medal>
               <div className="flex flex-col">
@@ -140,26 +140,25 @@ const topplistan = () => {
             animate="show"
             className="flex flex-col justify-center items-center w-full md:px-2 lg:px-4"
           >
-            {topList.slice(3).map((user, index) => (
+            {topList.slice(3).map((listItem, index) => (
               <motion.button
-              whileHover={{scale: 1.02}}
-                onClick={() => showSideResult(user.user_email)}
+                whileHover={{ scale: 1.02 }}
+                onClick={() => showSideResult(listItem.user_email)}
                 variants={item}
                 key={index}
-                className="w-full m-2 lg:m-4 h-32 bg-white rounded-2xl flex flex-col md:flex-row justify-center items-center relative"
+                className={`w-full m-2 lg:m-4 h-32 ${listItem.user_email === user.email ? 'bg-white animate-pulse' : 'bg-white'} rounded-2xl flex flex-col md:flex-row justify-center items-center relative`}
               >
                 <Medal value={index + 4}></Medal>
                 <div className="flex flex-col">
                   <span className="w-full p-1 capitalize">
-                    {user.first_name} {user.last_name}
+                    {listItem.first_name} {listItem.last_name}
                   </span>
                   <div className="w-full h-px bg-gray-400"></div>
-                  <span className="p-1">{user.points} räkor</span>
+                  <span className="p-1">{listItem.points} räkor</span>
                 </div>
               </motion.button>
             ))}
           </motion.div>
-          
         </div>
       )}
     </div>

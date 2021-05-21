@@ -37,7 +37,7 @@ const Header = () => {
         {user?.role === "user" && (
           <ul className="w-1/2 flex justify-around">
             <Link href="/tips2">
-              <li className="cursor-pointer hover:underline">Ditt tips</li>
+              <li className="cursor-pointer hover:underline">Dina tips</li>
             </Link>
             <Link href="/topplistan">
               <li className="cursor-pointer hover:underline">Topplistan</li>
