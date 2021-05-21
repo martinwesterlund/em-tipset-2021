@@ -16,6 +16,7 @@ const Login = ({setLoginFormOpen}) => {
   const [cookies, setCookie] = useCookies(['emTipset21']);
 
   const login = async (event) => {
+    setIsLoading(true)
     event.preventDefault();
 
     const res = await fetch(`${backend}/login`, {
@@ -34,7 +35,7 @@ const Login = ({setLoginFormOpen}) => {
     // console.log('Data från server', data)
     if (res.status === 200) {
       if(isCookiesAccepted){
-        setCookie('emTipset21', data.accessToken)
+        setCookie('emTipset21', data.accessToken, {maxAge: 60*60*24*30})
       }
       
       setUser(data.user[0]);

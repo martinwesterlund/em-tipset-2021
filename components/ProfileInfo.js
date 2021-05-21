@@ -18,10 +18,10 @@ const ProfileInfo = ({ user }) => {
       {/* <div>INFOBAR</div> */}
       <div className="w-full absolute top-4 flex bg-em-green-light justify-center items-center rounded overflow-hidden">
         <div className="h-full absolute left-0 bg-black z-10 flex items-center">
-          <span className="p-2 text-white text-xs md:text-sm">INFO</span>
+          <span className="p-2 text-white text-xs md:text-base ">INFO</span>
         </div>
         {greeting && (
-          <marquee className="ml-1 text-xs md:text-sm p-2 italic w-full h-full" direction="left">
+          <marquee className="ml-1 text-xs md:text-base p-2 italic w-full h-full" direction="left">
             {greeting}
           </marquee>
         )}

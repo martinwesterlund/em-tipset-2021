@@ -42,83 +42,75 @@ const Home = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.7,
+        duration: 4,
       },
     },
   };
 
   const item = {
-    hidden: { x: -100, opacity: 0 },
-    show: { x: 0, opacity: 1 },
+    hidden: { x: -200, opacity: 0 },
+    show: { x: 0, opacity: 1, transition: { ease: "easeOut" } },
   };
 
   return (
     <>
-      {isLoading && <LoadingScreen></LoadingScreen>}
-      <div className="min-h-screen w-screen flex flex-col lg:flex-row ">
-        <div className="bg-em-green-dark min-h-screen lg:w-3/5 xl:w-2/3 text-white flex justify-center items-center relative p-8 lg:p-20">
-          <video
-            className="absolute top-0 left-0 w-full h-full object-cover "
-            src="/football3.mp4"
-            muted
-            loop
-            autoPlay
-          ></video>
-          <div
-            // id="overlay"
-            className=" absolute bg-em-green-light opacity-20 top-0 left-0 w-full h-full"
-          ></div>
+      {isLoading ? (
+        <LoadingScreen></LoadingScreen>
+      ) : (
+        <div className="min-h-screen w-screen flex flex-col lg:flex-row ">
+          <div className="bg-em-green-dark min-h-screen lg:w-3/5 xl:w-2/3 text-white flex justify-center items-center relative p-8 lg:p-20">
+            <video
+              className="absolute top-0 left-0 w-full h-full object-cover "
+              src="/football3.mp4"
+              muted
+              loop
+              autoPlay
+            ></video>
+            <div
+              // id="overlay"
+              className=" absolute bg-em-green-light opacity-20 top-0 left-0 w-full h-full"
+            ></div>
 
-          <div className="z-20 w-64 lg:w-160 text-center lg:text-left flex flex-col justify-center items-center lg:items-start">
-            <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-start">
-              <img
-                className="animate-ball-spin w-20 lg:w-40 mb-4 lg:mb-0 lg:mr-4"
-                src="/images/football2.svg"
-                alt=""
-              />
-              <h1 className="text-5xl xl:text-7xl font-bold tracking-tight">
-                EM-TIPSET <br />
-                <span className="text-em-green-default">2021</span>
-              </h1>
-            </div>
-            <motion.ul
-              variants={container}
-              initial="hidden"
-              animate="show"
-              className="hidden list-disc h-auto md:block text-base lg:text-xl lg:leading-loose mt-4 w-auto"
-            >
-              <motion.li variants={item}>
-                Sommarens stora tävlingshändelse på webben!
-              </motion.li>
-              <motion.li variants={item} className="">
-                Tippa matcherna och samla räkor!
-              </motion.li>
-              <motion.li variants={item} className="">
-                Fest räkor vinner!
-              </motion.li>
-            </motion.ul>
+            <div className="z-20 w-64 lg:w-160 text-center lg:text-left flex flex-col justify-center items-center lg:items-start">
+              <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-start">
+                <img
+                  className="animate-ball-spin w-20 lg:w-40 mb-4 lg:mb-0 lg:mr-4"
+                  src="/images/football2.svg"
+                  alt=""
+                />
+                <h1 className="text-5xl xl:text-7xl font-bold tracking-tight">
+                  EM-TIPSET <br />
+                  <span className="text-em-green-default">2021</span>
+                </h1>
+              </div>
+              <p className="text-2xl mt-2">Sommarens stora tävlingshändelse på webben!</p>
+              <p className="mt-2 text-lg">
+                Tippa matcherna och samla räkor - flest räkor vinner!
+              </p>
 
-            <div className="lg:hidden flex justify-center p-8 mt-2 lg:mt-20">
-              {showLogin && <Login></Login>}
-              {showReg && <Register></Register>}
+              <div className="lg:hidden flex justify-center p-8 mt-2 lg:mt-20">
+                {showLogin && <Login></Login>}
+                {showReg && <Register></Register>}
+              </div>
             </div>
           </div>
-        </div>
 
-        <div
-          id="login-section"
-          className="hidden bg-white lg:flex h-64 lg:h-screen lg:w-2/5 xl:w-1/3 justify-center items-center px-4 lg:p-8"
-        >
-          {showLogin && <Login></Login>}
-          {showReg && <Register></Register>}
+          <div
+            id="login-section"
+            className="hidden bg-white lg:flex h-64 lg:h-screen lg:w-2/5 xl:w-1/3 justify-center items-center px-4 lg:p-8"
+          >
+            {showLogin && <Login></Login>}
+            {showReg && <Register></Register>}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Cookie banner */}
       {!isCookiesAccepted && showCookieBanner && (
         <motion.div
           initial={{ y: "100%" }}
           animate={{ y: 0, transition: { duration: 1, delay: 1 } }}
-          className="z-50 w-screen text-xs md:text-sm lg:text-base bg-white border-t border-em-green-default flex flex-col justify-center items-center h-32 lg:h-64 fixed bottom-0 left-0"
+          className="z-40 w-screen text-xs md:text-sm lg:text-base bg-white border-t border-em-green-default flex flex-col justify-center items-center h-32 lg:h-64 fixed bottom-0 left-0"
         >
           <h1 className="">
             Vi använder Cookies för att optimera din upplevelse till max.

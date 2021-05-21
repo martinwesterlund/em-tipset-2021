@@ -14,6 +14,12 @@ module.exports = {
           default: "#00822b",
           dark: "#003802",
         },
+        gold : "#dbc604",
+        silver : "#e8e8e8",
+        bronze : "#d19945"
+      },
+      fontSize: {
+        'xxs': '.6rem',
       },
       keyframes: {
         slide: {
@@ -35,6 +41,8 @@ module.exports = {
       },
       spacing: {
         160: "40rem",
+        192: "48rem",
+        240: "60rem"
       },
     },
   },

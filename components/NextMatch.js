@@ -17,7 +17,7 @@ const NextMatch = ({ match }) => {
               />
               <span className="mt-4">{match.home_team}</span>
             </div>
-            <motion.div initial={{ height: 0 }} animate={{ height: 76, transition: { delay:1, duration:1 }}} className="z-30 w-px bg-gray-300 h-24 transform mx-8 rotate-12">
+            <motion.div initial={{ height: 0 }} animate={{ height: 76, transition: { delay:1, duration:1 }}} className="w-px bg-gray-300 h-24 transform mx-8 rotate-12">
               
             </motion.div>
             <div className="w-1/3 flex flex-col justify-center items-center">
