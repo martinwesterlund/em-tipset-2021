@@ -83,8 +83,8 @@ const Home = () => {
                   <span className="text-em-green-default">2021</span>
                 </h1>
               </div>
-              <p className="text-2xl mt-2">Sommarens stora tävlingshändelse på webben!</p>
-              <p className="mt-2 text-lg">
+              <p className="hidden md:block text-2xl mt-2">Sommarens stora tävlingshändelse på webben!</p>
+              <p className="hidden md:block mt-2 text-lg">
                 Tippa matcherna och samla räkor - flest räkor vinner!
               </p>
 
