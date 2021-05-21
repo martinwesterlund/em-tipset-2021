@@ -35,6 +35,7 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     if (cookies.emTipset21) {
+      console.log('Cookie finns')
       setIsLoading(true)
       loginWithCookie(cookies.emTipset21);
     }
