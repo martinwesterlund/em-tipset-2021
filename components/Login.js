@@ -16,7 +16,7 @@ const Login = ({setLoginFormOpen}) => {
   const [cookies, setCookie] = useCookies(['emTipset21']);
 
   const login = async (event) => {
-    setIsLoading(true)
+    // setIsLoading(true)
     event.preventDefault();
 
     const res = await fetch(`${backend}/login`, {
@@ -42,6 +42,7 @@ const Login = ({setLoginFormOpen}) => {
       Router.push('/profil')
       setIsLoading(true)
     } else {
+      console.log(data.errMessage)
       setIsLoading(false)
       setErrorMessage(data.errMessage);
     }
