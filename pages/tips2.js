@@ -334,7 +334,7 @@ const tips2 = () => {
           </motion.div>
         )}
         <motion.button
-          onClick={() => submitBet}
+          onClick={() => submitBet()}
           initial={{ x: "150%" }}
           animate={{
             x: 0,
