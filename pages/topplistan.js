@@ -122,7 +122,7 @@ const topplistan = () => {
                 y: 0,
                 transition: { duration: 0.5, delay: 0.2, ease: "easeOut" },
               }}
-              className={`w-full m-2 lg:m-4 h-32 ${topList[0].email === user.email ? 'bg-em-green-default' : 'bg-white'} rounded-2xl flex md:flex-col justify-center items-center relative border-4 border-yellow-500"`}
+              className={`w-full m-2 lg:m-4 h-32 ${topList[0].email === user.email ? 'bg-em-green-default' : 'bg-white'} rounded-2xl flex md:flex-col justify-center items-center relative border-4  border-yellow-500`}
             >
               <Medal value={3}></Medal>
               <div className="flex flex-col">

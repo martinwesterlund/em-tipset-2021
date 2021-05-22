@@ -4,7 +4,7 @@ import backend from "../data/data";
 import Header from "../components/Header";
 import context from "../context/context";
 import MatchForm from "../components/MatchForm";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const tips2 = () => {
   const { user, setUser, setIsLoading, points, setPoints } =
@@ -12,6 +12,8 @@ const tips2 = () => {
   const [matches, setMatches] = useState();
   const [usersBet, setUsersBet] = useState();
   const [combinedData, setCombinedData] = useState();
+  const [infoIsVisible, setInfoIsVisible] = useState(false);
+  const [info, setInfo] = useState()
 
   const getMatches = async () => {
     const res = await fetch(`${backend}/fixtures`);
@@ -42,6 +44,14 @@ const tips2 = () => {
       ...usersBet,
       [name]: value,
     });
+  };
+
+  const animateInfo = (text) => {
+    setInfo(text)
+    setInfoIsVisible(true);
+    setTimeout(() => {
+      setInfoIsVisible(false);
+    }, 2000);
   };
 
   const removeGoal = (name) => {
@@ -204,8 +214,9 @@ const tips2 = () => {
     const data = await res.json();
     if (res.status === 200) {
       console.log("Allt gick fint!");
+      animateInfo('Uppdaterat!');
     } else {
-      console.log("Nåt sket sig");
+      animateInfo('Något gick fel!');
     }
   };
 
@@ -263,7 +274,7 @@ const tips2 = () => {
             variants={container}
             initial="hidden"
             animate="show"
-            className="w-full flex flex-col items-center"
+            className="w-full flex flex-col items-center mb-20"
           >
             {combinedData.map((match) => (
               <motion.div
@@ -278,21 +289,43 @@ const tips2 = () => {
                     src={`/images/flags/${match.home_team.toLowerCase()}.svg`}
                     alt=""
                   />
-                  <div className="flex items-center mt-4">
+                  <div className="flex items-center mt-4 text-em-green-default">
                     <button
                       onClick={() => removeGoal(`m${match.id}_h`)}
                       className="p-2"
                     >
-                      -
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
                     </button>
-                    <span className="w-12 border-l border-r text-em-green-default text-center text-2xl border-gray-300">
+                    <span className="w-12 border-l border-r  text-center text-2xl border-gray-300">
                       {match.h}
                     </span>
                     <button
                       onClick={() => addGoal(`m${match.id}_h`)}
                       className="p-2"
                     >
-                      +
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
                     </button>
                   </div>
                 </div>
@@ -301,29 +334,51 @@ const tips2 = () => {
                     <span>{set1X2(match)}</span>
                   </div>
                 </div>
-                <div className="w-1/3 flex flex-col justify-center items-center">
+                <div className="w-1/3 flex flex-col justify-center items-center ">
                   <div>{match.away_team}</div>
                   <img
                     className="w-8 h-8 mt-2 rounded-full object-cover shadow-md"
                     src={`/images/flags/${match.away_team.toLowerCase()}.svg`}
                     alt=""
                   />
-                  <div className="flex items-center mt-4">
+                  <div className="flex items-center mt-4 text-em-green-default">
                     <button
                       onClick={() => removeGoal(`m${match.id}_a`)}
                       className="p-2"
                     >
-                      -
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
                     </button>
 
-                    <span className="w-12 border-l border-r text-em-green-default text-center text-2xl border-gray-300">
+                    <span className="w-12 border-l border-r text-center text-2xl border-gray-300">
                       {match.a}
                     </span>
                     <button
                       onClick={() => addGoal(`m${match.id}_a`)}
                       className="p-2"
                     >
-                      +
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
                     </button>
                   </div>
                 </div>
@@ -339,9 +394,42 @@ const tips2 = () => {
             transition: { duration: 2, delay: 1, ease: "easeOut" },
           }}
           className="bg-em-green-default fixed right-2 bottom-2 md:right-8 md:bottom-8 rounded mt-4 p-3 lg:p-6 text-white lg:text-xl cursor-pointer"
-          
-          
-        >Uppdatera ditt tips!</motion.button>
+        >
+          Uppdatera dina tips!
+        </motion.button>
+
+        <AnimatePresence>
+          {infoIsVisible && (
+            <motion.div
+              className="bg-em-green-default fixed shadow-md top-1/2 left-1/2 -mt-16 -ml-32 h-32 w-64 rounded p-3 flex flex-col justify-around items-center lg:p-6 text-white lg:text-xl"
+              key="modal"
+              initial={{ scale: 0.5, opacity: 0, x: "100%" }}
+              animate={{ scale: 1, opacity: 1, x: 0 }}
+              exit={{
+                scale: 0.5,
+                opacity: 0,
+                x: "-100%",
+                transition: { duration: 1, ease: "easeOut" },
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-8 w-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>{info}</span>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </>
   );
