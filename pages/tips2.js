@@ -81,8 +81,6 @@ const tips2 = () => {
   };
 
   const submitBet = async (event) => {
-    event.preventDefault();
-    console.log("skickar till db");
     let newBet = {
       m1_h: usersBet.m1_h,
       m1_a: usersBet.m1_a,
