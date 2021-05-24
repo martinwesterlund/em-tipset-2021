@@ -1,5 +1,7 @@
 import { useState, useContext, useRef } from "react";
 import context from "../context/context";
+import { GiShrimp } from 'react-icons/gi';
+
 const MatchBox = ({ match, usersResult }) => {
   const { user, setUser, setIsLoading, points, setPoints } =
     useContext(context);
@@ -39,7 +41,7 @@ const MatchBox = ({ match, usersResult }) => {
     return stars;
   };
   return (
-    <div className="w-full md:w-160 lg:w-192 relative bg-white rounded-2xl flex flex-col justify-center p-6 m-3">
+    <div className="w-full">
       <div className="flex">
         <div className="w-1/3 md:w-2/5 flex flex-col justify-center items-center">
           <img
@@ -74,9 +76,10 @@ const MatchBox = ({ match, usersResult }) => {
       <div className="absolute left-2 top-2 md:left-4 md:top-4 bg-em-green-default w-7 h-7 rounded-full border-2 border-em-green-dark flex justify-center items-center text-white">
         <h1 className="mt-px ml-px">{match.id}</h1>
       </div>
-      <div  className="absolute right-2 bottom-2 flex">
+      <div  className="absolute right-2 bottom-2 sm:right-4 sm:bottom-4 flex">
         {calculatePoints().map((shrimp, index) => (
-          <img key={index} className="w-8 h-8" src="/images/shrimp.svg" alt="" />
+          <GiShrimp key={index} className="text-red-400 w-6 h-6"/>
+          // <img key={index} className="w-8 h-8" src="/images/shrimp.svg" alt="" />
         ))}
       </div>
     </div>

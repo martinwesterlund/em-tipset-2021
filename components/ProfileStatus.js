@@ -16,7 +16,7 @@ const ProfileStatus = ({ topList, user, userResult }) => {
           />
         </span>
       </div>
-    <div className="w-px h-20 bg-gray-300"></div>
+      <div className="w-px h-20 bg-gray-300"></div>
       <div className="flex w-1/4 flex-col justify-center items-center relative">
         <span className="z-10 text-gray-400 text-xs md:text-lg">Placering</span>
         <span className="w-1/2 flex justify-center text-xl md:text-2xl z-10 text-em-green-dark mt-2">
@@ -46,9 +46,15 @@ const ProfileStatus = ({ topList, user, userResult }) => {
             useEasing={false}
             duration={1}
             delay={0.5}
-            end={Math.round((topList.length - (topList.findIndex(
-                (result) => result.user_email === user.email
-              ) + 1))/(topList.length - 1) * 100)}
+            end={Math.round(
+              ((topList.length -
+                (topList.findIndex(
+                  (result) => result.user_email === user.email
+                ) +
+                  1)) /
+                (topList.length - 1)) *
+                100
+            )}
           />
           %
         </span>

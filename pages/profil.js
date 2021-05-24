@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 
 const profil = ({ user_match_results }) => {
   const { user, setUser, setIsLoading } = useContext(context);
-  const [userMatchResult, setUserMatchResult] = useState(null);
+  const [userMatchResult, setUserMatchResult] = useState();
   const [topList, setTopList] = useState();
   const [matches, setMatches] = useState();
   const [match, setMatch] = useState();
@@ -32,11 +32,17 @@ const profil = ({ user_match_results }) => {
 
   useEffect(() => {
     getMatches();
+    return () => {
+      setMatches(null)
+    }
   }, []);
 
   useEffect(() => {
     if (user) {
       getUsersBet();
+    }
+    return () => {
+      setTopList(null)
     }
   }, [user]);
 
@@ -45,6 +51,9 @@ const profil = ({ user_match_results }) => {
       setUserMatchResult(
         topList.filter((result) => result.user_email === user.email)[0]
       );
+      return () => {
+        setUserMatchResult(null)
+      }
       
     }
   }, [topList]);
@@ -61,7 +70,7 @@ const profil = ({ user_match_results }) => {
       <div className="bg-stripe flex min-h-screen justify-center items-center py-20 overflow-hidden">
         {/* <div className="h-full w-full z-20 fixed top-0 left-0 bg-gradient-to-tl from-black opacity-20"></div> */}
         {user && topList && userMatchResult && match && matches && (
-          <div className="grid grid-rows-8 lg:grid-rows-5 grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8 w-full xl:max-w-[1500px] xl:h-[800px] p-4 lg:p-12">
+          <div className="grid grid-rows-8 lg:grid-rows-5 grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-4 w-full xl:max-w-[1500px] xl:h-[800px] p-4 lg:p-12">
             <motion.div
               initial={{ opacity: 0, x: -150 }}
               animate={{

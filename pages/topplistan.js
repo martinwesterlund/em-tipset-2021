@@ -6,6 +6,9 @@ import Router from "next/router";
 import SideResult from "../components/SideResult";
 import Medal from "../components/Medal";
 import { motion } from "framer-motion";
+import UserIndicator from "../components/UserIndicator";
+import LoadingElement from "../components/LoadingElement";
+import { GiShrimp } from 'react-icons/gi';
 
 const topplistan = () => {
   const { user } = useContext(context);
@@ -13,6 +16,7 @@ const topplistan = () => {
   const [selectedUser, setSelectedUser] = useState();
   const [showSideBar, setShowSideBar] = useState();
   const [matches, setMatches] = useState();
+  const [rank, setRank] = useState()
 
   const getResults = async () => {
     const res = await fetch(`${backend}/user-match-results`);
@@ -37,8 +41,9 @@ const topplistan = () => {
     getMatches();
   }, []);
 
-  const showSideResult = (email) => {
+  const showSideResult = (email, rank) => {
     setSelectedUser(topList.filter((user) => user.user_email === email)[0]);
+    setRank(rank)
     setShowSideBar(true);
   };
 
@@ -59,78 +64,104 @@ const topplistan = () => {
   };
 
   return (
-    <div className="h-screen p-6 pt-32 flex justify-center ">
-      {/* <div className="h-full w-full fixed top-0 left-0 bg-gradient-to-tl from-black opacity-20 flex items-center"></div> */}
+    <div
+      className={`w-screen min-h-screen bg-stripe pt-32 p-6 flex flex-col items-center ${
+        showSideBar ? "overflow-hidden" : ""
+      }`}
+      
+    >
       <Header></Header>
-
+      <h1 className="text-white md:text-xl mb-8 md:mb-6">TOPPLISTAN</h1>
+      { user &&
+      
       <SideResult
-        user={selectedUser}
+        selectedUser={selectedUser}
+        userEmail={user.email}
         matches={matches}
         setShowSideBar={setShowSideBar}
         showSideBar={showSideBar}
-      ></SideResult>
-
-      {user && topList && (
-        <div className="w-full md:h-80 md:w-160 lg:w-240 flex flex-col">
-          <div className="flex md:min-h-full flex-col md:flex-row justify-center items-center md:items-end w-full">
+        rank={rank}
+      ></SideResult>}
+      
+      {user && topList ? (
+        
+        <div className="w-full md:h-80 md:w-160 lg:w-240 flex flex-col text-xs sm:text-sm md:text-base">
+          <div className="hidden md:flex md:min-h-full flex-col md:flex-row lg:px-2 justify-center items-center md:items-end w-full">
             <motion.button
               whileHover={{ scale: 1.02 }}
-              onClick={() => showSideResult(topList.slice(0, 1)[0].user_email)}
-              initial={{ opacity: 0, y: 100 }}
-              animate={{
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.5, ease: "easeOut" },
-              }}
-              className={`cursor-pointer w-full m-2 lg:m-4 h-32 md:h-64 ${topList[0].email === user.email ? 'bg-em-green-default' : 'bg-white'} rounded-2xl flex md:flex-col justify-center items-center relative border-4 border-yellow-300`}
-            >
-              <Medal value={1}></Medal>
-              <div className="flex flex-col">
-                <span className="w-full p-1 capitalize">
-                  {topList[0].first_name} {topList[0].last_name}
-                </span>
-                <div className="w-full h-px bg-gray-400"></div>
-                <span className="p-1">{topList[1].points} räkor</span>
-              </div>
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              onClick={() => showSideResult(topList.slice(1, 2)[0].user_email)}
+              onClick={() =>
+                showSideResult(topList.slice(1, 2)[0]?.user_email, 2)
+              }
               initial={{ opacity: 0, y: 100 }}
               animate={{
                 opacity: 1,
                 y: 0,
                 transition: { duration: 0.5, delay: 0.1, ease: "easeOut" },
               }}
-              className={`w-full h-32 md:h-48 ${topList[1].email === user.email ? 'bg-em-green-default' : 'bg-white'} m-2 lg:m-4 rounded-2xl flex md:flex-col justify-center items-center relative border-4 border-gray-100`}
+              className={`w-full h-32 md:h-48 bg-white m-2 rounded-2xl flex md:flex-col justify-center items-center relative border-4 border-gray-100`}
             >
+              {topList[1]?.user_email === user.email && (
+                <UserIndicator topThree={true}></UserIndicator>
+              )}
               <Medal value={2}></Medal>
               <div className="flex flex-col">
                 <span className="w-full p-1 capitalize">
-                  {topList[1].first_name} {topList[1].last_name}
+                  {topList[1]?.first_name} {topList[1]?.last_name}
                 </span>
                 <div className="w-full h-px bg-gray-400"></div>
-                <span className="p-1">{topList[1].points} räkor</span>
+                <div className="flex justify-center items-center p-2"><span className="mr-2">{topList[1]?.points} </span><GiShrimp className="text-red-400 w-6 h-6"/></div>
+                
               </div>
             </motion.button>
             <motion.button
               whileHover={{ scale: 1.02 }}
-              onClick={() => showSideResult(topList.slice(2, 3)[0].user_email)}
+              onClick={() =>
+                showSideResult(topList.slice(0, 1)[0]?.user_email, 1)
+              }
+              initial={{ opacity: 0, y: 100 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.5, ease: "easeOut" },
+              }}
+              className={`cursor-pointer w-full m-2  h-32 md:h-64 bg-white rounded-2xl flex md:flex-col justify-center items-center relative border-4 border-yellow-300`}
+            >
+              {topList[0]?.user_email === user.email && (
+                <UserIndicator topThree={true}></UserIndicator>
+              )}
+
+              <Medal value={1}></Medal>
+              <div className="flex flex-col">
+                <span className="w-full p-1 capitalize">
+                  {topList[0]?.first_name} {topList[0]?.last_name}
+                </span>
+                <div className="w-full h-px bg-gray-400"></div>
+                <div className="flex justify-center items-center p-2"><span className="mr-2">{topList[0]?.points} </span><GiShrimp className="text-red-400 w-6 h-6"/></div>
+              </div>
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              onClick={() =>
+                showSideResult(topList.slice(2, 3)[0]?.user_email, 3)
+              }
               initial={{ opacity: 0, y: 100 }}
               animate={{
                 opacity: 1,
                 y: 0,
                 transition: { duration: 0.5, delay: 0.2, ease: "easeOut" },
               }}
-              className={`w-full m-2 lg:m-4 h-32 ${topList[0].email === user.email ? 'bg-em-green-default' : 'bg-white'} rounded-2xl flex md:flex-col justify-center items-center relative border-4  border-yellow-500`}
+              className={`w-full m-2  h-32 bg-white rounded-2xl flex md:flex-col justify-center items-center relative border-4  border-yellow-500`}
             >
+              {topList[2]?.user_email === user.email && (
+                <UserIndicator topThree={true}></UserIndicator>
+              )}
               <Medal value={3}></Medal>
               <div className="flex flex-col">
                 <span className="w-full p-1 capitalize">
-                  {topList[2].first_name} {topList[2].last_name}
+                  {topList[2]?.first_name} {topList[2]?.last_name}
                 </span>
                 <div className="w-full h-px bg-gray-400"></div>
-                <span className="p-1">{topList[2].points} räkor</span>
+                <div className="flex justify-center items-center p-2"><span className="mr-2">{topList[2]?.points} </span><GiShrimp className="text-red-400 w-6 h-6"/></div>
               </div>
             </motion.button>
           </div>
@@ -140,27 +171,52 @@ const topplistan = () => {
             animate="show"
             className="flex flex-col justify-center items-center w-full md:px-2 lg:px-4"
           >
+            {topList.slice(0, 3).map((listItem, index) => (
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                onClick={() => showSideResult(listItem.user_email, index + 1)}
+                variants={item}
+                key={index}
+                className={` w-full m-2 h-32 bg-white rounded-2xl flex md:hidden flex-col md:flex-row justify-center items-center relative`}
+              >
+                {listItem.user_email === user.email && (
+                  <UserIndicator topThree={false}></UserIndicator>
+                )}
+                <Medal value={index + 1}></Medal>
+                <div className="flex flex-col">
+                  <span className="w-full p-1 capitalize">
+                    {listItem.first_name} {listItem.last_name}
+                  </span>
+                  <div className="w-full h-px bg-gray-400"></div>
+                  <div className="flex justify-center items-center p-2"><span className="mr-2">{listItem.points} </span><GiShrimp className="text-red-400 w-6 h-6"/></div>
+                </div>
+              </motion.button>
+            ))}
             {topList.slice(3).map((listItem, index) => (
               <motion.button
                 whileHover={{ scale: 1.02 }}
-                onClick={() => showSideResult(listItem.user_email)}
+                onClick={() => showSideResult(listItem.user_email, index + 4)}
                 variants={item}
                 key={index}
-                className={`w-full m-2 lg:m-4 h-32 ${listItem.user_email === user.email ? 'bg-white animate-pulse' : 'bg-white'} rounded-2xl flex flex-col md:flex-row justify-center items-center relative`}
+                className={`w-full m-2 h-32 bg-white rounded-2xl flex flex-col md:flex-row justify-center items-center relative`}
               >
+                {listItem.user_email === user.email && (
+                  <UserIndicator topThree={false}></UserIndicator>
+                )}
                 <Medal value={index + 4}></Medal>
                 <div className="flex flex-col">
                   <span className="w-full p-1 capitalize">
                     {listItem.first_name} {listItem.last_name}
                   </span>
                   <div className="w-full h-px bg-gray-400"></div>
-                  <span className="p-1">{listItem.points} räkor</span>
+                  <div className="flex justify-center items-center p-2"><span className="mr-2">{listItem.points} </span><GiShrimp className="text-red-400 w-6 h-6"/></div>
                 </div>
               </motion.button>
             ))}
           </motion.div>
         </div>
-      )}
+      ) : 
+      <LoadingElement text={'Laddar topplistan...'}></LoadingElement>}
     </div>
   );
 };

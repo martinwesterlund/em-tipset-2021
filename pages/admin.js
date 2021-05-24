@@ -33,7 +33,6 @@ const admin = () => {
       console.log("Admin - Allt gick fint!");
     } else {
       console.log("Admin - Nåt sket sig");
-      console.log(data)
     }
   }
 
@@ -52,10 +51,6 @@ const admin = () => {
       matchResult.result = "X";
     }
 
-    console.log("ID", id);
-    console.log("HOME", homeScore);
-    console.log("AWAY", awayScore);
-
     const res = await fetch(`${backend}/update-result`, {
       method: "put",
       credentials: "include",
@@ -66,7 +61,6 @@ const admin = () => {
     });
 
     const data = await res.json();
-    // console.log('Data från server', data)
     if (res.status === 200) {
       console.log("Admin - Allt gick fint!");
     } else {

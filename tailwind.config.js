@@ -5,8 +5,12 @@ module.exports = {
     extend: {
       animation: {
         slide: "slide 8s linear infinite",
-        "ball-spin" : "ball-spin 60s linear infinite",
-        shrimp: "shrimp 1s linear infinite alternate-reverse"
+        "bounce-side": "bounce-side 1s infinite",
+        "ball-spin": "ball-spin 60s linear infinite",
+        shrimp: "shrimp 1s linear infinite alternate-reverse",
+      },
+      boxShadow: {
+        "top" : '0px -4px 43px 0px rgba(0,0,0,0.5)'
       },
       colors: {
         "em-green": {
@@ -14,14 +18,24 @@ module.exports = {
           default: "#00822b",
           dark: "#003802",
         },
-        gold : "#dbc604",
-        silver : "#e8e8e8",
-        bronze : "#d19945"
+        gold: "#dbc604",
+        silver: "#e8e8e8",
+        bronze: "#d19945",
       },
       fontSize: {
-        'xxs': '.6rem',
+        xxs: ".6rem",
       },
       keyframes: {
+        "bounce-side": {
+          "0%, 100%": {
+            transform: "translateX(-25%)",
+            animationTimingFunction: "cubic-bezier(0.8, 0, 1, 1)",
+          },
+          "50%": {
+            transform: "translateX(0)",
+            animationTimingFunction: "cubic-bezier(0, 0, 0.2, 1)",
+          },
+        },
         slide: {
           from: { transform: "translateX(100%)" },
           to: { transform: "translateX(-200%)" },
@@ -30,19 +44,19 @@ module.exports = {
           from: { transform: "rotate(0deg)" },
           to: { transform: "rotate(-360deg)" },
         },
-        "ball-spin" : {
+        "ball-spin": {
           from: { transform: "rotate(0deg)" },
           to: { transform: "rotate(-360deg)" },
         },
-        "shrimp" : {
+        shrimp: {
           from: { transform: "rotate(-12deg)" },
           to: { transform: "rotate(12deg)" },
-        }
+        },
       },
       spacing: {
         160: "40rem",
         192: "48rem",
-        240: "60rem"
+        240: "60rem",
       },
     },
   },

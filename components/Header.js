@@ -3,6 +3,9 @@ import context from "../context/context";
 import Link from "next/link";
 import { useCookies } from "react-cookie";
 import Router from "next/router";
+import { motion, AnimatePresence } from "framer-motion";
+import CountDown from "./CountDown";
+
 const Header = () => {
   const {
     user,
@@ -11,6 +14,7 @@ const Header = () => {
     setMenuOpen,
     profileMenuOpen,
     setProfileMenuOpen,
+    daedLinePassed
   } = useContext(context);
   const [cookies, setCookie, removeCookie] = useCookies(["emTipset21"]);
   const logOut = () => {
@@ -23,16 +27,26 @@ const Header = () => {
   // absolute top-0 right-0 bg-em-green-dark w-1/2 h-screen flex justify-center item-center
   return (
     <>
-      <header className="h-20 bg-em-green-dark bg-opacity-80 z-20 fixed top-0 left-0 w-full px-6 py-6 flex text-white justify-between items-center">
-        <div className="w-28  flex-none justify-center items-center">
+      <header className="h-20 bg-em-green-dark bg-opacity-80 z-20 fixed top-0 left-0 w-full p-4 md:p-6 flex text-white justify-between items-center">
+        <div className="flex justify-center items-center">
           <Link href="/profil">
-            <img
+            {/* <img
               className="w-8 cursor-pointer"
               src="/images/football2.svg"
               alt=""
-            />
+            /> */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-8 w-8 cursor-pointer mr-2"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+            </svg>
           </Link>
+          {/* <CountDown></CountDown> */}
         </div>
+        
         <div className="hidden flex-grow lg:flex justify-center items-center">
           {user?.role === "user" && (
             <ul className="w-1/2 flex justify-around">
@@ -61,7 +75,7 @@ const Header = () => {
           )}
         </div>
 
-        <div className="w-28 flex-none flex justify-end items-center">
+        <div className="flex-none flex justify-end items-center">
           <button
             className="flex justify-end items-center outline-none focus:outline-none"
             onClick={() => setProfileMenuOpen(!profileMenuOpen)}
@@ -166,9 +180,21 @@ const Header = () => {
             <li
               onClick={() => setMenuOpen(false)}
               className="my-6 flex items-center cursor-pointer hover:underline"
-            ><svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-          </svg>
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 mr-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+                />
+              </svg>
               <span>Topplistan</span>
             </li>
           </Link>
@@ -177,9 +203,20 @@ const Header = () => {
               onClick={() => setMenuOpen(false)}
               className="my-6 flex items-center cursor-pointer hover:underline"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
-</svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 mr-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"
+                />
+              </svg>
               <span>Matchresultat</span>
             </li>
           </Link>
@@ -188,9 +225,20 @@ const Header = () => {
               onClick={() => setMenuOpen(false)}
               className="my-6 flex flex-items cursor-pointer hover:underline"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
-</svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 mr-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"
+                />
+              </svg>
               <span>Regler</span>
             </li>
           </Link>
@@ -214,6 +262,18 @@ const Header = () => {
           </svg>
         </button>
       </div>
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            key={"black-overlay"}
+            animate={{ opacity: 0.7 }}
+            initial={{ opacity: 0 }}
+            exit={{ opacity: 0 }}
+            className="fixed z-20 w-screen h-screen top-0 left-0 bg-black"
+            onClick={() => setMenuOpen(false)}
+          ></motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };

@@ -5,15 +5,17 @@ import Header from "../components/Header";
 import context from "../context/context";
 import MatchForm from "../components/MatchForm";
 import { motion, AnimatePresence } from "framer-motion";
+import LoadingElement from "../components/LoadingElement";
+import CountDown from "../components/CountDown";
 
 const tips2 = () => {
-  const { user, setUser, setIsLoading, points, setPoints } =
+  const { user, setUser, setIsLoading, points, setPoints, deadLinePassed } =
     useContext(context);
   const [matches, setMatches] = useState();
   const [usersBet, setUsersBet] = useState();
   const [combinedData, setCombinedData] = useState();
   const [infoIsVisible, setInfoIsVisible] = useState(false);
-  const [info, setInfo] = useState()
+  const [info, setInfo] = useState();
 
   const getMatches = async () => {
     const res = await fetch(`${backend}/fixtures`);
@@ -29,14 +31,6 @@ const tips2 = () => {
     }
   };
 
-  // const handleChange = (e) => {
-  //   let value = Number(e.target.value);
-  //   setUsersBet({
-  //     ...usersBet,
-  //     [e.target.name]: value,
-  //   });
-  // };
-
   const addGoal = (name) => {
     let value = Number(usersBet[name] + 1);
 
@@ -47,7 +41,7 @@ const tips2 = () => {
   };
 
   const animateInfo = (text) => {
-    setInfo(text)
+    setInfo(text);
     setInfoIsVisible(true);
     setTimeout(() => {
       setInfoIsVisible(false);
@@ -214,9 +208,9 @@ const tips2 = () => {
     const data = await res.json();
     if (res.status === 200) {
       console.log("Allt gick fint!");
-      animateInfo('Uppdaterat!');
+      animateInfo("Uppdaterat!");
     } else {
-      animateInfo('Något gick fel!');
+      animateInfo("Något gick fel!");
     }
   };
 
@@ -268,8 +262,13 @@ const tips2 = () => {
       <Header></Header>
       <div className="w-screen min-h-screen bg-stripe pt-32 p-6 flex flex-col items-center">
         <h1 className="text-white md:text-xl mb-8">DINA TIPS</h1>
-
-        {combinedData && (
+        <motion.div
+          initial={{ opacity: 0, y: -100 }}
+          animate={{ opacity: 1, y: 0, transition: { duration: 1, delay: 1 } }}
+        >
+          <CountDown front={false}></CountDown>
+        </motion.div>
+        {combinedData ? (
           <motion.div
             variants={container}
             initial="hidden"
@@ -290,7 +289,7 @@ const tips2 = () => {
                     alt=""
                   />
                   <div className="flex items-center mt-4 text-em-green-default">
-                    <button
+                    {!deadLinePassed && <button
                       onClick={() => removeGoal(`m${match.id}_h`)}
                       className="p-2"
                     >
@@ -306,11 +305,11 @@ const tips2 = () => {
                           clipRule="evenodd"
                         />
                       </svg>
-                    </button>
+                    </button>}
                     <span className="w-12 border-l border-r  text-center text-2xl border-gray-300">
                       {match.h}
                     </span>
-                    <button
+                    {!deadLinePassed && <button
                       onClick={() => addGoal(`m${match.id}_h`)}
                       className="p-2"
                     >
@@ -326,7 +325,7 @@ const tips2 = () => {
                           clipRule="evenodd"
                         />
                       </svg>
-                    </button>
+                    </button>}
                   </div>
                 </div>
                 <div className="w-8 h-full flex flex-col justify-center items-center">
@@ -342,7 +341,7 @@ const tips2 = () => {
                     alt=""
                   />
                   <div className="flex items-center mt-4 text-em-green-default">
-                    <button
+                    {!deadLinePassed && <button
                       onClick={() => removeGoal(`m${match.id}_a`)}
                       className="p-2"
                     >
@@ -358,12 +357,12 @@ const tips2 = () => {
                           clipRule="evenodd"
                         />
                       </svg>
-                    </button>
+                    </button>}
 
                     <span className="w-12 border-l border-r text-center text-2xl border-gray-300">
                       {match.a}
                     </span>
-                    <button
+                    {!deadLinePassed && <button
                       onClick={() => addGoal(`m${match.id}_a`)}
                       className="p-2"
                     >
@@ -379,24 +378,29 @@ const tips2 = () => {
                           clipRule="evenodd"
                         />
                       </svg>
-                    </button>
+                    </button>}
                   </div>
                 </div>
               </motion.div>
             ))}
           </motion.div>
+        ) : (
+          <LoadingElement text={"Laddar dina tips..."}></LoadingElement>
         )}
-        <motion.button
-          onClick={() => submitBet()}
-          initial={{ x: "150%" }}
-          animate={{
-            x: 0,
-            transition: { duration: 2, delay: 1, ease: "easeOut" },
-          }}
-          className="bg-em-green-default fixed right-2 bottom-2 md:right-8 md:bottom-8 rounded mt-4 p-3 lg:p-6 text-white lg:text-xl cursor-pointer"
-        >
-          Uppdatera dina tips!
-        </motion.button>
+
+        {!deadLinePassed && (
+          <motion.button
+            onClick={() => submitBet()}
+            initial={{ x: "150%" }}
+            animate={{
+              x: 0,
+              transition: { duration: 2, delay: 1, ease: "easeOut" },
+            }}
+            className="bg-em-green-default fixed right-2 bottom-2 md:right-8 md:bottom-8 rounded mt-4 p-3 lg:p-6 text-white lg:text-xl cursor-pointer"
+          >
+            Uppdatera dina tips!
+          </motion.button>
+        )}
 
         <AnimatePresence>
           {infoIsVisible && (

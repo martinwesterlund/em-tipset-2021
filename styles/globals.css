@@ -15,11 +15,11 @@ body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   -webkit-touch-callout: none;
-  -webkit-user-select: none;
+  /* -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none;
+  user-select: none; */
   -webkit-tap-highlight-color: transparent;
   background-image: linear-gradient(90deg, #4aa144 20%, #5eb566 20%, #5eb566 40%, #4aa144 40%, #4aa144 60%, #5eb566 60%, #5eb566 80%, #4aa144 80%, #4aa144 100%);
 }

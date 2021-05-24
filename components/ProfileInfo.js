@@ -11,6 +11,9 @@ const ProfileInfo = ({ user }) => {
   };
   useEffect(() => {
     getGreeting();
+    return () => {
+      setGreeting('');
+    };
   }, []);
 
   return (
@@ -21,7 +24,10 @@ const ProfileInfo = ({ user }) => {
           <span className="p-2 text-white text-xs md:text-base ">INFO</span>
         </div>
         {greeting && (
-          <marquee className="ml-1 text-xs md:text-base p-2 italic w-full h-full" direction="left">
+          <marquee
+            className="ml-1 text-xs md:text-base p-2 italic w-full h-full"
+            direction="left"
+          >
             {greeting}
           </marquee>
         )}

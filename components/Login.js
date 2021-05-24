@@ -7,16 +7,17 @@ import { useCookies } from 'react-cookie';
 import LoadingScreen from "./LoadingScreen";
 
 
-const Login = ({setLoginFormOpen}) => {
+const Login = ({setIsInfoVisible}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState("");
-  const { user, setUser, setShowLogin, setShowReg, setIsLoading, isCookiesAccepted } = useContext(context);
+  const { user, setUser, setShowLogin, setShowReg, isCookiesAccepted } = useContext(context);
   const [errorMessage, setErrorMessage] = useState(' ')
   const [cookies, setCookie] = useCookies(['emTipset21']);
+  const [isLoading, setIsLoading] = useState(false)
 
   const login = async (event) => {
-    // setIsLoading(true)
+    setIsLoading(true)
     event.preventDefault();
 
     const res = await fetch(`${backend}/login`, {
@@ -32,7 +33,6 @@ const Login = ({setLoginFormOpen}) => {
     });
     
     const data = await res.json();
-    // console.log('Data från server', data)
     if (res.status === 200) {
       if(isCookiesAccepted){
         setCookie('emTipset21', data.accessToken, {maxAge: 60*60*24*30})
@@ -42,13 +42,13 @@ const Login = ({setLoginFormOpen}) => {
       Router.push('/profil')
       setIsLoading(true)
     } else {
-      console.log(data.errMessage)
       setIsLoading(false)
       setErrorMessage(data.errMessage);
     }
   };
 
   const switchForm = () => {
+    setIsInfoVisible(false)
     setShowLogin(false)
     setShowReg(true)
   }
@@ -57,33 +57,33 @@ const Login = ({setLoginFormOpen}) => {
     
       <div className="bg-white pb-6 w-72 md:w-80 rounded flex flex-col justify-center items-center relative text-center">
         
-        <h1 className="text-em-green-dark text-xl mt-6">Logga in</h1>
-        <p onClick={() => switchForm()} className="mt-2 text-sm text-gray-500 cursor-pointer">Har du inget konto? Skapa ett här.</p>
+        <h1 className="text-em-green-dark text-sm md:text-xl mt-6">Logga in</h1>
+        <p onClick={() => switchForm()} className="mt-2 text-xs md:text-sm text-gray-500 cursor-pointer">Har du inget konto? Skapa ett här.</p>
         <form
           onSubmit={login}
-          className="w-full flex flex-col justify-center items-center text-black"
+          className="w-full flex flex-col justify-center items-center text-xs md:text-base text-black"
         >
           <input
             onChange={(e) => setEmail(e.target.value)}
-            className="w-5/6 rounded border mt-4 border-black p-3"
+            className="w-5/6 rounded border mt-2 md:mt-4 border-black p-3 "
             placeholder="Email"
             type="text"
             autoComplete="email"
           />
           <input
             onChange={(e) => setPassword(e.target.value)}
-            className="w-5/6 rounded border mt-4 border-black p-3"
+            className="w-5/6 rounded border mt-2 md:mt-4 border-black p-3 "
             placeholder="Lösenord"
             autoComplete="current-password"
             type="password"
           />
           <input
-            className="bg-em-green-default w-5/6 rounded mt-4 p-3 text-white cursor-pointer"
+            className="bg-em-green-default w-5/6 rounded mt-2 md:mt-4 p-3 text-white cursor-pointer"
             value={"Logga in"}
             type="submit"
           />
         </form>
-  <h1 className="text-sm text-red-500 mt-2 h-6">{errorMessage}</h1>
+  <h1 className="text-sm md:text-sm text-red-500 mt-2 h-6">{errorMessage}</h1>
       </div>
     
   );

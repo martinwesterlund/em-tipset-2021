@@ -10,7 +10,7 @@ const Medal = ({ value }) => {
         bgSecond: "bg-gold",
         text: "text-white",
         size: "w-16 h-16 text-3xl",
-        position: "md:relative left-8 sm:left-32 md:left-0"
+        position: "md:relative left-4 sm:left-32 md:left-0"
       };
       break;
     case 2:
@@ -20,7 +20,7 @@ const Medal = ({ value }) => {
         bgSecond: " bg-gray-200",
         text: "text-gray-400",
         size: "w-12 h-12 text-xl",
-        position: "md:relative left-8 sm:left-32 md:left-0"
+        position: "md:relative left-4 sm:left-32 md:left-0"
       };
       break;
     case 3:
@@ -30,7 +30,7 @@ const Medal = ({ value }) => {
         bgSecond: "bg-yellow-600",
         text: "text-yellow-300",
         size: "w-12 h-12 text-xl",
-        position: "md:relative left-8 sm:left-32 md:left-0"
+        position: "md:relative left-4 sm:left-32 md:left-0"
       };
       break;
     default:
@@ -40,7 +40,7 @@ const Medal = ({ value }) => {
         bgSecond: "bg-yellow-600",
         text: "text-gray-400",
         size: "w-12 h-12 text-xl",
-        position: "left-8 sm:left-32 lg:left-64"
+        position: "left-4 sm:left-32 lg:left-64"
       };
   }
 
