@@ -14,7 +14,7 @@ const CountDown = ({ front }) => {
 
   const countDown = () => {
     
-    const countDownDate = new Date("Jun 11, 2021 20:55:00").getTime();
+    const countDownDate = new Date("Jun 11, 2021 21:00:00").getTime();
     // const countDownDate = new Date("May 24, 2021 16:53:00").getTime();
     interval = setInterval(() => {
       const now = new Date().getTime();

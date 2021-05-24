@@ -39,8 +39,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 .bg-stripe {
   /* background: rgb(0, 56, 2); */
-  
-  
+
 }
 
 input { -webkit-user-select:text;}

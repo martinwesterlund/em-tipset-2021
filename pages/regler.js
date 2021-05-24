@@ -2,61 +2,95 @@ import { useEffect, useState, useContext } from "react";
 import context from "../context/context";
 import Router from "next/router";
 import Header from "../components/Header";
+import { motion } from "framer-motion";
 
 const regler = () => {
   const { user, setUser, setIsLoading } = useContext(context);
 
-  useEffect(() => {
-    if (!user) {
-      Router.push("/");
-    }
-  }, []);
-
   return (
-    <>
+    <div
+      className={`w-screen min-h-screen bg-stripe pt-32 p-4 flex flex-col items-center`}
+    >
       <Header></Header>
+      <h1 className="text-white md:text-xl mb-8 md:mb-6">REGLER</h1>
 
-      <div className="w-screen min-h-screen bg-stripe pt-32 p-6 flex flex-col items-center">
-        <div className="h-full w-full fixed top-0 left-0 bg-gradient-to-tl from-black opacity-20"></div>
-        <h1>REGLER</h1>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum, iure
-          nihil reprehenderit quaerat vitae odio tenetur eligendi unde eos est
-          quae vero aut dolorum illum, id laudantium fugiat cumque quia commodi?
-          Explicabo quas, repellat ab blanditiis ea modi fuga provident
-          asperiores eaque laboriosam, nemo quo. Voluptate sint quo adipisci?
-          Fuga corrupti velit, fugiat beatae possimus enim eveniet repellendus.
-          Ducimus eius id ut blanditiis quisquam similique officia quas
-          corporis, laudantium alias! Animi molestiae repellendus nobis iste.
-          Reprehenderit cupiditate culpa minus recusandae eaque repellat,
-          provident ea voluptas minima, suscipit voluptates debitis, facilis
-          cum? Neque nostrum in quos asperiores reprehenderit reiciendis
-          necessitatibus. Expedita totam nihil ex iure tenetur quas officiis
-          repellendus atque ea sint quasi debitis nostrum saepe dignissimos, id,
-          deleniti repellat necessitatibus numquam quod alias impedit tempora
-          exercitationem error optio. Ad dolorum, nesciunt dolores est suscipit
-          neque nihil assumenda. Illo iure doloribus repellendus, hic ut
-          mollitia delectus qui dignissimos ducimus reiciendis amet obcaecati,
-          ex dolor earum blanditiis? Neque repellat nisi totam delectus enim
-          sequi voluptatum sed qui! Doloremque, similique recusandae! Blanditiis
-          minima quia, dolorem modi repudiandae, inventore excepturi quod ullam
-          omnis nam sunt voluptates. Nihil necessitatibus obcaecati cupiditate,
-          hic, deleniti quis odit facere provident adipisci esse ducimus.
-          Laboriosam laborum error libero modi praesentium molestias odio maxime
-          aliquam, id aliquid aspernatur similique rem sint odit! Aliquid
-          deleniti non sapiente qui minima doloribus dolorum eveniet consectetur
-          nemo porro. Autem dolores illo tempora? Perferendis recusandae modi
-          excepturi blanditiis ea est culpa placeat animi cum veritatis iure
-          sapiente quis iusto possimus vel quos, nobis illum unde velit
-          assumenda aliquid. Repudiandae obcaecati, vel voluptatem ea iste
-          tempore minima, blanditiis asperiores qui, laboriosam autem voluptatum
-          provident alias veniam consequuntur eaque. Eligendi ipsam facere
-          tempora iusto? Hic iure, totam distinctio laudantium aperiam omnis
-          quas suscipit autem sit rerum beatae, nesciunt repellendus impedit
-          officiis id accusamus cum a vitae veritatis.
-        </p>
-      </div>
-    </>
+      <section className="flex w-full justify-center my-4">
+        <motion.div initial={{opacity: 0, x: -200}} animate={{ opacity: 1, x: 0, transition: {duration: 1, ease: 'easeOut'}}} className="w-36 h-28 mr-2 flex justify-center items-center text-white text-center text-xxs">
+          <p>
+            Reglerna är enkla. Börja med att tippa slutresultaten på de 36
+            gruppspelsmatcherna i sommarens fotbolls-EM för herrar 2021.
+          </p>
+        </motion.div>
+        <motion.div initial={{opacity: 0, x: 200, rotate: 90}} animate={{ opacity: 1, x: 0, rotate: 0, transition: {duration: 1, ease: 'easeOut'}}} className="w-28 bg-white flex justify-center items-center rounded-full shadow-md">
+          <img className="w-14" src="/images/rules1.svg" alt="" />
+        </motion.div>
+      </section>
+
+      <section className="flex w-full justify-center my-4">
+        <motion.div initial={{opacity: 0, x: -200, rotate: -90}} animate={{ opacity:1, x: 0, rotate: 0, transition: {duration: 1, ease: 'easeOut'}}} className="w-28 bg-white flex justify-center items-center rounded-full shadow-md">
+          <img className="h-14" src="/images/rules2.svg" alt="" />
+        </motion.div>
+        <motion.div initial={{opacity: 0, x: 200}} animate={{ opacity: 1, x: 0, transition: {duration: 1, ease: 'easeOut'}}} className="w-36 h-28 ml-2 flex justify-center items-center text-white text-center text-xxs">
+          <p>
+            Du har fram till den 11 juni kl 21.00 på dig att skicka in alla dina
+            slutgiltiga tips. Fram till dess kan du ändra dina tips och
+            uppdatera din tipsrad.
+          </p>
+        </motion.div>
+      </section>
+
+      <section className="flex w-full justify-center my-4">
+        <div className="w-36 h-28 mr-2 flex justify-center items-center text-white text-center text-xxs">
+          <p>
+            Efterhand som resultaten trillar in kommer du bli tilldelad poäng i
+            form av räkor.
+          </p>
+        </div>
+        <div className="w-28 bg-white flex justify-center items-center rounded-full shadow-md">
+          <img className="h-14" src="/images/shrimp.svg" alt="" />
+        </div>
+      </section>
+
+      <section className="flex w-full justify-center my-4">
+        <div className="w-28 bg-white flex justify-center items-center rounded-full shadow-md">
+          <img className="h-20" src="/images/rules3.svg" alt="" />
+        </div>
+        <div className="w-36 h-28 ml-2 flex justify-center items-center text-white text-center text-xxs">
+          <ul className="my-4 text-center">
+            <li className="my-1">
+              Rätt antal mål gjorda av hemmalaget = <span className="text-em-green-dark">1 räka</span>
+            </li>
+            <li className="my-1">
+              Rätt antal mål gjorda av bortalaget = <span className="text-em-green-dark">1 räka</span>
+            </li>
+            <li className="my-1">Rätt i form av 1X2 = <span className="text-em-green-dark">1 räka</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="flex w-full justify-center my-4">
+        <div className="w-36 h-28 mr-2 flex justify-center items-center text-white text-center text-xxs">
+          <p>
+            När gruppspelet är över summeras alla dina räkor. Flest räkor vinner!
+          </p>
+        </div>
+        <div className="w-28 bg-white flex justify-center items-center rounded-full shadow-md">
+          <img className="h-14" src="/images/rules4.svg" alt="" />
+        </div>
+      </section>
+
+      <section className="flex w-full justify-center my-4">
+      <div className="w-28 bg-white flex justify-center items-center rounded-full shadow-md">
+          <img className="h-14" src="/images/rules6.svg" alt="" />
+        </div>
+        <div className="w-36 h-28 ml-2 flex justify-center items-center text-white text-center text-xxs">
+          <p>
+            Vid lika antal räkor är det omvänd alfabetisk ordning som gäller.
+          </p>
+        </div>
+        
+      </section>
+    </div>
   );
 };
 

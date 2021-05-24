@@ -8,6 +8,7 @@ module.exports = {
         "bounce-side": "bounce-side 1s infinite",
         "ball-spin": "ball-spin 60s linear infinite",
         shrimp: "shrimp 1s linear infinite alternate-reverse",
+        rule: "rule 8s linear infinite alternate-reverse"
       },
       boxShadow: {
         "top" : '0px -4px 43px 0px rgba(0,0,0,0.5)'
@@ -33,8 +34,12 @@ module.exports = {
           },
           "50%": {
             transform: "translateX(0)",
-            animationTimingFunction: "cubic-bezier(0, 0, 0.2, 1)",
+            animationTimingFunction: "cubic-bezier(0, 0, 0.2, 1)"
           },
+        },
+        rule: {
+          from: {transform: "scale(1.05)"},
+          to: {transform: "scale(0.95)"}
         },
         slide: {
           from: { transform: "translateX(100%)" },
