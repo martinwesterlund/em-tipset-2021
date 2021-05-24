@@ -9,7 +9,7 @@ const regler = () => {
 
   return (
     <div
-      className={`w-screen min-h-screen bg-stripe pt-32 p-4 flex flex-col items-center`}
+      className={`w-screen min-h-screen bg-stripe pt-32 p-4 flex flex-col items-center overflow-x-hidden`}
     >
       <Header></Header>
       <h1 className="text-white md:text-xl mb-8 md:mb-6">REGLER</h1>
