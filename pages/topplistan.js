@@ -98,7 +98,7 @@ const topplistan = () => {
                 y: 0,
                 transition: { duration: 0.5, delay: 0.1, ease: "easeOut" },
               }}
-              className={`w-full h-32 md:h-48 bg-white m-2 rounded flex md:flex-col justify-center items-center relative border-4 border-gray-100`}
+              className={`w-full h-32 md:h-48 bg-white m-2 rounded-xl flex md:flex-col justify-center items-center relative border-4 border-gray-100`}
             >
               {topList[1]?.user_email === user.email && (
                 <UserIndicator topThree={true}></UserIndicator>
@@ -124,7 +124,7 @@ const topplistan = () => {
                 y: 0,
                 transition: { duration: 0.5, ease: "easeOut" },
               }}
-              className={`cursor-pointer w-full m-2  h-32 md:h-64 bg-white rounded flex md:flex-col justify-center items-center relative border-4 border-yellow-300`}
+              className={`cursor-pointer w-full m-2  h-32 md:h-64 bg-white rounded-xl flex md:flex-col justify-center items-center relative border-4 border-yellow-300`}
             >
               {topList[0]?.user_email === user.email && (
                 <UserIndicator topThree={true}></UserIndicator>
@@ -150,7 +150,7 @@ const topplistan = () => {
                 y: 0,
                 transition: { duration: 0.5, delay: 0.2, ease: "easeOut" },
               }}
-              className={`w-full m-2  h-32 bg-white rounded flex md:flex-col justify-center items-center relative border-4  border-yellow-500`}
+              className={`w-full m-2  h-32 bg-white rounded-xl flex md:flex-col justify-center items-center relative border-4  border-yellow-500`}
             >
               {topList[2]?.user_email === user.email && (
                 <UserIndicator topThree={true}></UserIndicator>
@@ -177,7 +177,7 @@ const topplistan = () => {
                 onClick={() => showSideResult(listItem.user_email, index + 1)}
                 variants={item}
                 key={index}
-                className={` w-full m-2 h-32 bg-white rounded flex md:hidden flex-col md:flex-row justify-center items-center relative`}
+                className={` w-full m-2 h-32 bg-white rounded-xl flex md:hidden flex-col md:flex-row justify-center items-center relative`}
               >
                 {listItem.user_email === user.email && (
                   <UserIndicator topThree={false}></UserIndicator>
@@ -198,7 +198,7 @@ const topplistan = () => {
                 onClick={() => showSideResult(listItem.user_email, index + 4)}
                 variants={item}
                 key={index}
-                className={`w-full m-2 h-32 bg-white rounded flex flex-col md:flex-row justify-center items-center relative`}
+                className={`w-full m-2 h-32 bg-white rounded-xl flex flex-col md:flex-row justify-center items-center relative`}
               >
                 {listItem.user_email === user.email && (
                   <UserIndicator topThree={false}></UserIndicator>

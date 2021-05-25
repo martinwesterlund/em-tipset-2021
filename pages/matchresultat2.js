@@ -82,7 +82,7 @@ const matchresultat = () => {
             className="w-full flex flex-col items-center mb-20"
           >
             {matches.map((match, index) => (
-              <motion.div variants={item} key={index} className="w-full md:w-160 lg:w-192 relative bg-white rounded flex flex-col justify-center p-6 m-2">
+              <motion.div variants={item} key={index} className="w-full md:w-160 lg:w-192 relative bg-white rounded-xl flex flex-col justify-center p-6 m-2">
                 <MatchBox
                   match={match}
                   usersResult={{

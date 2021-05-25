@@ -69,7 +69,7 @@ const profil = ({ user_match_results }) => {
       <Header></Header>
       <div className="bg-stripe flex min-h-screen justify-center items-center py-20 overflow-hidden">
         {user && topList && userMatchResult && match && matches && (
-          <div className="grid grid-rows-8 lg:grid-rows-5 grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-4 w-full xl:max-w-[1500px] xl:h-[800px] p-4 lg:p-12">
+          <div className="grid grid-rows-8 lg:grid-rows-5 grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-4 w-full xl:max-w-[1500px] xl:h-[600px] p-4 lg:p-12">
             <motion.div
               initial={{ opacity: 0, x: -150 }}
               animate={{
@@ -77,7 +77,7 @@ const profil = ({ user_match_results }) => {
                 x: 0,
                 transition: { ease: "easeOut", duration: 1 },
               }}
-              className="bg-white rounded row-span-1 lg:row-span-3 flex justify-center items-center py-4 px-4 md:px-8"
+              className="bg-white rounded-xl row-span-1 lg:row-span-3 flex justify-center items-center py-4 px-4 md:px-8"
             >
               <ProfileInfo user={user}></ProfileInfo>
             </motion.div>
@@ -88,7 +88,7 @@ const profil = ({ user_match_results }) => {
                 y: 0,
                 transition: { ease: "easeOut", duration: 1 },
               }}
-              className="bg-white rounded row-span-2 flex justify-center items-center py-4 px-4 md:px-8"
+              className="bg-white rounded-xl row-span-2 flex justify-center items-center py-4 px-4 md:px-8"
             >
               <ProfileStatus
                 topList={topList}
@@ -103,7 +103,7 @@ const profil = ({ user_match_results }) => {
                 x: 0,
                 transition: { ease: "easeOut", duration: 1 },
               }}
-              className="bg-white rounded row-span-2 lg:row-span-3 flex justify-center items-center py-4 px-4 md:px-8"
+              className="bg-white rounded-xl row-span-2 lg:row-span-3 flex justify-center items-center py-4 px-4 md:px-8"
             >
               <NextMatch match={match} ></NextMatch>
             </motion.div>
@@ -114,7 +114,7 @@ const profil = ({ user_match_results }) => {
                 y: 0,
                 transition: { ease: "easeOut", duration: 1 },
               }}
-              className="bg-white rounded row-span-2 flex justify-center items-center py-4 px-4 md:px-8"
+              className="bg-white rounded-xl row-span-2 flex justify-center items-center py-4 px-4 md:px-8"
             >
               <ProgressBar matches={matches}></ProgressBar>
             </motion.div>

@@ -54,29 +54,30 @@ const CountDown = ({ front }) => {
         <div
           className={`${
             front
-              ? "absolute top-2 sm:top-4 right-1/2 -mr-32 sm:-mr-0 sm:left-4"
-              : "relative -mt-4 mb-4"
-          }   w-64 text-white bg-black bg-opacity-50 rounded-full z-30 flex flex-col justify-center items-center text-xxs sm:text-xs p-1`}
+              // ? "absolute top-2 sm:top-4 left-1/2 -mr-32 lg:ml-80 sm:-mr-0 sm:left-4 lg:w-160 lg:text-lg "
+              ? "absolute left-1/2 -ml-32 top-2 sm:left-4 sm:-ml-0 lg:left-1/2 lg:-ml-80 lg:w-160 lg:text-lg"
+              : "relative -mt-4 mb-4  "
+          }    text-white bg-black bg-opacity-50 rounded-full w-64 z-30 flex flex-col text-xxs sm:text-xs justify-center items-center  p-1`}
         >
           <div className="w-full flex flex-row justify-center pb-1">
-            <div className="flex justify-center mx-2 w-4">
+            <div className={`flex justify-center mx-2 w-4 ${front && 'lg:w-12'}`}>
               <span className="">{timerDays}</span>
               <span>d</span>
             </div>
-            <div className="flex justify-center mx-2 w-4">
+            <div className={`flex justify-center mx-2 w-4 ${front && 'lg:w-12'}`}>
               <span className="">{timerHours}</span>
               <span>h</span>
             </div>
-            <div className="flex justify-center mx-2 w-4">
+            <div className={`flex justify-center mx-2 w-4 ${front && 'lg:w-12'}`}>
               <span className="">{timerMinutes}</span>
               <span>m</span>
             </div>
-            <div className="flex justify-center mx-2 w-4">
+            <div className={`flex justify-center mx-2 w-4 ${front && 'lg:w-12'}`}>
               <span className="">{timerSeconds}</span>
               <span>s</span>
             </div>
           </div>
-          <span className="w-40 border-t text-center border-white pt-1">
+          <span className={`${front && 'w-12 lg:w-80'} w-40 border-t text-center border-white pt-1`}>
             kvar till spelstopp!
           </span>
         </div>

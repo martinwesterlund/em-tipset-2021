@@ -14,7 +14,8 @@ const Header = () => {
     setMenuOpen,
     profileMenuOpen,
     setProfileMenuOpen,
-    daedLinePassed
+    deadLinePassed,
+    setIsLoading
   } = useContext(context);
   const [cookies, setCookie, removeCookie] = useCookies(["emTipset21"]);
   const logOut = () => {
@@ -22,6 +23,7 @@ const Header = () => {
     setUser(null);
     setProfileMenuOpen(false);
     Router.push("/");
+    setIsLoading(false)
   };
 
   // absolute top-0 right-0 bg-em-green-dark w-1/2 h-screen flex justify-center item-center
@@ -46,33 +48,29 @@ const Header = () => {
           </Link>
           {/* <CountDown></CountDown> */}
         </div>
-        
+
         <div className="hidden flex-grow lg:flex justify-center items-center">
-          {user?.role === "user" && (
-            <ul className="w-1/2 flex justify-around">
-              <Link href="/tips2">
-                <li className="cursor-pointer hover:underline">Dina tips</li>
-              </Link>
-              <Link href="/topplistan">
-                <li className="cursor-pointer hover:underline">Topplistan</li>
-              </Link>
-              <Link href="/matchresultat2">
-                <li className="cursor-pointer hover:underline">
-                  Matchresultat
-                </li>
-              </Link>
-              <Link href="/regler">
-                <li className="cursor-pointer hover:underline">Regler</li>
-              </Link>
-            </ul>
+          <ul className="w-1/2 flex justify-around">
+            <Link href="/tips2">
+              <li className="cursor-pointer hover:underline">Dina tips</li>
+            </Link>
+            <Link href="/topplistan">
+              <li className="cursor-pointer hover:underline">Topplistan</li>
+            </Link>
+            <Link href="/matchresultat2">
+              <li className="cursor-pointer hover:underline">Matchresultat</li>
+            </Link>
+            <Link href="/regler">
+              <li className="cursor-pointer hover:underline">Regler</li>
+            </Link>
+            {user?.role === "admin" && (
+            <Link href="/admin">
+              <li className="cursor-pointer hover:underline">Admin</li>
+            </Link>
           )}
-          {user?.role === "admin" && (
-            <ul className="w-1/2 flex justify-around">
-              <Link href="/admin">
-                <li className="cursor-pointer hover:underline">Admin</li>
-              </Link>
-            </ul>
-          )}
+          </ul>
+
+          
         </div>
 
         <div className="flex-none flex justify-end items-center">

@@ -19,7 +19,7 @@ const ProfileInfo = ({ user }) => {
   return (
     <div className="w-full h-full flex flex-col relative justify-center items-center">
       {/* <div>INFOBAR</div> */}
-      <div className="w-full absolute top-4 flex bg-em-green-light justify-center items-center rounded overflow-hidden">
+      <div className="w-full absolute top-4 flex bg-purple-200 justify-center items-center rounded overflow-hidden">
         <div className="h-full absolute left-0 bg-black z-10 flex items-center">
           <span className="p-2 text-white text-xs md:text-base ">INFO</span>
         </div>
@@ -49,7 +49,7 @@ const ProfileInfo = ({ user }) => {
           <div className="text-xs md:text-lg border-b border-em-green-light w-full">
             {user.first_name} {user.last_name}
           </div>
-          <div className="text-gray-400 text-xs md:text-lg">{user.email}</div>
+          <div className="text-em-green-dark text-xs md:text-lg">{user.email}</div>
         </div>
       </div>
     </div>

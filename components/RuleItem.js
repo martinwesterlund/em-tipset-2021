@@ -2,7 +2,6 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const RuleItem = ({ text, imgSrc, imgLeft }) => {
-  console.log(imgLeft);
   return (
     <section
       className={`flex flex-col-reverse ${
@@ -18,8 +17,8 @@ const RuleItem = ({ text, imgSrc, imgLeft }) => {
         }}
         className="w-full md:w-[32rem] md:h-28 lg:w-160 flex flex-col justify-center items-center text-white text-center text-xs md:text-base"
       >
-        {text.map((p) => (
-          <p className="w-80 md:w-96 lg:w-[32rem] my-px">{p}</p>
+        {text.map((p, index) => (
+          <p key={index} className="w-80 md:w-96 lg:w-[32rem] my-px">{p}</p>
         ))}
       </motion.div>
       <motion.div

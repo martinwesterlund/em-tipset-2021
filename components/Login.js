@@ -11,13 +11,15 @@ const Login = ({setIsInfoVisible}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState("");
-  const { user, setUser, setShowLogin, setShowReg, isCookiesAccepted } = useContext(context);
+  const { user, setUser, setShowLogin, setShowReg, isCookiesAccepted, setIsLoading } = useContext(context);
   const [errorMessage, setErrorMessage] = useState(' ')
   const [cookies, setCookie] = useCookies(['emTipset21']);
-  const [isLoading, setIsLoading] = useState(false)
+  
 
   const login = async (event) => {
+    console.log('Inan')
     setIsLoading(true)
+    console.log('efter')
     event.preventDefault();
 
     const res = await fetch(`${backend}/login`, {

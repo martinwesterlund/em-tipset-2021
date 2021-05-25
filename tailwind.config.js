@@ -8,7 +8,8 @@ module.exports = {
         "bounce-side": "bounce-side 1s infinite",
         "ball-spin": "ball-spin 60s linear infinite",
         shrimp: "shrimp 1s linear infinite alternate-reverse",
-        rule: "rule 8s linear infinite alternate-reverse"
+        rule: "rule 8s linear infinite alternate-reverse",
+        progress: "progress 4s ease-out"
       },
       boxShadow: {
         "top" : '0px -4px 43px 0px rgba(0,0,0,0.5)'
@@ -40,6 +41,9 @@ module.exports = {
         rule: {
           from: {transform: "scale(1.05)"},
           to: {transform: "scale(0.95)"}
+        },
+        progress: {
+          "100%": {'stroke-dashoffset': "0"}
         },
         slide: {
           from: { transform: "translateX(100%)" },

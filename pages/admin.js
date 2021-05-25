@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import context from "../context/context";
 import backend from "../data/data";
+import Header from "../components/Header";
 
 const admin = () => {
   const [matches, setMatches] = useState();
@@ -73,7 +74,11 @@ const admin = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center">
+    <div
+      className={`w-screen min-h-screen bg-stripe py-32 px-4 md:px-6 flex flex-col items-center overflow-x-hidden`}
+    >
+      <Header></Header>
+      <h1 className="text-white md:text-xl mb-8 md:mb-6">REGLER</h1>
       <form onSubmit={(e) => sendGreeting(e)}>
         <span>Hälsning till deltagarna:</span>
         <input onChange={(e) => setGreeting(e.target.value)} className="w-96" type="text" />

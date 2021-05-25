@@ -279,7 +279,7 @@ const tips2 = () => {
               <motion.div
                 variants={item}
                 key={match.id}
-                className="w-full  md:w-160 lg:w-192 relative bg-white rounded flex justify-around items-center p-2 sm:p-4 md:p-6 m-2"
+                className="w-full  md:w-160 lg:w-192 relative bg-white rounded-xl flex justify-around items-center p-2 sm:p-4 md:p-6 m-2"
               >
                 <div className="w-1/3 flex flex-col justify-center items-center">
                   <div>{match.home_team}</div>
@@ -404,7 +404,7 @@ const tips2 = () => {
               x: 0,
               transition: { duration: 2, delay: 1, ease: "easeOut" },
             }}
-            className="bg-em-green-default fixed right-2 bottom-2 md:right-8 md:bottom-8 rounded mt-4 p-3 lg:p-6 text-white lg:text-xl cursor-pointer"
+            className="bg-blue-600 fixed right-2 bottom-2 md:right-8 md:bottom-8 rounded-xl mt-4 p-3 lg:p-6 text-white lg:text-xl cursor-pointer"
           >
             Uppdatera dina tips!
           </motion.button>
