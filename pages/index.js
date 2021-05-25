@@ -106,7 +106,7 @@ const Home = () => {
                 animate={{
                   x: 0,
                   opacity: 1,
-                  transition: { duration: 1, delay: 0.8 },
+                  transition: { duration: 1, delay: 1 },
                 }}
                 className="hidden md:block w-full text-2xl mt-4"
               >
@@ -118,7 +118,7 @@ const Home = () => {
                 animate={{
                   x: 0,
                   opacity: 1,
-                  transition: { duration: 1, delay: 1 },
+                  transition: { duration: 1, delay: 2 },
                 }}
                 className="hidden md:block text-lg mt-4 lg:mt-2"
               >
@@ -145,7 +145,7 @@ const Home = () => {
               <motion.div
                 initial={{ y: -50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1, transition: { duration: 0.6 } }}
-                className="flex flex-col justify-center items-center"
+                className="flex flex-col justify-center items-center text-em-green-default"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

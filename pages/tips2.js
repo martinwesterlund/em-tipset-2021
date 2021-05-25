@@ -279,7 +279,7 @@ const tips2 = () => {
               <motion.div
                 variants={item}
                 key={match.id}
-                className="w-full  md:w-160 lg:w-192 relative bg-white rounded-2xl flex justify-around items-center p-2 sm:p-4 md:p-6 m-2"
+                className="w-full  md:w-160 lg:w-192 relative bg-white rounded flex justify-around items-center p-2 sm:p-4 md:p-6 m-2"
               >
                 <div className="w-1/3 flex flex-col justify-center items-center">
                   <div>{match.home_team}</div>
@@ -289,43 +289,47 @@ const tips2 = () => {
                     alt=""
                   />
                   <div className="flex items-center mt-4 text-em-green-default">
-                    {!deadLinePassed && <button
-                      onClick={() => removeGoal(`m${match.id}_h`)}
-                      className="p-2"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-4 w-4"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
+                    {!deadLinePassed && (
+                      <button
+                        onClick={() => removeGoal(`m${match.id}_h`)}
+                        className="p-2"
                       >
-                        <path
-                          fillRule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </button>}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-4 w-4"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </button>
+                    )}
                     <span className="w-12 border-l border-r  text-center text-2xl border-gray-300">
                       {match.h}
                     </span>
-                    {!deadLinePassed && <button
-                      onClick={() => addGoal(`m${match.id}_h`)}
-                      className="p-2"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-4 w-4"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
+                    {!deadLinePassed && (
+                      <button
+                        onClick={() => addGoal(`m${match.id}_h`)}
+                        className="p-2"
                       >
-                        <path
-                          fillRule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </button>}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-4 w-4"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </button>
+                    )}
                   </div>
                 </div>
                 <div className="w-8 h-full flex flex-col justify-center items-center">
@@ -341,44 +345,48 @@ const tips2 = () => {
                     alt=""
                   />
                   <div className="flex items-center mt-4 text-em-green-default">
-                    {!deadLinePassed && <button
-                      onClick={() => removeGoal(`m${match.id}_a`)}
-                      className="p-2"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-4 w-4"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
+                    {!deadLinePassed && (
+                      <button
+                        onClick={() => removeGoal(`m${match.id}_a`)}
+                        className="p-2"
                       >
-                        <path
-                          fillRule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </button>}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-4 w-4"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </button>
+                    )}
 
                     <span className="w-12 border-l border-r text-center text-2xl border-gray-300">
                       {match.a}
                     </span>
-                    {!deadLinePassed && <button
-                      onClick={() => addGoal(`m${match.id}_a`)}
-                      className="p-2"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-4 w-4"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
+                    {!deadLinePassed && (
+                      <button
+                        onClick={() => addGoal(`m${match.id}_a`)}
+                        className="p-2"
                       >
-                        <path
-                          fillRule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </button>}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-4 w-4"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </button>
+                    )}
                   </div>
                 </div>
               </motion.div>
@@ -405,15 +413,15 @@ const tips2 = () => {
         <AnimatePresence>
           {infoIsVisible && (
             <motion.div
-              className="bg-em-green-default fixed shadow-md top-1/2 left-1/2 -mt-16 -ml-32 h-32 w-64 rounded p-3 flex flex-col justify-around items-center lg:p-6 text-white lg:text-xl"
+              className=" bg-em-green-default fixed shadow-md top-1/2 left-1/2 -mt-20 -ml-20 h-40 w-40 rounded-full p-3 flex flex-col justify-center items-center lg:p-6 text-white lg:text-xl"
               key="modal"
-              initial={{ scale: 0.5, opacity: 0, x: "100%" }}
+              initial={{ scale: 0.5, opacity: 0,  }}
               animate={{ scale: 1, opacity: 1, x: 0 }}
               exit={{
-                scale: 0.5,
+                scale: 0,
                 opacity: 0,
-                x: "-100%",
-                transition: { duration: 1, ease: "easeOut" },
+                x: 0,
+                transition: { duration: 1, ease: "easeOut", type: 'spring' },
               }}
             >
               <svg
@@ -430,7 +438,7 @@ const tips2 = () => {
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <span>{info}</span>
+              <span>{info || "Uppdaterat!"}</span>
             </motion.div>
           )}
         </AnimatePresence>
