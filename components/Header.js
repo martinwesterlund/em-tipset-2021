@@ -15,7 +15,8 @@ const Header = () => {
     profileMenuOpen,
     setProfileMenuOpen,
     deadLinePassed,
-    setIsLoading
+    setIsLoading,
+    setShowCookieBanner
   } = useContext(context);
   const [cookies, setCookie, removeCookie] = useCookies(["emTipset21"]);
   const logOut = () => {
@@ -24,6 +25,7 @@ const Header = () => {
     setProfileMenuOpen(false);
     Router.push("/");
     setIsLoading(false)
+    setShowCookieBanner(true)
   };
 
   // absolute top-0 right-0 bg-em-green-dark w-1/2 h-screen flex justify-center item-center
@@ -79,7 +81,7 @@ const Header = () => {
             onClick={() => setProfileMenuOpen(!profileMenuOpen)}
           >
             {user && (
-              <h1 className="hidden lg:block">
+              <h1 className="text-xs md:text-base lg:block">
                 {user.first_name.charAt(0).toUpperCase()}
                 {user.last_name.charAt(0).toUpperCase()}
               </h1>
