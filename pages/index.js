@@ -17,6 +17,7 @@ const Home = () => {
     isCookiesAccepted,
     setIsCookiesAccepted,
     showCookieBanner,
+    setShowCookieBanner,
     distance,
     deadLinePassed,
   } = useContext(context);
