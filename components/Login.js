@@ -17,9 +17,7 @@ const Login = ({setIsInfoVisible}) => {
   
 
   const login = async (event) => {
-    console.log('Inan')
     setIsLoading(true)
-    console.log('efter')
     event.preventDefault();
 
     const res = await fetch(`${backend}/login`, {

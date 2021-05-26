@@ -31,7 +31,11 @@ function MyApp({ Component, pageProps }) {
     const data = await res.json();
     setUser(data.user);
     setIsLoading(false);
-    Router.push("/profil");
+    if(Router.pathname === "/"){
+      Router.push('/profil')
+    } else {
+      Router.push(Router.pathname)
+    }
   };
 
   useEffect(() => {
@@ -39,6 +43,7 @@ function MyApp({ Component, pageProps }) {
       setIsLoading(true);
       loginWithCookie(cookies.emTipset21);
     } else {
+      Router.push('/')
       setShowCookieBanner(true);
       setIsLoading(false);
     }

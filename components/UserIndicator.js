@@ -4,8 +4,8 @@ const UserIndicator = ({ topThree }) => {
   return (
     <div
       className={`hidden absolute ${
-        topThree ? "-top-16 md:block animate-bounce" : "-left-12 md:flex animate-bounce-side"
-      }  text-white font-bold`}
+        topThree ? " -top-24 md:block animate-bounce" : "-left-16 md:flex animate-bounce-side"
+      }  text-white font-bold z-10`}
     >
       <span>DU</span>
       {topThree ? (

@@ -32,7 +32,7 @@ const Header = () => {
   return (
     <>
       <header className="h-20 bg-em-green-dark bg-opacity-80 z-20 fixed top-0 left-0 w-full p-4 md:p-6 flex text-white justify-between items-center">
-        <div className="flex justify-center items-center">
+        <div className="absolute flex justify-center items-center">
           <Link href="/profil">
             {/* <img
               className="w-8 cursor-pointer"
@@ -41,7 +41,7 @@ const Header = () => {
             /> */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-8 w-8 cursor-pointer mr-2"
+              className="h-12 w-12 cursor-pointer rounded p-2 hover:bg-em-green-dark "
               viewBox="0 0 20 20"
               fill="currentColor"
             >
@@ -52,22 +52,22 @@ const Header = () => {
         </div>
 
         <div className="hidden flex-grow lg:flex justify-center items-center">
-          <ul className="w-1/2 flex justify-around">
+          <ul className="w-full mx-32 lg:mx-64 flex justify-around">
             <Link href="/tips2">
-              <li className="cursor-pointer hover:underline">Dina tips</li>
+              <li className="cursor-pointer rounded p-2 hover:bg-em-green-dark ">Dina tips</li>
             </Link>
             <Link href="/topplistan">
-              <li className="cursor-pointer hover:underline">Topplistan</li>
+              <li className="cursor-pointer rounded p-2 hover:bg-em-green-dark ">Topplistan</li>
             </Link>
             <Link href="/matchresultat2">
-              <li className="cursor-pointer hover:underline">Matchresultat</li>
+              <li className="cursor-pointer rounded p-2 hover:bg-em-green-dark ">Matchresultat</li>
             </Link>
             <Link href="/regler">
-              <li className="cursor-pointer hover:underline">Regler</li>
+              <li className="cursor-pointer rounded p-2 hover:bg-em-green-dark ">Regler</li>
             </Link>
             {user?.role === "admin" && (
             <Link href="/admin">
-              <li className="cursor-pointer hover:underline">Admin</li>
+              <li className="cursor-pointer rounded p-2 hover:bg-em-green-dark ">Admin</li>
             </Link>
           )}
           </ul>
@@ -75,20 +75,25 @@ const Header = () => {
           
         </div>
 
-        <div className="flex-none flex justify-end items-center">
+        <div className="absolute right-4 flex-none flex justify-end items-center">
           <button
-            className="flex justify-end items-center outline-none focus:outline-none"
+            className="p-2 rounded flex justify-end items-center outline-none focus:outline-none hover:bg-em-green-dark"
             onClick={() => setProfileMenuOpen(!profileMenuOpen)}
           >
             {user && (
-              <h1 className="text-xs md:text-base lg:block">
+              <>
+              <h1 className="text-xs md:hidden">
                 {user.first_name.charAt(0).toUpperCase()}
                 {user.last_name.charAt(0).toUpperCase()}
               </h1>
+              <h1 className="hidden md:block text-xs md:text-base ">
+                {user.first_name}
+              </h1>
+              </>
             )}
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-8 w-8 lg:ml-4"
+              className="h-8 w-8 ml-2 lg:ml-4"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
@@ -114,7 +119,7 @@ const Header = () => {
             </svg>
           </button>
           <button
-            className="lg:hidden h-8 w-8 ml-2 md:ml-4 outline-none focus:outline-none"
+            className="lg:hidden h-12 w-12 p-2 outline-none rounded focus:outline-none hover:bg-em-green-dark"
             onClick={() => setMenuOpen(true)}
           >
             <svg
@@ -137,13 +142,14 @@ const Header = () => {
 
         <button
           onClick={() => logOut()}
-          className={`bg-em-green-dark bg-opacity-80 px-8 py-4 z-50 fixed top-20 right-0 outline-none focus:outline-none transform duration-300 transition-all ease-in-out ${
+          className={`bg-em-green-dark bg-opacity-80 p-4 rounded-bl z-50 fixed top-20 right-0 outline-none focus:outline-none transform duration-300 transition-all ease-in-out  ${
             profileMenuOpen
               ? "translate-x-0 opacity-100"
               : "translate-x-full opacity-0"
           }`}
         >
-          Logga ut
+          <h1 className="hover:bg-em-green-dark p-2 rounded">Logga ut</h1>
+          
         </button>
       </header>
 

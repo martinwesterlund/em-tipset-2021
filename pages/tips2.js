@@ -7,7 +7,6 @@ import MatchForm from "../components/MatchForm";
 import { motion, AnimatePresence } from "framer-motion";
 import LoadingElement from "../components/LoadingElement";
 import CountDown from "../components/CountDown";
-import ReLoginInfo from "../components/ReLoginInfo";
 
 const tips2 = () => {
   const { user, setUser, setIsLoading, points, setPoints, deadLinePassed } =
@@ -208,7 +207,6 @@ const tips2 = () => {
 
     const data = await res.json();
     if (res.status === 200) {
-      console.log("Allt gick fint!");
       animateInfo("Uppdaterat!");
     } else {
       animateInfo("Något gick fel!");
@@ -263,7 +261,6 @@ const tips2 = () => {
       <Header></Header>
       <div className="w-screen min-h-screen bg-stripe pt-32 p-6 flex flex-col items-center">
         <h1 className="text-white md:text-xl mb-8">DINA TIPS</h1>
-        {!user && <ReLoginInfo></ReLoginInfo>}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0, transition: { duration: 1, delay: 1 } }}
@@ -417,13 +414,13 @@ const tips2 = () => {
             <motion.div
               className=" bg-em-green-default fixed shadow-md top-1/2 left-1/2 -mt-20 -ml-20 h-40 w-40 rounded-full p-3 flex flex-col justify-center items-center lg:p-6 text-white lg:text-xl"
               key="modal"
-              initial={{ scale: 0.5, opacity: 0,  }}
+              initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1, x: 0 }}
               exit={{
                 scale: 0,
                 opacity: 0,
                 x: 0,
-                transition: { duration: 1, ease: "easeOut", type: 'spring' },
+                transition: { duration: 1, ease: "easeOut", type: "spring" },
               }}
             >
               <svg

@@ -30,11 +30,21 @@ module.exports = {
       keyframes: {
         "bounce-side": {
           "0%, 100%": {
-            transform: "translateX(-25%)",
+            transform: "translateX(-15%)",
             animationTimingFunction: "cubic-bezier(0.8, 0, 1, 1)",
           },
           "50%": {
             transform: "translateX(0)",
+            animationTimingFunction: "cubic-bezier(0, 0, 0.2, 1)"
+          },
+        },
+        "bounce": {
+          "0%, 100%": {
+            transform: "translateY(-15%)",
+            animationTimingFunction: "cubic-bezier(0.8, 0, 1, 1)",
+          },
+          "50%": {
+            transform: "translateY(0)",
             animationTimingFunction: "cubic-bezier(0, 0, 0.2, 1)"
           },
         },
@@ -64,6 +74,7 @@ module.exports = {
       },
       spacing: {
         160: "40rem",
+        176: "44rem",
         192: "48rem",
         240: "60rem",
       },

@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const RuleItem = ({ text, imgSrc, imgLeft }) => {
+const RuleItem = ({ id, text, imgSrc, imgLeft }) => {
   return (
     <section
       className={`flex flex-col-reverse ${
@@ -13,12 +13,12 @@ const RuleItem = ({ text, imgSrc, imgLeft }) => {
         animate={{
           opacity: 1,
           y: 0,
-          transition: { duration: 1, delay: 1, ease: "easeOut" },
+          transition: { duration: 1, delay: id*0.5, ease: "easeOut" },
         }}
         className="w-full md:w-[32rem] md:h-28 lg:w-160 flex flex-col justify-center items-center text-white text-center text-xs md:text-base"
       >
         {text.map((p, index) => (
-          <p key={index} className="w-80 md:w-96 lg:w-[32rem] my-px">{p}</p>
+          <p key={index} className="w-full sm:w-80 md:w-96 lg:w-[32rem] my-px">{p}</p>
         ))}
       </motion.div>
       <motion.div

@@ -6,41 +6,41 @@ const Medal = ({ value }) => {
     case 1:
       style = {
         border: "border-yellow-400",
-        bgFirst: "bg-yellow-300",
+        bgFirst: "bg-gradient-to-tr from-yellow-500 via-yellow-200 to-yellow-500 ",
         bgSecond: "bg-gold",
         text: "text-white",
-        size: "w-16 h-16 text-3xl",
-        position: "md:relative left-4 sm:left-32 md:left-0"
+        size: "w-16 h-16 md:h-20 md:w-20 text-xl md:text-3xl",
+        position: "left-4 md:absolute md:-top-10 md:left-1/2 transform -translate-x-1/2"
       };
       break;
     case 2:
       style = {
         border: "border-gray-300",
-        bgFirst: "bg-gray-100",
+        bgFirst: "bg-gradient-to-tr from-gray-400 via-gray-100 to-gray-400",
         bgSecond: " bg-gray-200",
         text: "text-gray-400",
-        size: "w-12 h-12 text-xl",
-        position: "md:relative left-4 sm:left-32 md:left-0"
+        size: "w-16 h-16 md:h-20 md:w-20 text-xl md:text-3xl",
+        position: "left-4 md:absolute md:-top-10 md:left-1/2 transform -translate-x-1/2"
       };
       break;
     case 3:
       style = {
         border: "border-yellow-600",
-        bgFirst: "bg-yellow-500",
+        bgFirst: "bg-gradient-to-tr from-yellow-600 via-yellow-300 to-yellow-600",
         bgSecond: "bg-yellow-600",
         text: "text-yellow-300",
-        size: "w-12 h-12 text-xl",
-        position: "md:relative left-4 sm:left-32 md:left-0"
+        size: "w-16 h-16 md:h-20 md:w-20 text-xl md:text-3xl",
+        position: "left-4 md:absolute md:-top-10 md:left-1/2 transform -translate-x-1/2"
       };
       break;
     default:
       style = {
         border: "border-gray-600",
-        bgFirst: "bg-gray-200",
+        bgFirst: "bg-gradient-to-tr from-gray-600 via-gray-400 to-gray-600 text-gray-200",
         bgSecond: "bg-yellow-600",
-        text: "text-gray-400",
-        size: "w-12 h-12 text-xl",
-        position: "left-4 sm:left-32 lg:left-64"
+        text: "text-white",
+        size: "w-16 h-16 text-xl md:text-3xl",
+        position: "left-4 transform -translate-x-1/2"
       };
   }
 
@@ -57,7 +57,7 @@ const Medal = ({ value }) => {
     //   </div>
     // </div>
     <div
-      className={`absolute ${style.position} w-10 h-10 mr-8 md:mr-0 ${style.bgFirst} ${style.border} border-2 rounded-full flex justify-center items-center`}
+      className={`absolute ${style.position} ${style.size} mr-8 md:mr-0 ${style.bgFirst} ${style.border} border-2 rounded-full flex justify-center items-center`}
     >
       <h1 className="transform translate-y-px">{value}</h1>
     </div>
