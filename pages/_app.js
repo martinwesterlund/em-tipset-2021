@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import context from "../context/context";
 import { CookiesProvider, useCookies } from "react-cookie";
 import backend from "../data/data";
+import Router from "next/router";
 
 function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState(null);
