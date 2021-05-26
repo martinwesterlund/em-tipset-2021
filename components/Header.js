@@ -28,7 +28,7 @@ const Header = () => {
     setShowCookieBanner(true)
   };
 
-  // absolute top-0 right-0 bg-em-green-dark w-1/2 h-screen flex justify-center item-center
+
   return (
     <>
       <header className="h-20 bg-em-green-dark bg-opacity-80 z-20 fixed top-0 left-0 w-full p-4 md:p-6 flex text-white justify-between items-center">

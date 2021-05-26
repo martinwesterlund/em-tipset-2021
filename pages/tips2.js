@@ -404,7 +404,7 @@ const tips2 = () => {
               x: 0,
               transition: { duration: 2, delay: 1, ease: "easeOut" },
             }}
-            className="bg-blue-600 fixed right-2 bottom-2 md:right-8 md:bottom-8 rounded-xl mt-4 p-3 lg:p-6 text-white lg:text-xl cursor-pointer"
+            className="bg-blue-700 fixed right-2 bottom-2 md:right-8 md:bottom-8 rounded-xl mt-4 p-3 lg:p-6 text-white lg:text-xl cursor-pointer"
           >
             Uppdatera dina tips!
           </motion.button>
