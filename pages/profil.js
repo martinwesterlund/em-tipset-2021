@@ -21,7 +21,7 @@ const profil = ({ user_match_results }) => {
     const res = await fetch(`${backend}/fixtures`);
     const data = await res.json();
     setMatches(data);
-    setMatch(data.find((match) => match.finished != "yes"));
+    setMatch(data.find((match) => match.finished != "yes") || {id: 99, message: "Gruppspelet är nu slut"});
   };
 
   const getUsersBet = async () => {

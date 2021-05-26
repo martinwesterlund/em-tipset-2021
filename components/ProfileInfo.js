@@ -32,7 +32,7 @@ const ProfileInfo = ({ user }) => {
           </marquee>
         )}
       </div>
-      <div className="flex flex-row justify-center items-center overflow-hidden mt-16 lg:mt-0">
+      <div className="flex flex-row justify-center items-center overflow-hidden mt-16 xl:mt-0">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="text-em-green-default opacity-50 h-8 w-8 md:h-16 md:w-16 mr-2 md:mr-4"

@@ -78,7 +78,7 @@ const Login = ({setIsInfoVisible}) => {
             type="password"
           />
           <input
-            className="bg-em-green-default w-5/6 rounded mt-2 md:mt-4 p-3 text-white cursor-pointer"
+            className="bg-em-green-default hover:bg-em-green-dark transition duration-300 w-5/6 rounded mt-2 md:mt-4 p-3 text-white cursor-pointer"
             value={"Logga in"}
             type="submit"
           />

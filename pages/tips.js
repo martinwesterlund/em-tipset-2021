@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import LoadingElement from "../components/LoadingElement";
 import CountDown from "../components/CountDown";
 
-const tips2 = () => {
+const tips = () => {
   const { user, setUser, setIsLoading, points, setPoints, deadLinePassed } =
     useContext(context);
   const [matches, setMatches] = useState();
@@ -278,7 +278,7 @@ const tips2 = () => {
               <motion.div
                 variants={item}
                 key={match.id}
-                className="w-full  md:w-160 lg:w-192 relative bg-white rounded-xl flex justify-around items-center p-2 sm:p-4 md:p-6 m-2"
+                className="w-full  md:w-160 lg:w-192 relative bg-white rounded-xl flex justify-around items-center py-8 px-2 sm:p-4 md:p-6 m-2"
               >
                 <div className="w-1/3 flex flex-col justify-center items-center">
                   <div>{match.home_team}</div>
@@ -291,11 +291,11 @@ const tips2 = () => {
                     {!deadLinePassed && (
                       <button
                         onClick={() => removeGoal(`m${match.id}_h`)}
-                        className="p-2"
+                        className="flex justify-center items-center mr-1"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          className="h-4 w-4"
+                          className="h-6 w-6 md:h-10 md:w-10"
                           viewBox="0 0 20 20"
                           fill="currentColor"
                         >
@@ -313,11 +313,11 @@ const tips2 = () => {
                     {!deadLinePassed && (
                       <button
                         onClick={() => addGoal(`m${match.id}_h`)}
-                        className="p-2"
+                        className="flex justify-center items-center ml-1"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          className="h-4 w-4"
+                          className="h-6 w-6 md:h-10 md:w-10"
                           viewBox="0 0 20 20"
                           fill="currentColor"
                         >
@@ -347,11 +347,11 @@ const tips2 = () => {
                     {!deadLinePassed && (
                       <button
                         onClick={() => removeGoal(`m${match.id}_a`)}
-                        className="p-2"
+                        className="flex justify-center items-center mr-1"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          className="h-4 w-4"
+                          className="h-6 w-6 md:h-10 md:w-10"
                           viewBox="0 0 20 20"
                           fill="currentColor"
                         >
@@ -370,11 +370,11 @@ const tips2 = () => {
                     {!deadLinePassed && (
                       <button
                         onClick={() => addGoal(`m${match.id}_a`)}
-                        className="p-2"
+                        className="flex justify-center items-center ml-1"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          className="h-4 w-4"
+                          className="h-6 w-6 md:h-10 md:w-10"
                           viewBox="0 0 20 20"
                           fill="currentColor"
                         >
@@ -403,6 +403,7 @@ const tips2 = () => {
               x: 0,
               transition: { duration: 2, delay: 1, ease: "easeOut" },
             }}
+            whileHover={{ backgroundColor: "#1E3A8A"}}
             className="bg-blue-700 fixed right-2 bottom-2 md:right-8 md:bottom-8 rounded-xl mt-4 p-3 lg:p-6 text-white lg:text-xl cursor-pointer"
           >
             Uppdatera dina tips!
@@ -446,4 +447,4 @@ const tips2 = () => {
   );
 };
 
-export default tips2;
+export default tips;

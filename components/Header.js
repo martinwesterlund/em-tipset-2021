@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import context from "../context/context";
 import Link from "next/link";
 import { useCookies } from "react-cookie";
@@ -16,32 +16,35 @@ const Header = () => {
     setProfileMenuOpen,
     deadLinePassed,
     setIsLoading,
-    setShowCookieBanner
+    setShowCookieBanner,
   } = useContext(context);
+
   const [cookies, setCookie, removeCookie] = useCookies(["emTipset21"]);
+  const [activeLink, setActiveLink] = useState();
+
   const logOut = () => {
     removeCookie("emTipset21");
     setUser(null);
     setProfileMenuOpen(false);
     Router.push("/");
-    setIsLoading(false)
-    setShowCookieBanner(true)
+    setIsLoading(false);
+    setShowCookieBanner(true);
   };
 
+  useEffect(() => {
+    setActiveLink(Router.pathname);
+  }, []);
 
   return (
     <>
       <header className="h-20 bg-em-green-dark bg-opacity-80 z-20 fixed top-0 left-0 w-full p-4 md:p-6 flex text-white justify-between items-center">
         <div className="absolute flex justify-center items-center">
           <Link href="/profil">
-            {/* <img
-              className="w-8 cursor-pointer"
-              src="/images/football2.svg"
-              alt=""
-            /> */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-12 w-12 cursor-pointer rounded p-2 hover:bg-em-green-dark "
+              className={`h-12 w-12 cursor-pointer rounded p-2 transition duration-300 hover:bg-em-green-dark ${
+                activeLink === "/profil" && "bg-em-green-dark"
+              }`}
               viewBox="0 0 20 20"
               fill="currentColor"
             >
@@ -52,43 +55,71 @@ const Header = () => {
         </div>
 
         <div className="hidden flex-grow lg:flex justify-center items-center">
-          <ul className="w-full mx-32 lg:mx-64 flex justify-around">
-            <Link href="/tips2">
-              <li className="cursor-pointer rounded p-2 hover:bg-em-green-dark ">Dina tips</li>
+          <ul className="w-full flex justify-center">
+            <Link href="/tips">
+              <li
+                className={`cursor-pointer rounded py-2 px-4 xl:px-8 transition duration-300 hover:bg-em-green-dark ${
+                  activeLink === "/tips" && "bg-em-green-dark"
+                }`}
+              >
+                Dina tips
+              </li>
             </Link>
             <Link href="/topplistan">
-              <li className="cursor-pointer rounded p-2 hover:bg-em-green-dark ">Topplistan</li>
+              <li
+                className={`cursor-pointer rounded py-2 px-4 xl:px-8 transition duration-300 hover:bg-em-green-dark ${
+                  activeLink === "/topplistan" && "bg-em-green-dark"
+                }`}
+              >
+                Topplistan
+              </li>
             </Link>
-            <Link href="/matchresultat2">
-              <li className="cursor-pointer rounded p-2 hover:bg-em-green-dark ">Matchresultat</li>
+            <Link href="/matchresultat">
+              <li
+                className={`cursor-pointer rounded py-2 px-4 xl:px-8 transition duration-300 hover:bg-em-green-dark ${
+                  activeLink === "/matchresultat" && "bg-em-green-dark"
+                }`}
+              >
+                Matchresultat
+              </li>
             </Link>
             <Link href="/regler">
-              <li className="cursor-pointer rounded p-2 hover:bg-em-green-dark ">Regler</li>
+              <li
+                className={`cursor-pointer rounded py-2 px-4 xl:px-8 transition duration-300 hover:bg-em-green-dark ${
+                  activeLink === "/regler" && "bg-em-green-dark"
+                }`}
+              >
+                Regler
+              </li>
             </Link>
             {user?.role === "admin" && (
-            <Link href="/admin">
-              <li className="cursor-pointer rounded p-2 hover:bg-em-green-dark ">Admin</li>
-            </Link>
-          )}
+              <Link href="/admin">
+                <li
+                  className={`cursor-pointer rounded py-2 px-4 xl:px-8 transition duration-300 hover:bg-em-green-dark ${
+                    activeLink === "/admin" && "bg-em-green-dark"
+                  }`}
+                >
+                  Admin
+                </li>
+              </Link>
+            )}
           </ul>
-
-          
         </div>
 
         <div className="absolute right-4 flex-none flex justify-end items-center">
           <button
-            className="p-2 rounded flex justify-end items-center outline-none focus:outline-none hover:bg-em-green-dark"
+            className="p-2 rounded flex justify-end items-center outline-none focus:outline-none transition duration-300 hover:bg-em-green-dark"
             onClick={() => setProfileMenuOpen(!profileMenuOpen)}
           >
             {user && (
               <>
-              <h1 className="text-xs md:hidden">
-                {user.first_name.charAt(0).toUpperCase()}
-                {user.last_name.charAt(0).toUpperCase()}
-              </h1>
-              <h1 className="hidden md:block text-xs md:text-base ">
-                {user.first_name}
-              </h1>
+                <h1 className="text-xs md:hidden">
+                  {user.first_name.charAt(0).toUpperCase()}
+                  {user.last_name.charAt(0).toUpperCase()}
+                </h1>
+                <h1 className="hidden md:block text-xs md:text-base ">
+                  {user.first_name}
+                </h1>
               </>
             )}
             <svg
@@ -119,7 +150,7 @@ const Header = () => {
             </svg>
           </button>
           <button
-            className="lg:hidden h-12 w-12 p-2 outline-none rounded focus:outline-none hover:bg-em-green-dark"
+            className="lg:hidden h-12 w-12 p-2 outline-none rounded focus:outline-none transition duration-300 hover:bg-em-green-dark"
             onClick={() => setMenuOpen(true)}
           >
             <svg
@@ -148,8 +179,9 @@ const Header = () => {
               : "translate-x-full opacity-0"
           }`}
         >
-          <h1 className="hover:bg-em-green-dark p-2 rounded">Logga ut</h1>
-          
+          <h1 className="hover:bg-em-green-dark transition duration-300 p-2 rounded">
+            Logga ut
+          </h1>
         </button>
       </header>
 
@@ -161,7 +193,7 @@ const Header = () => {
         }`}
       >
         <ul className="flex flex-col justify-center items-end text-xl">
-          <Link href="/tips2">
+          <Link href="/tips">
             <li
               onClick={() => setMenuOpen(false)}
               className="my-6 flex items-center cursor-pointer hover:underline"
@@ -204,7 +236,7 @@ const Header = () => {
               <span>Topplistan</span>
             </li>
           </Link>
-          <Link href="/matchresultat2">
+          <Link href="/matchresultat">
             <li
               onClick={() => setMenuOpen(false)}
               className="my-6 flex items-center cursor-pointer hover:underline"
@@ -248,6 +280,30 @@ const Header = () => {
               <span>Regler</span>
             </li>
           </Link>
+          {user?.role === "admin" && (
+            <Link href="/admin">
+              <li
+                onClick={() => setMenuOpen(false)}
+                className="my-6 flex flex-items cursor-pointer hover:underline"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 mr-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                  />
+                </svg>
+                <span>Admin</span>
+              </li>
+            </Link>
+          )}
         </ul>
         <button
           className="absolute top-6 right-6 h-8 w-8 outline-none focus:outline-none"

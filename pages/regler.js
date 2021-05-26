@@ -52,7 +52,7 @@ const regler = () => {
 
       <RuleItem
         id={6}
-        text={["Vid lika antal räkor är det omvänd alfabetisk ordning som gäller. Heter du exempelvis Öööberg så har du en klar fördel."]}
+        text={["Vid lika antal räkor är det omvänd alfabetisk ordning på i första hand efternamnen som gäller. Heter du exempelvis Öööberg så har du en klar fördel."]}
         imgSrc="/images/rules6.svg"
         imgLeft={true}
       ></RuleItem>

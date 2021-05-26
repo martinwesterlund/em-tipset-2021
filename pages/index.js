@@ -112,7 +112,30 @@ const Home = () => {
               Tippa matcherna och samla räkor - flest räkor vinner!
             </motion.p>
 
-            <div className="lg:hidden flex justify-center mt-6 sm:mt-12 lg:mt-20">
+            <div className="lg:hidden flex flex-col items-center justify-center mt-6 sm:mt-12 lg:mt-20">
+            {isInfoVisible && (
+            <motion.div
+              initial={{ y: -50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1, transition: { duration: 0.6 } }}
+              className="flex flex-col justify-center items-center text-white mb-2 text-xs"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>{" "}
+              <h1>Konto skapat</h1>
+            </motion.div>
+          )}
               {showLogin && <Login setIsInfoVisible={setIsInfoVisible}></Login>}
               {showReg && (
                 <Register setIsInfoVisible={setIsInfoVisible}></Register>
@@ -160,7 +183,6 @@ const Home = () => {
           }}
         >
           <CountDown front={true}></CountDown>
-          {/* <h1>HEJSAN ALLA</h1> */}
         </motion.div>
       </div>
 

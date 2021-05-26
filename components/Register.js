@@ -11,9 +11,10 @@ const Register = ({setIsInfoVisible}) => {
   const [lastName, setLastName] = useState("");
   const [status, setStatus] = useState("");
   const [errorMessage, setErrorMessage] = useState(' ')
-  const { user, setUser, setShowLogin, setShowReg } = useContext(context);
+  const { user, setUser, setShowLogin, setShowReg, setIsLoading } = useContext(context);
 
   const register = async (event) => {
+    setIsLoading(true)
     event.preventDefault();
 
     const res = await fetch(`${backend}/register`, {
@@ -32,6 +33,7 @@ const Register = ({setIsInfoVisible}) => {
     });
     const data = await res.json();
     if (res.status === 201) {
+      setIsLoading(false)
       setIsInfoVisible(true)
       switchForm()
     } else {
@@ -82,7 +84,7 @@ const Register = ({setIsInfoVisible}) => {
             autoComplete="new-password"
           />
           <input
-            className="bg-blue-700 w-5/6 rounded mt-2 md:mt-4 p-3 text-white cursor-pointer"
+            className="bg-blue-700 hover:bg-blue-900 transition duration-300 w-5/6 rounded mt-2 md:mt-4 p-3 text-white cursor-pointer"
             value={"Skapa konto"}
             type="submit"
           />

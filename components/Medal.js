@@ -25,7 +25,7 @@ const Medal = ({ value }) => {
       break;
     case 3:
       style = {
-        border: "border-yellow-600",
+        border: "border-yellow-500",
         bgFirst: "bg-gradient-to-tr from-yellow-600 via-yellow-300 to-yellow-600",
         bgSecond: "bg-yellow-600",
         text: "text-yellow-300",
@@ -35,12 +35,12 @@ const Medal = ({ value }) => {
       break;
     default:
       style = {
-        border: "border-gray-600",
+        border: "border-gray-500",
         bgFirst: "bg-gradient-to-tr from-gray-600 via-gray-400 to-gray-600 text-gray-200",
         bgSecond: "bg-yellow-600",
         text: "text-white",
         size: "w-16 h-16 text-xl md:text-3xl",
-        position: "left-4 transform -translate-x-1/2"
+        position: "left-4 md:left-0 transform -translate-x-1/2"
       };
   }
 
@@ -57,7 +57,7 @@ const Medal = ({ value }) => {
     //   </div>
     // </div>
     <div
-      className={`absolute ${style.position} ${style.size} mr-8 md:mr-0 ${style.bgFirst} ${style.border} border-2 rounded-full flex justify-center items-center`}
+      className={`absolute ${style.position} ${style.size} mr-8 md:mr-0 ${style.bgFirst} ${style.border} border-4 rounded-full flex justify-center items-center`}
     >
       <h1 className="transform translate-y-px">{value}</h1>
     </div>

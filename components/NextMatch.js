@@ -3,10 +3,10 @@ import { motion } from "framer-motion"
 const NextMatch = ({ match }) => {
   return (
     <div className="w-full">
-      {match && (
+      {match.id != 99 ? (
         <div className="w-full h-full flex flex-col justify-center items-center">
           <span className="text-xs md:text-lg text-em-green-dark">Nästa match</span>
-          <div className="flex w-full justify-center mt-4 px-4 text-xs md:text-lg">
+          <div className="flex w-full items-center justify-center mt-4 px-4 text-xs md:text-lg">
             <div className="w-1/3 flex flex-col justify-center items-center">
               <motion.img
                 initial={{scale:0}}
@@ -17,7 +17,7 @@ const NextMatch = ({ match }) => {
               />
               <span className="mt-4">{match.home_team}</span>
             </div>
-            <motion.div initial={{ height: 0 }} animate={{ height: 76, transition: { delay:1, duration:1 }}} className="w-px bg-em-green-light h-24 transform mx-8 rotate-12">
+            <motion.div initial={{ height: 0 }} animate={{ height: 80, transition: { delay:1, duration:1 }}} className="w-px bg-em-green-light h-full transform mx-8">
               
             </motion.div>
             <div className="w-1/3 flex flex-col justify-center items-center">
@@ -32,7 +32,8 @@ const NextMatch = ({ match }) => {
             </div>
           </div>
         </div>
-      )}
+      ) : <div className="w-full h-full flex flex-col justify-center items-center py-4">
+        {match.message}</div>}
     </div>
   );
 };
