@@ -9,6 +9,8 @@ import { motion } from "framer-motion";
 import UserIndicator from "../components/UserIndicator";
 import LoadingElement from "../components/LoadingElement";
 import { GiShrimp } from 'react-icons/gi';
+import ReLoginInfo from "../components/ReLoginInfo";
+
 
 const topplistan = () => {
   const { user } = useContext(context);
@@ -72,6 +74,7 @@ const topplistan = () => {
     >
       <Header></Header>
       <h1 className="text-white md:text-xl mb-8 md:mb-6">TOPPLISTAN</h1>
+      {!user && <ReLoginInfo></ReLoginInfo>}
       { user &&
       
       <SideResult

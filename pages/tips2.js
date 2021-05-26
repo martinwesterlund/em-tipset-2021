@@ -7,6 +7,7 @@ import MatchForm from "../components/MatchForm";
 import { motion, AnimatePresence } from "framer-motion";
 import LoadingElement from "../components/LoadingElement";
 import CountDown from "../components/CountDown";
+import ReLoginInfo from "../components/ReLoginInfo";
 
 const tips2 = () => {
   const { user, setUser, setIsLoading, points, setPoints, deadLinePassed } =
@@ -262,6 +263,7 @@ const tips2 = () => {
       <Header></Header>
       <div className="w-screen min-h-screen bg-stripe pt-32 p-6 flex flex-col items-center">
         <h1 className="text-white md:text-xl mb-8">DINA TIPS</h1>
+        {!user && <ReLoginInfo></ReLoginInfo>}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0, transition: { duration: 1, delay: 1 } }}

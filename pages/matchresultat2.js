@@ -7,7 +7,7 @@ import backend from "../data/data";
 import Header from "../components/Header";
 import { motion, AnimatePresence } from "framer-motion";
 import LoadingElement from "../components/LoadingElement";
-
+import ReLoginInfo from "../components/ReLoginInfo";
 
 const matchresultat = () => {
   const { user, setUser, setIsLoading, points } = useContext(context);
@@ -74,6 +74,7 @@ const matchresultat = () => {
       <div className="w-screen min-h-screen bg-stripe pt-32 p-6 flex flex-col items-center">
         {/* <div className="h-full w-full fixed top-0 left-0 bg-gradient-to-tl from-black opacity-20"></div> */}
         <h1 className="text-white md:text-xl mb-8">MATCHRESULTAT</h1>
+        {!user && <ReLoginInfo></ReLoginInfo>}
         {userMatchResults && matches ? (
           <motion.div
             variants={container}
