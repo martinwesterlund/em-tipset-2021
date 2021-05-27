@@ -5,6 +5,7 @@ class MyDocument extends Document {
     return (
       <Html lang="sv">
         <Head>
+        <title>EM-tipset 2021</title>
           <link
             rel="apple-touch-icon"
             sizes="180x180"
@@ -26,6 +27,7 @@ class MyDocument extends Document {
           <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="theme-color" content="#ffffff" />
+          <meta name="description" content="Tippa matcherna i fotbolls-EM och samla räkor. Flest räkor vinner!" />
         </Head>
         <body>
           <Main />
