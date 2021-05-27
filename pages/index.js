@@ -62,6 +62,8 @@ const Home = () => {
                 }}
               >
                 <img
+                  width="980"
+                  height="1169"
                   className="animate-ball-spin w-20 lg:w-40 mb-4 lg:mb-0 lg:mr-4"
                   src="/images/football2.svg"
                   alt=""
