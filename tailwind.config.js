@@ -52,6 +52,14 @@ module.exports = {
           from: {transform: "scale(1.05)"},
           to: {transform: "scale(0.95)"}
         },
+        pulse: {
+          "0%, 100%": {
+            "opacity": "1"
+          },
+          "50%": {
+            "opacity": "0.5"
+          }
+        },
         progress: {
           "100%": {'stroke-dashoffset': "0"}
         },

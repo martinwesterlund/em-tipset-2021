@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext, useRef } from "react";
 import context from "../context/context";
 import Router from "next/router";
-
+import Head from "next/head";
 import MatchBox from "../components/MatchBox";
 import backend from "../data/data";
 import Header from "../components/Header";
@@ -68,6 +68,10 @@ const matchresultat = () => {
 
   return (
     <>
+    <Head>
+        <title>EM-tipset 2021 | Matchresultat</title>
+        <meta property="og:title" content="Matchresultat" key="title" />
+      </Head>
       <Header></Header>
 
       <div className="w-screen min-h-screen bg-stripe pt-32 p-6 flex flex-col items-center">

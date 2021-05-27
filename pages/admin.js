@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import context from "../context/context";
 import backend from "../data/data";
 import Header from "../components/Header";
+import Head from "next/head";
 
 const admin = () => {
   const [matches, setMatches] = useState();
@@ -77,7 +78,10 @@ const admin = () => {
     <div
       className={`w-screen min-h-screen bg-stripe py-32 px-2 md:px-6 flex flex-col items-center overflow-x-hidden text-xxs sm:text-base`}
     >
-      
+      <Head>
+        <title>EM-tipset 2021 | Admin</title>
+        <meta property="og:title" content="Admin" key="title" />
+      </Head>
         <Header></Header>
         {user?.role === 'admin' ? (<>
         <h1 className="text-white md:text-xl mb-8 md:mb-6">ADMIN</h1>

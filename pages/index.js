@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import Login from "../components/Login";
 import Register from "../components/Register";
-
+import Head from "next/head";
 import context from "../context/context";
 import Router from "next/router";
 import LoadingScreen from "../components/LoadingScreen";
@@ -31,6 +31,10 @@ const Home = () => {
 
   return (
     <>
+      <Head>
+        <title>EM-tipset 2021</title>
+        <meta property="og:title" content="EM-tipset 2021" key="title" />
+      </Head>
       {isLoading && <LoadingScreen></LoadingScreen>}
       <div className="min-h-screen w-screen flex flex-col lg:flex-row ">
         <div className="bg-em-green-dark min-h-screen lg:w-3/5 xl:w-2/3 text-white flex justify-center items-center relative p-16 lg:p-20">
@@ -115,29 +119,29 @@ const Home = () => {
             </motion.p>
 
             <div className="lg:hidden flex flex-col items-center justify-center mt-6 sm:mt-12 lg:mt-20">
-            {isInfoVisible && (
-            <motion.div
-              initial={{ y: -50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1, transition: { duration: 0.6 } }}
-              className="flex flex-col justify-center items-center text-white mb-2 text-xs"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>{" "}
-              <h1>Konto skapat</h1>
-            </motion.div>
-          )}
+              {isInfoVisible && (
+                <motion.div
+                  initial={{ y: -50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1, transition: { duration: 0.6 } }}
+                  className="flex flex-col justify-center items-center text-white mb-2 text-xs"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>{" "}
+                  <h1>Konto skapat</h1>
+                </motion.div>
+              )}
               {showLogin && <Login setIsInfoVisible={setIsInfoVisible}></Login>}
               {showReg && (
                 <Register setIsInfoVisible={setIsInfoVisible}></Register>

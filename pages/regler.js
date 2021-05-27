@@ -4,7 +4,7 @@ import Router from "next/router";
 import Header from "../components/Header";
 import { motion } from "framer-motion";
 import RuleItem from "../components/RuleItem";
-
+import Head from "next/head";
 const regler = () => {
   const { user, setUser, setIsLoading } = useContext(context);
 
@@ -12,6 +12,10 @@ const regler = () => {
     <div
       className={`w-screen min-h-screen bg-stripe py-32 px-4 md:px-6 flex flex-col items-center overflow-x-hidden`}
     >
+      <Head>
+        <title>EM-tipset 2021 | Regler</title>
+        <meta property="og:title" content="Regler" key="title" />
+      </Head>
       <Header></Header>
       <h1 className="text-white md:text-xl mb-8 md:mb-6">REGLER</h1>
 

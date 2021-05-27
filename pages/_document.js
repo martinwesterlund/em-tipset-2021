@@ -5,7 +5,6 @@ class MyDocument extends Document {
     return (
       <Html lang="sv">
         <Head>
-        <title>EM-tipset 2021</title>
           <link
             rel="apple-touch-icon"
             sizes="180x180"

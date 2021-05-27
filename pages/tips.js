@@ -7,6 +7,7 @@ import MatchForm from "../components/MatchForm";
 import { motion, AnimatePresence } from "framer-motion";
 import LoadingElement from "../components/LoadingElement";
 import CountDown from "../components/CountDown";
+import Head from "next/head";
 
 const tips = () => {
   const { user, setUser, setIsLoading, points, setPoints, deadLinePassed } =
@@ -258,6 +259,10 @@ const tips = () => {
 
   return (
     <>
+      <Head>
+        <title>EM-tipset 2021 | Dina tips</title>
+        <meta property="og:title" content="Dina tips" key="title" />
+      </Head>
       <Header></Header>
       <div className="w-screen min-h-screen bg-stripe pt-32 p-6 flex flex-col items-center">
         <h1 className="text-white md:text-xl mb-8">DINA TIPS</h1>
@@ -403,7 +408,7 @@ const tips = () => {
               x: 0,
               transition: { duration: 2, delay: 1, ease: "easeOut" },
             }}
-            whileHover={{ backgroundColor: "#1E3A8A"}}
+            whileHover={{ backgroundColor: "#1E3A8A" }}
             className="bg-blue-700 fixed right-2 bottom-2 md:right-8 md:bottom-8 rounded-xl mt-4 p-3 lg:p-6 text-white lg:text-xl cursor-pointer"
           >
             Uppdatera dina tips!

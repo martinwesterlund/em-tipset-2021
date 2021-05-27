@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import LoadingElement from "../components/LoadingElement";
 import { GiShrimp } from "react-icons/gi";
 import { CookiesProvider, useCookies } from "react-cookie";
+import Head from "next/head";
 
 const topplistan = () => {
   const { user } = useContext(context);
@@ -70,6 +71,10 @@ const topplistan = () => {
         showSideBar ? "overflow-hidden" : ""
       }`}
     >
+      <Head>
+        <title>EM-tipset 2021 | Topplistan</title>
+        <meta property="og:title" content="Topplistan" key="title" />
+      </Head>
       <Header></Header>
       <h1 className="text-white md:text-xl mb-8 md:mb-12">TOPPLISTAN</h1>
       {user && (
