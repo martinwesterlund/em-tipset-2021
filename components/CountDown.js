@@ -74,7 +74,7 @@ const CountDown = ({ front }) => {
               <span>s</span>
             </div>
           </div>
-          <span className={`${front && 'w-12 lg:w-80'} w-40 border-t text-center border-white pt-1`}>
+          <span className={`${front && 'w-32 lg:w-80'} w-40 border-t text-center border-white pt-1`}>
             kvar till spelstopp!
           </span>
         </div>
