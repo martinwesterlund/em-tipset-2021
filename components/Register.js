@@ -73,7 +73,7 @@ const Register = ({setIsInfoVisible}) => {
             onChange={(e) => setEmail(e.target.value)}
             className="w-5/6 rounded border mt-2 md:mt-4 border-black p-3"
             placeholder="Email"
-            type="text"
+            type="email"
             autoComplete="email"
           />
           <input

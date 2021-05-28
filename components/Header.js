@@ -58,7 +58,7 @@ const Header = () => {
           <ul className="w-full flex justify-center">
             <Link href="/tips">
               <li
-                className={`cursor-pointer rounded py-2 px-4 xl:px-8 transition duration-300 hover:bg-em-green-dark ${
+                className={`cursor-pointer rounded py-2 px-4 mx-1 xl:px-8 transition duration-300 hover:bg-em-green-dark ${
                   activeLink === "/tips" && "bg-em-green-dark"
                 }`}
               >
@@ -67,7 +67,7 @@ const Header = () => {
             </Link>
             <Link href="/topplistan">
               <li
-                className={`cursor-pointer rounded py-2 px-4 xl:px-8 transition duration-300 hover:bg-em-green-dark ${
+                className={`cursor-pointer rounded py-2 px-4 mx-1 xl:px-8 transition duration-300 hover:bg-em-green-dark ${
                   activeLink === "/topplistan" && "bg-em-green-dark"
                 }`}
               >
@@ -76,7 +76,7 @@ const Header = () => {
             </Link>
             <Link href="/matchresultat">
               <li
-                className={`cursor-pointer rounded py-2 px-4 xl:px-8 transition duration-300 hover:bg-em-green-dark ${
+                className={`cursor-pointer rounded py-2 px-4 mx-1 xl:px-8 transition duration-300 hover:bg-em-green-dark ${
                   activeLink === "/matchresultat" && "bg-em-green-dark"
                 }`}
               >
@@ -85,7 +85,7 @@ const Header = () => {
             </Link>
             <Link href="/regler">
               <li
-                className={`cursor-pointer rounded py-2 px-4 xl:px-8 transition duration-300 hover:bg-em-green-dark ${
+                className={`cursor-pointer rounded py-2 px-4 mx-1 xl:px-8 transition duration-300 hover:bg-em-green-dark ${
                   activeLink === "/regler" && "bg-em-green-dark"
                 }`}
               >
@@ -95,7 +95,7 @@ const Header = () => {
             {user?.role === "admin" && (
               <Link href="/admin">
                 <li
-                  className={`cursor-pointer rounded py-2 px-4 xl:px-8 transition duration-300 hover:bg-em-green-dark ${
+                  className={`cursor-pointer rounded py-2 px-4 mx-1 xl:px-8 transition duration-300 hover:bg-em-green-dark ${
                     activeLink === "/admin" && "bg-em-green-dark"
                   }`}
                 >
