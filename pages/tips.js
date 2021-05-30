@@ -267,8 +267,8 @@ const tips = () => {
       <div className="w-screen min-h-screen bg-stripe pt-32 p-6 flex flex-col items-center">
         <h1 className="text-white md:text-xl mb-8">DINA TIPS</h1>
         <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0, transition: { duration: 1, delay: 1 } }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { duration: 1, delay: 1 } }}
         >
           <CountDown front={false}></CountDown>
         </motion.div>

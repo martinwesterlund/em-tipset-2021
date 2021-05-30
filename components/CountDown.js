@@ -15,7 +15,7 @@ const CountDown = ({ front }) => {
   const countDown = () => {
     
     const countDownDate = new Date("Jun 11, 2021 21:00:00").getTime();
-    // const countDownDate = new Date("May 26, 2021 18:58:00").getTime();
+    // const countDownDate = new Date("May 31, 2021 10:30:00").getTime();
     interval = setInterval(() => {
       const now = new Date().getTime();
       const distance = countDownDate - now;
