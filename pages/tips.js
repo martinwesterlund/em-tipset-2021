@@ -296,7 +296,7 @@ const tips = () => {
                     {!deadLinePassed && (
                       <button
                         onClick={() => removeGoal(`m${match.id}_h`)}
-                        className="flex justify-center items-center mr-1"
+                        className="mr-1"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -318,7 +318,7 @@ const tips = () => {
                     {!deadLinePassed && (
                       <button
                         onClick={() => addGoal(`m${match.id}_h`)}
-                        className="flex justify-center items-center ml-1"
+                        className="ml-1"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -352,7 +352,7 @@ const tips = () => {
                     {!deadLinePassed && (
                       <button
                         onClick={() => removeGoal(`m${match.id}_a`)}
-                        className="flex justify-center items-center mr-1"
+                        className="mr-1"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -375,7 +375,7 @@ const tips = () => {
                     {!deadLinePassed && (
                       <button
                         onClick={() => addGoal(`m${match.id}_a`)}
-                        className="flex justify-center items-center ml-1"
+                        className="ml-1"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
