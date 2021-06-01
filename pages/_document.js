@@ -27,7 +27,7 @@ class MyDocument extends Document {
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="theme-color" content="#ffffff" />
           <meta name="description" content="Tippa matcherna i fotbolls-EM och samla räkor. Flest räkor vinner!" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+          
         </Head>
         <body>
           <Main />

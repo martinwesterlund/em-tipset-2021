@@ -4,6 +4,7 @@ import context from "../context/context";
 import { CookiesProvider, useCookies } from "react-cookie";
 import backend from "../data/data";
 import Router from "next/router";
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState(null);
@@ -78,7 +79,9 @@ function MyApp({ Component, pageProps }) {
         }}
       >
         {/* <Layout> */}
-
+        <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        </Head>
         <Component {...pageProps} />
         {/* </Layout> */}
       </context.Provider>
