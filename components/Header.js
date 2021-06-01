@@ -281,7 +281,7 @@ const Header = () => {
             </li>
           </Link>
           {user?.role === "admin" && (
-            <Link href="/tips3">
+            <Link href="/admin">
               <li
                 onClick={() => setMenuOpen(false)}
                 className="my-6 flex flex-items cursor-pointer hover:underline"
