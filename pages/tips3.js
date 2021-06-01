@@ -337,7 +337,7 @@ const tips3 = () => {
                   <div className="flex items-center mt-4 text-em-green-default">
                     {!deadLinePassed && (
                       <button
-                      onClick={() => decreaseGoal(`m${match.id}_h`)}
+                      onClick={() => decreaseGoal(`m${match.id}_a`)}
                         className="mr-1"
                       >
                         <svg
@@ -360,7 +360,7 @@ const tips3 = () => {
                     </span>
                     {!deadLinePassed && (
                       <button
-                      onClick={() => increaseGoal(`m${match.id}_h`)}
+                      onClick={() => increaseGoal(`m${match.id}_a`)}
                         className="ml-1"
                       >
                         <svg
