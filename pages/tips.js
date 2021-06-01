@@ -10,75 +10,29 @@ import CountDown from "../components/CountDown";
 import Head from "next/head";
 
 const tips = () => {
-  const { user, setUser, setIsLoading, points, setPoints, deadLinePassed } =
+    const { user, setUser, setIsLoading, points, setPoints, deadLinePassed } =
     useContext(context);
-  const [matches, setMatches] = useState();
   const [usersBet, setUsersBet] = useState();
-  const [combinedData, setCombinedData] = useState();
+  const [matches, setMatches] = useState();
   const [infoIsVisible, setInfoIsVisible] = useState(false);
   const [info, setInfo] = useState();
 
   const getMatches = async () => {
     const res = await fetch(`${backend}/fixtures`);
     const data = await res.json();
-    setMatches(data);
+    return data;
   };
 
   const getUsersBet = async () => {
     const res = await fetch(`${backend}/user-match-results`);
     const data = await res.json();
-    if (user) {
-      setUsersBet(data.filter((result) => result.user_email === user.email)[0]);
-    }
+    return data.filter((result) => result.user_email === user.email)[0];
   };
-
-  const addGoal = (name) => {
-    let value = Number(usersBet[name] + 1);
-
-    setUsersBet({
-      ...usersBet,
-      [name]: value,
-    });
-  };
-
-  const animateInfo = (text) => {
-    setInfo(text);
-    setInfoIsVisible(true);
-    setTimeout(() => {
-      setInfoIsVisible(false);
-    }, 2000);
-  };
-
-  const removeGoal = (name) => {
-    let value;
-    if (Number(usersBet[name] > 0)) {
-      value = Number(usersBet[name] - 1);
-    } else {
-      value = Number(usersBet[name]);
-    }
-
-    setUsersBet({
-      ...usersBet,
-      [name]: value,
-    });
-  };
-
-  // user["m" + match.id + "_h"]
 
   const setDbValue = (h, a) => {
     if (h > a) {
       return "1";
     } else if (h < a) {
-      return "2";
-    } else {
-      return "X";
-    }
-  };
-
-  const set1X2 = (match) => {
-    if (match.h > match.a) {
-      return "1";
-    } else if (match.h < match.a) {
       return "2";
     } else {
       return "X";
@@ -214,32 +168,59 @@ const tips = () => {
     }
   };
 
-  useEffect(() => {
-    getMatches();
-  }, [user]);
-
-  useEffect(() => {
-    getUsersBet();
-  }, [matches]);
-
-  useEffect(() => {
-    if (matches && usersBet) {
-      let a = Object.values(usersBet);
-      a = a.slice(4, 76);
-      let b = [];
-      for (let i = 0; i < a.length; i += 2) {
-        b.push({ ...a[i], ...a[i + 1] });
-      }
-      let c = [];
-      for (let i = 0; i < matches.length; i++) {
-        const betArray = [];
-        betArray.h = a.shift();
-        betArray.a = a.shift();
-        c.push({ ...matches[i], ...b[i], ...betArray });
-      }
-      setCombinedData(c);
+  const getAllData = async () => {
+    if (user) {
+      let m = await getMatches();
+      setMatches(m);
+      let u = await getUsersBet();
+      setUsersBet(u);
     }
-  }, [usersBet]);
+  };
+
+  const decreaseGoal = (name) => {
+    let value;
+    if (Number(usersBet[name] > 0)) {
+      value = Number(usersBet[name] - 1);
+    } else {
+      value = Number(usersBet[name]);
+    }
+
+    setUsersBet({
+      ...usersBet,
+      [name]: value,
+    });
+  };
+
+  const increaseGoal = (name) => {
+    let value = Number(usersBet[name] + 1);
+
+    setUsersBet({
+      ...usersBet,
+      [name]: value,
+    });
+  };
+
+  const set1X2 = (h, a) => {
+    if (h > a) {
+      return "1";
+    } else if (h < a) {
+      return "2";
+    } else {
+      return "X";
+    }
+  };
+
+  const animateInfo = (text) => {
+    setInfo(text);
+    setInfoIsVisible(true);
+    setTimeout(() => {
+      setInfoIsVisible(false);
+    }, 2000);
+  };
+
+  useEffect(() => {
+    getAllData();
+  }, [user]);
 
   const container = {
     hidden: { opacity: 0 },
@@ -272,14 +253,14 @@ const tips = () => {
         >
           <CountDown front={false}></CountDown>
         </motion.div>
-        {combinedData ? (
+        {matches && usersBet ? (
           <motion.div
             variants={container}
             initial="hidden"
             animate="show"
             className="w-full flex flex-col items-center mb-20"
           >
-            {combinedData.map((match) => (
+            {matches.map((match) => (
               <motion.div
                 variants={item}
                 key={match.id}
@@ -295,7 +276,7 @@ const tips = () => {
                   <div className="flex items-center mt-4 text-em-green-default">
                     {!deadLinePassed && (
                       <button
-                        onClick={() => removeGoal(`m${match.id}_h`)}
+                      onClick={() => decreaseGoal(`m${match.id}_h`)}
                         className="mr-1"
                       >
                         <svg
@@ -313,11 +294,11 @@ const tips = () => {
                       </button>
                     )}
                     <span className="w-12 border-l border-r  text-center text-2xl border-gray-300">
-                      {match.h}
+                    {usersBet["m" + match.id + "_h"]}
                     </span>
                     {!deadLinePassed && (
                       <button
-                        onClick={() => addGoal(`m${match.id}_h`)}
+                      onClick={() => increaseGoal(`m${match.id}_h`)}
                         className="ml-1"
                       >
                         <svg
@@ -338,7 +319,10 @@ const tips = () => {
                 </div>
                 <div className="w-8 h-full flex flex-col justify-center items-center">
                   <div className="h-1/3 text-3xl flex items-end text-em-green-default transform translate-y-2">
-                    <span>{set1X2(match)}</span>
+                    <span>{set1X2(
+                        usersBet["m" + match.id + "_h"],
+                        usersBet["m" + match.id + "_a"]
+                      )}</span>
                   </div>
                 </div>
                 <div className="w-1/3 flex flex-col justify-center items-center ">
@@ -351,7 +335,7 @@ const tips = () => {
                   <div className="flex items-center mt-4 text-em-green-default">
                     {!deadLinePassed && (
                       <button
-                        onClick={() => removeGoal(`m${match.id}_a`)}
+                      onClick={() => decreaseGoal(`m${match.id}_a`)}
                         className="mr-1"
                       >
                         <svg
@@ -370,11 +354,11 @@ const tips = () => {
                     )}
 
                     <span className="w-12 border-l border-r text-center text-2xl border-gray-300">
-                      {match.a}
+                    {usersBet["m" + match.id + "_a"]}
                     </span>
                     {!deadLinePassed && (
                       <button
-                        onClick={() => addGoal(`m${match.id}_a`)}
+                      onClick={() => increaseGoal(`m${match.id}_a`)}
                         className="ml-1"
                       >
                         <svg
@@ -453,3 +437,4 @@ const tips = () => {
 };
 
 export default tips;
+
