@@ -9,8 +9,8 @@ import LoadingElement from "../components/LoadingElement";
 import CountDown from "../components/CountDown";
 import Head from "next/head";
 
-const tips2 = () => {
-  const { user, setUser, setIsLoading, points, setPoints, deadLinePassed } =
+const tips3 = () => {
+    const { user, setUser, setIsLoading, points, setPoints, deadLinePassed } =
     useContext(context);
   const [usersBet, setUsersBet] = useState();
   const [matches, setMatches] = useState();
@@ -239,6 +239,7 @@ const tips2 = () => {
     hidden: { opacity: 0, x: -100 },
     show: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } },
   };
+
   return (
     <>
       <Head>
@@ -254,139 +255,14 @@ const tips2 = () => {
         >
           <CountDown front={false}></CountDown>
         </motion.div>
-        <motion.div
-          variants={container}
-          initial="hidden"
-          animate="show"
-          className="w-full flex flex-col items-center mb-20"
-        >
-          {matches && usersBet ? (
-            matches.map((match) => (
-              <motion.div
-                variants={item}
-                key={match.id}
-                className="w-full  md:w-160 lg:w-192 relative bg-white rounded-xl flex justify-around items-center py-8 px-2 sm:p-4 md:p-6 m-2"
-              >
-                <div className="w-1/3 flex flex-col justify-center items-center">
-                  <div>{match.home_team}</div>
-                  <img
-                    className="w-8 h-8 mt-2 rounded-full object-cover shadow-md"
-                    src={`/images/flags/${match.home_team.toLowerCase()}.svg`}
-                    alt=""
-                  />
-                  <div className="flex items-center mt-4 text-em-green-default">
-                    {!deadLinePassed && (
-                      <button
-                        onClick={() => decreaseGoal(`m${match.id}_h`)}
-                        className="mr-1"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-6 w-6 md:h-10 md:w-10"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </button>
-                    )}
-                    <span className="w-12 border-l border-r  text-center text-2xl border-gray-300">
-                      {usersBet["m" + match.id + "_h"]}
-                    </span>
-                    {!deadLinePassed && (
-                      <button
-                        onClick={() => increaseGoal(`m${match.id}_h`)}
-                        className="ml-1"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-6 w-6 md:h-10 md:w-10"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </button>
-                    )}
-                  </div>
-                </div>
-                <div className="w-8 h-full flex flex-col justify-center items-center">
-                  <div className="h-1/3 text-3xl flex items-end text-em-green-default transform translate-y-2">
-                    <span>
-                      {set1X2(
-                        usersBet["m" + match.id + "_h"],
-                        usersBet["m" + match.id + "_a"]
-                      )}
-                    </span>
-                  </div>
-                </div>
-                <div className="w-1/3 flex flex-col justify-center items-center ">
-                  <div>{match.away_team}</div>
-                  <img
-                    className="w-8 h-8 mt-2 rounded-full object-cover shadow-md"
-                    src={`/images/flags/${match.away_team.toLowerCase()}.svg`}
-                    alt=""
-                  />
-                  <div className="flex items-center mt-4 text-em-green-default">
-                    {!deadLinePassed && (
-                      <button
-                        onClick={() => decreaseGoal(`m${match.id}_h`)}
-                        className="mr-1"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-6 w-6 md:h-10 md:w-10"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </button>
-                    )}
-
-                    <span className="w-12 border-l border-r text-center text-2xl border-gray-300">
-                      {usersBet["m" + match.id + "_a"]}
-                    </span>
-                    {!deadLinePassed && (
-                      <button
-                        onClick={() => increaseGoal(`m${match.id}_h`)}
-                        className="ml-1"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-6 w-6 md:h-10 md:w-10"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                      </button>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            ))
-          ) : (
-            <LoadingElement text={"Laddar dina tips..."}></LoadingElement>
-          )}
-        </motion.div>
-        {/* {combinedData.map((match) => (
+        {matches && usersBet ? (
+          <motion.div
+            variants={container}
+            initial="hidden"
+            animate="show"
+            className="w-full flex flex-col items-center mb-20"
+          >
+            {matches.map((match) => (
               <motion.div
                 variants={item}
                 key={match.id}
@@ -445,7 +321,10 @@ const tips2 = () => {
                 </div>
                 <div className="w-8 h-full flex flex-col justify-center items-center">
                   <div className="h-1/3 text-3xl flex items-end text-em-green-default transform translate-y-2">
-                    <span>{set1X2(usersBet["m" + match.id + "_h"], usersBet["m" + match.id + "_a"])}</span>
+                    <span>{set1X2(
+                        usersBet["m" + match.id + "_h"],
+                        usersBet["m" + match.id + "_a"]
+                      )}</span>
                   </div>
                 </div>
                 <div className="w-1/3 flex flex-col justify-center items-center ">
@@ -505,7 +384,7 @@ const tips2 = () => {
           </motion.div>
         ) : (
           <LoadingElement text={"Laddar dina tips..."}></LoadingElement>
-        )} */}
+        )}
 
         {!deadLinePassed && (
           <motion.button
@@ -559,4 +438,5 @@ const tips2 = () => {
   );
 };
 
-export default tips2;
+export default tips3;
+
