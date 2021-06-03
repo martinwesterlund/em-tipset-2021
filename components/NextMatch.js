@@ -7,7 +7,7 @@ const NextMatch = ({ match }) => {
           <span className="text-xs md:text-lg text-em-green-dark">
             Nästa match
           </span>
-          <div className="flex flex-col w-64 h-10 justify-center items-center my-2 text-sm">
+          <div className="flex flex-col w-64 h-10 justify-center items-center mt-2 text-sm">
                   <span className="mx-1">
                     {match.date} kl. {match.time}
                   </span>
@@ -27,12 +27,12 @@ const NextMatch = ({ match }) => {
                 src={`/images/flags/${match.home_team.toLowerCase()}.svg`}
                 alt=""
               />
-              <span className="mt-4">{match.home_team}</span>
+              <span className="mt-2">{match.home_team}</span>
             </div>
             <motion.div
               initial={{ height: 0 }}
-              animate={{ height: 80, transition: { delay: 1, duration: 1 } }}
-              className="w-px bg-em-green-light h-full transform mx-8"
+              animate={{ height: 60, transition: { delay: 1, duration: 1 } }}
+              className="w-px bg-em-green-light transform mx-8"
             ></motion.div>
             <div className="w-1/3 flex flex-col justify-center items-center">
               <motion.img
@@ -42,7 +42,7 @@ const NextMatch = ({ match }) => {
                 src={`/images/flags/${match.away_team.toLowerCase()}.svg`}
                 alt=""
               />
-              <span className="mt-4">{match.away_team}</span>
+              <span className="mt-2">{match.away_team}</span>
             </div>
           </div>
         </div>
