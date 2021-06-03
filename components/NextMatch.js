@@ -7,17 +7,17 @@ const NextMatch = ({ match }) => {
           <span className="text-xs md:text-lg text-em-green-dark">
             Nästa match
           </span>
-          <div className="flex w-full h-10 justify-center items-center mt-2">
-            <span className="mx-2">
-              {match.date} kl. {match.time}
-            </span>
-            
-            <img
-              className={`mx-2 h-6 ${match.channel === 'svt1' || match.channel === 'svt2' || match.channel === 'svt24' ? 'mb-2' : ''}`}
-              src={`/images/${match.channel}.svg`}
-              alt=""
-            />
-          </div>
+          <div className="flex flex-col w-64 h-10 justify-center items-center my-2 text-sm">
+                  <span className="mx-1">
+                    {match.date} kl. {match.time}
+                  </span>
+
+                  <img
+                    className={`mx-1 h-6 md:h-8 mt-2`}
+                    src={`/images/${match.channel}.svg`}
+                    alt=""
+                  />
+                </div>
           <div className="flex w-full items-center justify-center mt-4 px-4 text-xs md:text-lg">
             <div className="w-1/3 flex flex-col justify-center items-center">
               <motion.img

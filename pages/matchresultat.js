@@ -68,7 +68,7 @@ const matchresultat = () => {
 
   return (
     <>
-    <Head>
+      <Head>
         <title>EM-tipset 2021 | Matchresultat</title>
         <meta property="og:title" content="Matchresultat" key="title" />
       </Head>
@@ -85,7 +85,22 @@ const matchresultat = () => {
             className="w-full flex flex-col items-center mb-20"
           >
             {matches.map((match, index) => (
-              <motion.div variants={item} key={index} className="w-full md:w-160 lg:w-192 relative bg-white rounded-xl flex flex-col justify-center p-6 m-2">
+              <motion.div
+                variants={item}
+                key={index}
+                className="w-full md:w-160 lg:w-192 relative bg-white rounded-xl flex flex-col justify-center items-center p-6 m-2"
+              >
+                <div className="flex flex-col w-64 h-10 justify-center items-center my-2 text-sm">
+                  <span className="mx-1">
+                    {match.date} kl. {match.time}
+                  </span>
+
+                  <img
+                    className={`mx-1 h-6 md:h-8 mt-2`}
+                    src={`/images/${match.channel}.svg`}
+                    alt=""
+                  />
+                </div>
                 <MatchBox
                   match={match}
                   usersResult={{
@@ -97,7 +112,7 @@ const matchresultat = () => {
             ))}
           </motion.div>
         ) : (
-          <LoadingElement text={'Laddar resultat...'}></LoadingElement>
+          <LoadingElement text={"Laddar resultat..."}></LoadingElement>
         )}
       </div>
     </>
