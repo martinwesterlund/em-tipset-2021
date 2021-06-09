@@ -16,7 +16,7 @@ const SideResult = ({
   return (
     <>
       <div
-        className={`z-30 w-auto min-h-screen overflow-y-scroll md:h-screen fixed top-0 right-0 transform duration-300 transition-all ease-in-out text-xxs sm:text-xs   bg-em-green-dark text-white shadow-lg p-6 sm:p-8 lg:p-12 flex justify-center items-center ${
+        className={`z-30 w-auto min-h-screen md:h-screen fixed top-0 right-0 transform duration-300 transition-all ease-in-out text-[0.5rem] sm:text-xs bg-em-green-dark text-white shadow-lg p-6 sm:p-8 lg:p-12 flex justify-center ${
           showSideBar
             ? "translate-x-0 opacity-100"
             : "translate-x-full opacity-0"
