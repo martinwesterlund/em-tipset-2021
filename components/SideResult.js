@@ -93,7 +93,7 @@ const SideResult = ({
               ) : (
                 <>
                   {
-                    <div className="text-xs md:text-base w-28 md:w-40">
+                    <div className="mt-64 text-xs md:text-base w-28 md:w-40">
                       När deadline passerat kommer du att kunna se{" "}
                       {selectedUser.first_name}
                       {selectedUser.first_name.slice(-1) === "s"
