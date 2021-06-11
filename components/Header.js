@@ -62,7 +62,7 @@ const Header = () => {
                   activeLink === "/tips" && "bg-em-green-dark"
                 }`}
               >
-                Dina tips
+                Mina tips
               </li>
             </Link>
             <Link href="/topplistan">
@@ -211,7 +211,7 @@ const Header = () => {
                   clipRule="evenodd"
                 />
               </svg>
-              <span>Dina tips</span>
+              <span>Mina tips</span>
             </li>
           </Link>
           <Link href="/topplistan">
