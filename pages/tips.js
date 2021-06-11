@@ -241,7 +241,7 @@ const tips = () => {
   return (
     <>
       <Head>
-        <title>EM-tipset 2021 | Dina tips</title>
+        <title>EM-tipset 2021 | Mina tips</title>
         <meta property="og:title" content="Dina tips" key="title" />
       </Head>
       <Header></Header>
