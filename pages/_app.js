@@ -32,10 +32,10 @@ function MyApp({ Component, pageProps }) {
     const data = await res.json();
     setUser(data.user);
     setIsLoading(false);
-    if(Router.pathname === "/"){
-      Router.push('/profil')
+    if (Router.pathname === "/") {
+      Router.push("/profil");
     } else {
-      Router.push(Router.pathname)
+      Router.push(Router.pathname);
     }
   };
 
@@ -44,12 +44,20 @@ function MyApp({ Component, pageProps }) {
       setIsLoading(true);
       loginWithCookie(cookies.emTipset21);
     } else {
-      Router.push('/')
+      Router.push("/");
       setShowCookieBanner(true);
       setIsLoading(false);
     }
   }, []);
 
+  useEffect(() => {
+    if (
+      new Date("Jun 11, 2021 21:00:00").getTime() - new Date().getTime() <
+      0
+    ) {
+      setDeadLinePassed(true);
+    }
+  }, []);
 
   return (
     <CookiesProvider>
@@ -75,12 +83,15 @@ function MyApp({ Component, pageProps }) {
           setShowCookieBanner,
           distance,
           deadLinePassed,
-          setDeadLinePassed
+          setDeadLinePassed,
         }}
       >
         {/* <Layout> */}
         <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+          />
         </Head>
         <Component {...pageProps} />
         {/* </Layout> */}
